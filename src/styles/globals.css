@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+/* Targets the scrollbar itself */
+::-webkit-scrollbar {
+  width: 12px; /* or any desired width */
+}
+
+/* Targets the track (background) of the scrollbar */
+::-webkit-scrollbar-track {
+  background: #f0f0f0; /* Light grey, or any color you prefer for the track */
+}
+
+/* Targets the handle (the part you grab) of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background: #000000; /* Black, or any color you prefer for the handle */
+}
+
+/* Optional: Change the handle's color on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Darker shade when hovered */
+}
+
+* {
+  overflow-x: hidden;
+  scrollbar-width: thin; /* 'auto' or 'thin' */
+  scrollbar-color: #000000 #f0f0f0; /* thumb and track color */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
