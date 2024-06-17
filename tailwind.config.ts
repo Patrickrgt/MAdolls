@@ -149,7 +149,7 @@ const config: Config = {
           "100%": { transform: "translateX(0vh)", opacity: "1"},
         },
         fadeUp: {
-          "0%": { transform: "translateY(4vh)", opacity: "0"},
+          "0%": { transform: "translateY(8vh)", opacity: "0"},
           "100%": { transform: "translateY(0vh)", opacity: "1"},
         },
         fadeUpSlower: {
@@ -188,7 +188,7 @@ const config: Config = {
         fadeUp: "fadeUp 1s forwards cubic-bezier(.8,0,.4,1.27)",
         fadeUpSlower: "fadeUpSlower .45s forwards cubic-bezier(.8,0,.4,1.27)",
         fadeDown: "fadeDown 1s forwards cubic-bezier(.8,0,.4,1.27)",
-        fadeIn: "fadeIn 0.5s forwards cubic-bezier(.8,0,.4,1.27)",
+        fadeIn: "fadeIn 1s forwards cubic-bezier(.8,0,.4,1.27)",
         fadeInMobile: "fadeInMobile 0.5s forwards cubic-bezier(.8,0,.4,1.27)",
       },
     },

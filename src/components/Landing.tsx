@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import MAcci from "../images/MAcci.png";
+import MAcci from "../images/MAdollLogo.png";
 import Story from "./Story";
 import About from "./About";
 import Team from "./Team";
@@ -26,7 +26,7 @@ const Portfolio: NextPage = () => {
   return (
     <div className="h-screen w-screen flex justify-center items-center">
       <Head>
-        <title>MAcci</title>
+        <title>MAdoll by MAcci</title>
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com"></link>
         <link rel="preconnect" href="https://fonts.gstatic.com"></link>
