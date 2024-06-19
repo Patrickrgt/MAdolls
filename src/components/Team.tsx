@@ -63,6 +63,15 @@ const Team: NextPage = () => {
     setCurDoll(id);
   };
 
+  const renderDescriptionWithLineBreaks = (desc: string) => {
+    return desc.split('\n').map((line, index) => (
+      <React.Fragment key={index}>
+        {line}
+        <br />
+      </React.Fragment>
+    ));
+  };
+
   return (
     <div className="overflow-hidden flex flex-col w-[80%] h-full justify-between">
       <div className="flex flex-col flex-0">
@@ -92,7 +101,7 @@ const Team: NextPage = () => {
         </div>
       </div>
 
-      <div className="w-[80%]">
+      <div className="w-[80%] ">
         <div className="flex gap-[4vh] w-full h-full m-auto justify-start items-center flex-1">
           <div className="animate-fadeRight flex">
             <Image

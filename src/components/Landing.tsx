@@ -43,14 +43,13 @@ const Portfolio: NextPage = () => {
               <Image
                 src={MAcci}
                 alt="MAcci"
-                className="border-[#FF0083] border-[0.5vh]"
+                className=""
               ></Image>
               <div className="m-auto font-semibold text-[#FF0083] text-[2vh]">
-                MAdoll NFTs
               </div>
             </div>
 
-            <div className="h-[40%] flex flex-col items-start justify-between">
+            <div className="h-[40%] flex flex-col items-center justify-between">
               {links.map((link, id) => (
                 <button onClick={() => handleCurTab(id)}>
                   <p
