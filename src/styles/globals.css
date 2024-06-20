@@ -50,4 +50,7 @@ html {
   .text-balance {
     text-wrap: balance;
   }
+  .hover-color {
+    color: var(--hover-color, initial); /* Fallback to 'initial' if the variable isn't set */
+  }
 }
