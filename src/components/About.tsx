@@ -137,7 +137,7 @@ const About: NextPage = () => {
             onClick={() => handleCurTab(2)}
             className="pl-[2vh] animate-fadeIn font-semibold text-[3vh] text-[#FF0083] hover:text-[#000] transition-all ease-in-out cursor-pointer overflow-hidden"
           >
-            🌄 MAdoll Special Backgrounds
+            🌄 MAdoll Specials
             </button>
         </div>
 
@@ -208,7 +208,7 @@ const About: NextPage = () => {
             onClick={() => handleCurTab(2)}
             className="pl-[2vh] animate-fadeIn font-semibold text-[3vh] text-[#FF0083] hover:text-[#000] transition-all ease-in-out cursor-pointer overflow-hidden"
           >
-           🌄 MAdoll Special Backgrounds
+           🌄 MAdoll Specials
           </button>
         </div>
 
@@ -265,7 +265,7 @@ const About: NextPage = () => {
       <div className={`${curTab != 2 ? "hidden" : "block"} flex flex-col`}>
         <div className="flex">
           <div className="animate-fadeIn font-semibold text-[6vh] hover:text-[#FF0083] transition-all ease-in-out cursor-none overflow-hidden">
-            MAdoll Special Backgrounds
+            MAdoll Specials
           </div>
           <button
             onClick={() => handleCurTab(0)}
