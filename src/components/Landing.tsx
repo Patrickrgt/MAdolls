@@ -5,7 +5,9 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import MAcci from "../images/MAdollLogo.png";
 import Story from "./Story";
+import StoryMobile from "./StoryMobile";
 import About from "./About";
+import AboutMobile from "./AboutMobile";
 import Team from "./Team";
 import socialX from "../images/socialX.png";
 import socialDiscord from "../images/socialDiscord.png";
@@ -24,7 +26,7 @@ const Portfolio: NextPage = () => {
   };
 
   return (
-    <div className="h-screen w-screen flex justify-center items-center">
+    <div className="w-screen flex justify-center items-center">
       <Head>
         <title>MAdoll by MAcci</title>
         <link rel="icon" href="/favicon.ico" />
@@ -36,17 +38,36 @@ const Portfolio: NextPage = () => {
         ></link>
       </Head>
 
-      <div className="flex w-[90%] h-[80%] m-auto gap-[16vh]">
+      <div className="relative w-full p-[1.5vh] flex flex-col gap-[2vh]">
+        <nav className="fixed flex w-full items-center  pr-[3vh] z-10">
+          <div className="mr-auto font-semibold text-[#FF0083] text-[2.75vh]">
+            MAdoll Story
+          </div>
+          <Image src={MAcci} alt="MAcci" className="w-[15%]"></Image>
+        </nav>
+        
+        <nav className="flex w-full items-center">
+          <div className="mr-auto font-semibold text-[#FF0083] text-[2.75vh]">
+            MAdoll Story
+          </div>
+          <Image src={MAcci} alt="MAcci" className="w-[15%]"></Image>
+        </nav>
+
+        <div className="h-screen">
+          <StoryMobile></StoryMobile>
+        </div>
+
+        <div className="h-screen">
+          <AboutMobile></AboutMobile>
+        </div>
+      </div>
+
+      <div className="hidden lg:flex w-[90%] h-[80%] m-auto gap-[16vh]">
         <div className="flex flex-1 flex-col">
           <div className="w-[100%] m-auto h-full flex flex-col justify-between">
             <div className="flex flex-col">
-              <Image
-                src={MAcci}
-                alt="MAcci"
-                className=""
-              ></Image>
-              <div className="m-auto font-semibold text-[#FF0083] text-[2vh]">
-              </div>
+              <Image src={MAcci} alt="MAcci" className=""></Image>
+              <div className="m-auto font-semibold text-[#FF0083] text-[2vh]"></div>
             </div>
 
             <div className="h-[40%] flex flex-col items-center justify-between">
