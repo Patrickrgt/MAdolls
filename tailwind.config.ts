@@ -164,6 +164,11 @@ const config: Config = {
           "0%": { opacity: "0"},
           "100%": { opacity: "1"},
         },
+        fadeOut: {
+          "0%": { opacity: "1",  display: "block", position: 'fixed'},
+          "90%": { opacity: "0", display: "block", position: 'fixed'},
+          "100%": { opacity: "0", display: "hidden", position: 'absolute'},
+        },
         fadeInMobile: {
           "0%": { opacity: "0"},
           "100%": { opacity: "1"},
@@ -189,6 +194,7 @@ const config: Config = {
         fadeUpSlower: "fadeUpSlower .45s forwards cubic-bezier(.8,0,.4,1.27)",
         fadeDown: "fadeDown 1s forwards cubic-bezier(.8,0,.4,1.27)",
         fadeIn: "fadeIn 1s forwards cubic-bezier(.8,0,.4,1.27)",
+        fadeOut: "fadeOut 1s forwards cubic-bezier(.8,0,.4,1.27)",
         fadeInMobile: "fadeInMobile 0.5s forwards cubic-bezier(.8,0,.4,1.27)",
       },
     },

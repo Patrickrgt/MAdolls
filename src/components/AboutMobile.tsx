@@ -45,6 +45,15 @@ import bg06 from "../images/backgrounds/background-06.png";
 import bg07 from "../images/backgrounds/background-07.png";
 import bg08 from "../images/backgrounds/background-08.png";
 
+import sp01 from "../images/mobileSpecial/special-mobile-1.png";
+import sp02 from "../images/mobileSpecial/special-mobile-2.png";
+import sp03 from "../images/mobileSpecial/special-mobile-3.png";
+import sp04 from "../images/mobileSpecial/special-mobile-4.png";
+import sp05 from "../images/mobileSpecial/special-mobile-5.png";
+import sp06 from "../images/mobileSpecial/special-mobile-6.png";
+import sp07 from "../images/mobileSpecial/special-mobile-7.png";
+import sp08 from "../images/mobileSpecial/special-mobile-8.png";
+
 import thumb1 from "../images/thumbnails/thumbnail-01.png";
 import thumb2 from "../images/thumbnails/thumbnail-02.png";
 import thumb3 from "../images/thumbnails/thumbnail-03.png";
@@ -54,8 +63,12 @@ import thumb6 from "../images/thumbnails/thumbnail-06.png";
 import thumb7 from "../images/thumbnails/thumbnail-07.png";
 import thumb8 from "../images/thumbnails/thumbnail-08.png";
 
+import arrowPlaceholderLeft from "../images/mobileSpecial/arrowPlaceholderLeft.png"
+import arrowPlaceholder from "../images/mobileSpecial/arrowPlaceholder.png"
+
 const About: NextPage = () => {
   const backgrounds = [bg01, bg02, bg03, bg04, bg05, bg06, bg07, bg08];
+  const specialBackgrounds = [bg01, bg02, bg03, bg04, bg05, bg06, bg07, bg08];
 
   const thumbnails = [
     thumb1,
@@ -91,22 +104,62 @@ const About: NextPage = () => {
     { title: "Stimulating", img: color02, hex: "#FF3D83" },
     { title: "Surge", img: color03, hex: "#00FF00" },
     { title: "Stand out", img: color04, hex: "#FF0000" },
-    { title: "Warm memory", img: color05, hex: "#FF8283" },
     { title: "Feeling of expectation", img: color06, hex: "#92FF3B" },
     { title: "Being absorbed in", img: color07, hex: "#34FF8F" },
     { title: "Direct transmission", img: color08, hex: "#82823E" },
     { title: "Optimistic", img: color09, hex: "#FF82FF" },
-    { title: "Own world", img: color10, hex: "#34898F" },
     { title: "Take in", img: color11, hex: "#873DFF" },
     { title: "Invite", img: color12, hex: "#8F418F" },
     { title: "I am I", img: color13, hex: "#21231E" },
     { title: "Doesn't seem to exist", img: color14, hex: "#E0DFE4" },
-    { title: "Trust", img: color15, hex: "#0000FF" },
   ];
+
+  const specialBackground = [
+    sp01,
+    sp02,
+    sp03,
+    sp04,
+    sp05,
+    sp06,
+    sp07,
+    sp08,
+  ]
+
+  const specialBackground2 = [
+    {
+      id: 0,
+      img: sp01
+    },
+    {
+      id: 1,
+      img: sp02
+    },
+    {
+      id: 2,
+      img: sp03
+    },
+    {
+      id: 3,
+      img: sp04
+    },
+    {
+      id: 4,
+      img: sp05
+    },
+    {
+      id: 5,
+      img: sp06
+    },
+    {
+      id: 6,
+      img: sp07
+    },
+  ]
 
   const [curBg, setCurBg] = useState(0);
   const [curTitle, setCurTitle] = useState(0);
   const [curTab, setCurTab] = useState(0);
+  const [curSpecial, setCurSpecial] = useState(0)
 
   const handleCurTab = (id: number) => {
     setCurTab(id);
@@ -120,101 +173,148 @@ const About: NextPage = () => {
     setCurBg(id);
   };
 
+  const handleCurSpecial = (action: string) => {
+    if (action === "+1" && curSpecial < specialBackground.length - 1) {
+      setCurSpecial(prevState => prevState + 1); // Use functional form of setState
+    } else if (action === "-1" && curSpecial > 0) { // Ensure curSpecial does not go below 1
+      setCurSpecial(prevState => prevState - 1); // Use functional form of setState
+    }
+  }
+
   return (
     <>
-    <div className="flex flex-col justify-between relative overflow-hidden  h-screen">
-      <div className="flex flex-col gap-[1vh]">
-        <div>
-          <h1 className="leading-tight overflow-hidden font-semibold text-[1.75vh]">
-            No two MAdoll skins are alike.
-            <br />
-            This is because two layers are superimposed to create a variety of
-            colors.
-            <br />
-            Enjoy your own colors, only for that Madoll.
-          </h1>
-        </div>
-        <div>
-          <p className="text-[1.25vh] hover:text-[#FF0083] leading-tight transition-all ease-in-out">
-            MAdollのスキンは2つとして同じものはありません。
-          </p>
-          <p className="text-[1.25vh] hover:text-[#FF0083] leading-tight transition-all ease-in-out">
-            これは、2つのレイヤーを重ね合わせることで、さまざまな色が生まれるからだ。
-          </p>
-          <p className="text-[1.25vh] hover:text-[#FF0083] leading-tight transition-all ease-in-out">
-            そのMAdollのためだけに、自分だけの色を楽しむ。
-          </p>
-        </div>
-
-        <div className="m-auto overflow-hidden">
-          <Image
-            src={aboutSkin}
-            className="animate-fadeIn m-auto h-fit"
-            alt="aboutSkin"
-            placeholder="blur"
-            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCACJAIkDASIAAhEBAxEB/8QAGQAAAwEBAQAAAAAAAAAAAAAAAQIDAAQF/8QAGxABAQEBAQEBAQAAAAAAAAAAAAECERIDITH/xAAZAQADAQEBAAAAAAAAAAAAAAABAgMABAX/xAAYEQEBAQEBAAAAAAAAAAAAAAAAARECEv/aAAwDAQACEQMRAD8A86HyWQ+YlzHrSK5VyllXK0V5VyeEyeKxQwlEwMWmLQBPSWldJaLU6jtz7dG0Nkqdjm+jl1/XX9I5dT9Q6gwrCBWx6/DyNw0i0ivk2Vcp5UypIeRTJ4nDxSGMwMYBCsFACaS0rpLRaWxHaO19I7LYTHNuOfU/XVuOfU/U7zrSJcbh7A4j5rY9jgyMMdWOnyaHhIaGkDFIaJw0pox2L0emAehW6W1mwKno9JouBiWktK6S0WwMQ2jqfq+0tQMDEuNw/A4TAx6ok6MquOvDw0JKPRLYeUZSdHokp+j0nW6IH6Fpet0Ra0lG0loDhdJaU0loMDE9JVXSdLYFhGECld/TSp9GVV12KSj0ko9BPo/R6TrdFKn6PSdHogbrdL1uieNaW1rS2sYuqnqm1U9UGLolNSUlJQBqxSOvrdL0On11apKbqUppWS6qnR6nKaVkbT9HpJR6ISm63QYVJWtJaakrHlLqp2m0naFrWhaS0bSWp2p2taHQtDpNT11dDpPQej6v6UlPKh08ran10tKaVKU8ralaeU0JDQ2tKZgYdPK1JTUtbT6npLVU0lqha2ltTtHVT1pDvrE+q103pO1uo+qn6dHpvSfpvR52f0rKfNQlVzVPReulpTypZqkGVPVIaEhobRlMzMOqShS01JptNqekd1XSG6W0NT1UrTaqdrm6u1PqtaHS2h1sQvS7MxFxlWyhP6tlXktWyplLKkUhFIeEh4c0EQEVIWl0ak0Ap6c/0dGnP9CdMhpPR9J6QiPZLQ61A7ltf//Z"
-          ></Image>
-          <div className="grid grid-cols-5 grid-rows-3 w-[90%] m-auto">
-            {skins.map((doll, id) => (
-              <Image
-                style={{
-                  animation: `fadeIn 0.5s ease-out ${id * 0.15}s forwards`,
-                }}
-                className="animate-fadeIn opacity-0 h-fit w-full aspect-square hover:border-[#FF0083] hover:border-[0.25vh] border-transparent border-[0.25vh] transition-all ease-in-out"
-                src={doll}
-                alt="doll"
-                placeholder="blur"
-                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCACJAIkDASIAAhEBAxEB/8QAGQAAAwEBAQAAAAAAAAAAAAAAAQIDAAQF/8QAGxABAQEBAQEBAQAAAAAAAAAAAAECERIDITH/xAAZAQADAQEBAAAAAAAAAAAAAAABAgMABAX/xAAYEQEBAQEBAAAAAAAAAAAAAAAAARECEv/aAAwDAQACEQMRAD8A86HyWQ+YlzHrSK5VyllXK0V5VyeEyeKxQwlEwMWmLQBPSWldJaLU6jtz7dG0Nkqdjm+jl1/XX9I5dT9Q6gwrCBWx6/DyNw0i0ivk2Vcp5UypIeRTJ4nDxSGMwMYBCsFACaS0rpLRaWxHaO19I7LYTHNuOfU/XVuOfU/U7zrSJcbh7A4j5rY9jgyMMdWOnyaHhIaGkDFIaJw0pox2L0emAehW6W1mwKno9JouBiWktK6S0WwMQ2jqfq+0tQMDEuNw/A4TAx6ok6MquOvDw0JKPRLYeUZSdHokp+j0nW6IH6Fpet0Ra0lG0loDhdJaU0loMDE9JVXSdLYFhGECld/TSp9GVV12KSj0ko9BPo/R6TrdFKn6PSdHogbrdL1uieNaW1rS2sYuqnqm1U9UGLolNSUlJQBqxSOvrdL0On11apKbqUppWS6qnR6nKaVkbT9HpJR6ISm63QYVJWtJaakrHlLqp2m0naFrWhaS0bSWp2p2taHQtDpNT11dDpPQej6v6UlPKh08ran10tKaVKU8ralaeU0JDQ2tKZgYdPK1JTUtbT6npLVU0lqha2ltTtHVT1pDvrE+q103pO1uo+qn6dHpvSfpvR52f0rKfNQlVzVPReulpTypZqkGVPVIaEhobRlMzMOqShS01JptNqekd1XSG6W0NT1UrTaqdrm6u1PqtaHS2h1sQvS7MxFxlWyhP6tlXktWyplLKkUhFIeEh4c0EQEVIWl0ak0Ap6c/0dGnP9CdMhpPR9J6QiPZLQ61A7ltf//Z"
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-
-      
-
-      <div className={`${curTab != 2 ? "hidden" : "block"} flex flex-col`}>
-        <div className="flex">
-          <div className="animate-fadeIn font-semibold text-[6vh] hover:text-[#FF0083] transition-all ease-in-out cursor-none overflow-hidden">
-            MAdoll Specials
-          </div>
-          <button
-            onClick={() => handleCurTab(0)}
-            className="pl-[2vh] animate-fadeIn font-semibold text-[3vh] text-[#FF0083] hover:text-[#000] transition-all ease-in-out cursor-pointer overflow-hidden"
-          >
-            🎨 MAdoll Skins
-          </button>
-          <button
-            onClick={() => handleCurTab(1)}
-            className="pl-[2vh] animate-fadeIn font-semibold text-[3vh] text-[#FF0083] hover:text-[#000] transition-all ease-in-out cursor-pointer overflow-hidden"
-          >
-            🖼️ MAdoll Backgrounds
-          </button>
-        </div>
-
-        <div className="w-[80%] group overflow-hidden">
-          <div className="animate-fadeRight group-hover:border-[#FF0083] border-l-[1vh] pl-[2vh] transition-all ease-in-out cursor-none">
-            <div className="animate-fadeLeft">
-              <h1 className="text-[1.75vh] hover:text-[#FF0083] leading-tight font-semibold transition-all ease-in-out">
-                Some of Madoll’s backgrounds are special too!
-              </h1>
-              <h1 className="text-[1.75vh] hover:text-[#FF0083] leading-tight transition-all ease-in-out">
-                These images represent memories from MAcci’s experiences and are
-                incorporated in a small percentage of MAdolls in the collection.{" "}
-              </h1>
+      <div className="flex flex-col justify-between relative items-center overflow-hidden pb-[5vh]">
+        <div className="flex flex-col gap-[1vh]">
+          <div>
+            <h1 className="leading-tight overflow-hidden font-semibold text-[1.75vh]">
+              No two MAdoll skins are alike.
               <br />
-              <h1 className="text-[1.75vh] hover:text-[#FF0083] leading-tight font-semibold transition-all ease-in-out">
-                マドールの背景にも特別なものがある！
-              </h1>
-              <h1 className="text-[1.75vh] hover:text-[#FF0083] leading-tight transition-all ease-in-out">
-                これらのイメージはMAcciの経験からの思い出を表しており、コレクションの中のごく一部のMAdollに取り入れられています。{" "}
-              </h1>
+              This is because two layers are superimposed to create a variety of
+              colors.
+              <br />
+              Enjoy your own colors, only for that Madoll.
+            </h1>
+          </div>
+          <div>
+            <p className="text-[1.25vh] hover:text-[#FF0083] leading-tight transition-all ease-in-out">
+              MAdollのスキンは2つとして同じものはありません。
+            </p>
+            <p className="text-[1.25vh] hover:text-[#FF0083] leading-tight transition-all ease-in-out">
+              これは、2つのレイヤーを重ね合わせることで、さまざまな色が生まれるからだ。
+            </p>
+            <p className="text-[1.25vh] hover:text-[#FF0083] leading-tight transition-all ease-in-out">
+              そのMAdollのためだけに、自分だけの色を楽しむ。
+            </p>
+          </div>
+
+          <div className="m-auto overflow-hidden">
+            <Image
+              src={aboutSkin}
+              className="animate-fadeIn m-auto h-fit"
+              alt="aboutSkin"
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCACJAIkDASIAAhEBAxEB/8QAGQAAAwEBAQAAAAAAAAAAAAAAAQIDAAQF/8QAGxABAQEBAQEBAQAAAAAAAAAAAAECERIDITH/xAAZAQADAQEBAAAAAAAAAAAAAAABAgMABAX/xAAYEQEBAQEBAAAAAAAAAAAAAAAAARECEv/aAAwDAQACEQMRAD8A86HyWQ+YlzHrSK5VyllXK0V5VyeEyeKxQwlEwMWmLQBPSWldJaLU6jtz7dG0Nkqdjm+jl1/XX9I5dT9Q6gwrCBWx6/DyNw0i0ivk2Vcp5UypIeRTJ4nDxSGMwMYBCsFACaS0rpLRaWxHaO19I7LYTHNuOfU/XVuOfU/U7zrSJcbh7A4j5rY9jgyMMdWOnyaHhIaGkDFIaJw0pox2L0emAehW6W1mwKno9JouBiWktK6S0WwMQ2jqfq+0tQMDEuNw/A4TAx6ok6MquOvDw0JKPRLYeUZSdHokp+j0nW6IH6Fpet0Ra0lG0loDhdJaU0loMDE9JVXSdLYFhGECld/TSp9GVV12KSj0ko9BPo/R6TrdFKn6PSdHogbrdL1uieNaW1rS2sYuqnqm1U9UGLolNSUlJQBqxSOvrdL0On11apKbqUppWS6qnR6nKaVkbT9HpJR6ISm63QYVJWtJaakrHlLqp2m0naFrWhaS0bSWp2p2taHQtDpNT11dDpPQej6v6UlPKh08ran10tKaVKU8ralaeU0JDQ2tKZgYdPK1JTUtbT6npLVU0lqha2ltTtHVT1pDvrE+q103pO1uo+qn6dHpvSfpvR52f0rKfNQlVzVPReulpTypZqkGVPVIaEhobRlMzMOqShS01JptNqekd1XSG6W0NT1UrTaqdrm6u1PqtaHS2h1sQvS7MxFxlWyhP6tlXktWyplLKkUhFIeEh4c0EQEVIWl0ak0Ap6c/0dGnP9CdMhpPR9J6QiPZLQ61A7ltf//Z"
+            ></Image>
+            <div className="grid grid-cols-5 grid-rows-3 w-[90%] m-auto">
+              {skins.map((doll, id) => (
+                <Image
+                  style={{
+                    animation: `fadeIn 0.5s ease-out ${id * 0.15}s forwards`,
+                  }}
+                  className="animate-fadeIn opacity-0 h-fit w-full aspect-square hover:border-[#FF0083] hover:border-[0.25vh] border-transparent border-[0.25vh] transition-all ease-in-out"
+                  src={doll}
+                  alt="doll"
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCACJAIkDASIAAhEBAxEB/8QAGQAAAwEBAQAAAAAAAAAAAAAAAQIDAAQF/8QAGxABAQEBAQEBAQAAAAAAAAAAAAECERIDITH/xAAZAQADAQEBAAAAAAAAAAAAAAABAgMABAX/xAAYEQEBAQEBAAAAAAAAAAAAAAAAARECEv/aAAwDAQACEQMRAD8A86HyWQ+YlzHrSK5VyllXK0V5VyeEyeKxQwlEwMWmLQBPSWldJaLU6jtz7dG0Nkqdjm+jl1/XX9I5dT9Q6gwrCBWx6/DyNw0i0ivk2Vcp5UypIeRTJ4nDxSGMwMYBCsFACaS0rpLRaWxHaO19I7LYTHNuOfU/XVuOfU/U7zrSJcbh7A4j5rY9jgyMMdWOnyaHhIaGkDFIaJw0pox2L0emAehW6W1mwKno9JouBiWktK6S0WwMQ2jqfq+0tQMDEuNw/A4TAx6ok6MquOvDw0JKPRLYeUZSdHokp+j0nW6IH6Fpet0Ra0lG0loDhdJaU0loMDE9JVXSdLYFhGECld/TSp9GVV12KSj0ko9BPo/R6TrdFKn6PSdHogbrdL1uieNaW1rS2sYuqnqm1U9UGLolNSUlJQBqxSOvrdL0On11apKbqUppWS6qnR6nKaVkbT9HpJR6ISm63QYVJWtJaakrHlLqp2m0naFrWhaS0bSWp2p2taHQtDpNT11dDpPQej6v6UlPKh08ran10tKaVKU8ralaeU0JDQ2tKZgYdPK1JTUtbT6npLVU0lqha2ltTtHVT1pDvrE+q103pO1uo+qn6dHpvSfpvR52f0rKfNQlVzVPReulpTypZqkGVPVIaEhobRlMzMOqShS01JptNqekd1XSG6W0NT1UrTaqdrm6u1PqtaHS2h1sQvS7MxFxlWyhP6tlXktWyplLKkUhFIeEh4c0EQEVIWl0ak0Ap6c/0dGnP9CdMhpPR9J6QiPZLQ61A7ltf//Z"
+                />
+              ))}
             </div>
           </div>
         </div>
 
+        <div className={`${curTab != 2 ? "hidden" : "block"} flex flex-col`}>
+          <div className="flex">
+            <div className="animate-fadeIn font-semibold text-[6vh] hover:text-[#FF0083] transition-all ease-in-out cursor-none overflow-hidden">
+              MAdoll Specials
+            </div>
+            <button
+              onClick={() => handleCurTab(0)}
+              className="pl-[2vh] animate-fadeIn font-semibold text-[3vh] text-[#FF0083] hover:text-[#000] transition-all ease-in-out cursor-pointer overflow-hidden"
+            >
+              🎨 MAdoll Skins
+            </button>
+            <button
+              onClick={() => handleCurTab(1)}
+              className="pl-[2vh] animate-fadeIn font-semibold text-[3vh] text-[#FF0083] hover:text-[#000] transition-all ease-in-out cursor-pointer overflow-hidden"
+            >
+              🖼️ MAdoll Backgrounds
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex flex-col justify-between relative items-center overflow-hidden pb-[5vh]">
+        <div className="flex flex-col gap-[1vh]">
+          <h1 className="leading-tight overflow-hidden font-semibold text-[1.75vh]">
+            All MAdoll color backgrounds are titled. This is something I do
+            all the time.
+            I put my color impressions into words.
+          </h1>
+          <p className="text-[1.25vh] hover:text-[#FF0083] leading-tight transition-all ease-in-out">
+            MAdollのカラー背景にはすべてタイトルが付いています。これは私がいつもやっていることです。
+          </p>
+          <p className="text-[1.25vh] hover:text-[#FF0083] leading-tight transition-all ease-in-out">
+            私は自分の色の印象を言葉にした。
+          </p>
+
+
+          <div className="overflow-hidden flex flex-col justify-start items-stretch gap-[2vh] pt-[4vh] w-full">
+            <div className="grid grid-cols-4 grid-rows-3 overflow-hidden gap-[1vh] m-auto">
+              {colors.map((color, id) => (
+                <div>
+                  <Image
+                    onClick={() => handleCurTitle(id)}
+                    style={{
+                      animation: `fadeIn 0.5s ease-out ${id * 0.15}s forwards`,
+                    }}
+                    className={`${curTitle == id ? "border-[#FF0083]" : "border-transparent"
+                      } animate-fadeIn h-fit w-[12vh] opacity-0 aspect-square hover:border-[#FF0083] hover:border-[0.5vh] border-[0.5vh] transition-all ease-in-out`}
+                    src={color.img}
+                    alt="doll"
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCACJAIkDASIAAhEBAxEB/8QAGQAAAwEBAQAAAAAAAAAAAAAAAQIDAAQF/8QAGxABAQEBAQEBAQAAAAAAAAAAAAECERIDITH/xAAZAQADAQEBAAAAAAAAAAAAAAABAgMABAX/xAAYEQEBAQEBAAAAAAAAAAAAAAAAARECEv/aAAwDAQACEQMRAD8A86HyWQ+YlzHrSK5VyllXK0V5VyeEyeKxQwlEwMWmLQBPSWldJaLU6jtz7dG0Nkqdjm+jl1/XX9I5dT9Q6gwrCBWx6/DyNw0i0ivk2Vcp5UypIeRTJ4nDxSGMwMYBCsFACaS0rpLRaWxHaO19I7LYTHNuOfU/XVuOfU/U7zrSJcbh7A4j5rY9jgyMMdWOnyaHhIaGkDFIaJw0pox2L0emAehW6W1mwKno9JouBiWktK6S0WwMQ2jqfq+0tQMDEuNw/A4TAx6ok6MquOvDw0JKPRLYeUZSdHokp+j0nW6IH6Fpet0Ra0lG0loDhdJaU0loMDE9JVXSdLYFhGECld/TSp9GVV12KSj0ko9BPo/R6TrdFKn6PSdHogbrdL1uieNaW1rS2sYuqnqm1U9UGLolNSUlJQBqxSOvrdL0On11apKbqUppWS6qnR6nKaVkbT9HpJR6ISm63QYVJWtJaakrHlLqp2m0naFrWhaS0bSWp2p2taHQtDpNT11dDpPQej6v6UlPKh08ran10tKaVKU8ralaeU0JDQ2tKZgYdPK1JTUtbT6npLVU0lqha2ltTtHVT1pDvrE+q103pO1uo+qn6dHpvSfpvR52f0rKfNQlVzVPReulpTypZqkGVPVIaEhobRlMzMOqShS01JptNqekd1XSG6W0NT1UrTaqdrm6u1PqtaHS2h1sQvS7MxFxlWyhP6tlXktWyplLKkUhFIeEh4c0EQEVIWl0ak0Ap6c/0dGnP9CdMhpPR9J6QiPZLQ61A7ltf//Z"
+                  />
+                </div>
+              ))}
+            </div>
+            <div
+              style={{ color: colors[curTitle].hex }}
+              className="m-auto text-center animate-fadeIn font-semibold text-[1.75vh] transition-all ease-in-out cursor-none overflow-hidden"
+            >
+              {`${colors[curTitle].title}`}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex flex-col justify-between relative items-center overflow-hidden">
+        {specialBackground.map((background, id) => (
+          <Image className={`${id === curSpecial ? "block" : "hidden"}`} src={specialBackground[curSpecial]} alt={'special background'}></Image>
+        ))}
+        <div className="flex w-full justify-between text-[2.75vh] leading-loose">
+          <button className="" onClick={() => handleCurSpecial("-1")}>
+            <Image alt="arrow left" src={arrowPlaceholderLeft}></Image>
+          </button>
+          <span className="text-[#898989] underline">{`${curSpecial + 1}/${specialBackground.length}`}</span> {/* Display current page number */}
+          <button className="" onClick={() => handleCurSpecial("+1")}>
+            <Image alt="arrow right" src={arrowPlaceholder}></Image>
+          </button>
+        </div>
+      </div>
+
+      {/* <div>
         <div className="overflow-hidden flex justify-start items-stretch gap-[2vh] pt-[4vh] w-[90%]">
-          <div className="w-[60%]">
+          <div className="">
             <Image
               src={backgrounds[curBg]}
               className="animate-fadeIn h-full"
@@ -231,9 +331,8 @@ const About: NextPage = () => {
                 style={{
                   animation: `fadeIn 0.5s ease-out ${id * 0.15}s forwards`,
                 }}
-                className={`${
-                  curBg == id ? "border-[#FF0083]" : "border-transparent"
-                } animate-fadeIn h-[12vh] w-[12vh] opacity-0 aspect-square hover:border-[#FF0083] hover:border-[0.5vh] border-[0.5vh] transition-all ease-in-out`}
+                className={`${curBg == id ? "border-[#FF0083]" : "border-transparent"
+                  } animate-fadeIn h-[12vh] w-[12vh] opacity-0 aspect-square hover:border-[#FF0083] hover:border-[0.5vh] border-[0.5vh] transition-all ease-in-out`}
                 src={thumbnail}
                 alt="doll"
                 placeholder="blur"
@@ -242,11 +341,11 @@ const About: NextPage = () => {
             ))}
           </div>
         </div>
-      </div>
-    </div>
-    
+      </div> */}
 
-    <div className={`${curTab != 1 ? "hidden" : "block"} flex flex-col`}>
+
+
+      {/* <div className={`${curTab != 1 ? "hidden" : "block"} flex flex-col`}>
         <div className="flex">
           <div className="animate-fadeIn font-semibold text-[6vh] hover:text-[#FF0083] transition-all ease-in-out cursor-none overflow-hidden">
             MAdoll Backgrounds
@@ -286,7 +385,7 @@ const About: NextPage = () => {
           </div>
         </div>
 
-        <div className="overflow-hidden flex flex-col justify-start items-stretch gap-[2vh] pt-[4vh] w-[80%]">
+        <div className="overflow-hidden flex flex-col justify-start items-stretch gap-[2vh] pt-[4vh] w-full">
           <div className="grid grid-cols-5 grid-rows-3 w-[60%] overflow-hidden gap-[2vh] m-auto">
             {colors.map((color, id) => (
               <div>
@@ -295,9 +394,8 @@ const About: NextPage = () => {
                   style={{
                     animation: `fadeIn 0.5s ease-out ${id * 0.15}s forwards`,
                   }}
-                  className={`${
-                    curTitle == id ? "border-[#FF0083]" : "border-transparent"
-                  } animate-fadeIn h-[12vh] w-[12vh] opacity-0 aspect-square hover:border-[#FF0083] hover:border-[0.5vh] border-[0.5vh] transition-all ease-in-out`}
+                  className={`${curTitle == id ? "border-[#FF0083]" : "border-transparent"
+                    } animate-fadeIn h-[10vh] w-[12vh] opacity-0 aspect-square hover:border-[#FF0083] hover:border-[0.5vh] border-[0.5vh] transition-all ease-in-out`}
                   src={color.img}
                   alt="doll"
                   placeholder="blur"
@@ -308,16 +406,16 @@ const About: NextPage = () => {
           </div>
           <div
             style={{ color: colors[curTitle].hex }}
-            className="m-auto text-center animate-fadeIn font-semibold text-[6vh] transition-all ease-in-out cursor-none overflow-hidden"
+            className="text-[1.75vh] m-auto text-center animate-fadeIn font-semibold text-[6vh] transition-all ease-in-out cursor-none overflow-hidden"
           >
             {`${colors[curTitle].title}`}
           </div>
         </div>
-      </div>
+      </div> */}
     </>
 
 
-    
+
   );
 };
 

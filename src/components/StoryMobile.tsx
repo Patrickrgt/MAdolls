@@ -10,7 +10,7 @@ import MAdoll5 from "../images/MAdoll5.png";
 import MAdoll6 from "../images/MAdoll6.png";
 
 const Story: NextPage = () => {
-  const MAdolls = [MAdoll1, MAdoll2, MAdoll3];
+  const MAdolls = [MAdoll1, MAdoll2, MAdoll3, MAdoll4, MAdoll5, MAdoll6];
 
   const [curDoll, setCurDoll] = useState(0);
 
