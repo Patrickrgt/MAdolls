@@ -26,12 +26,12 @@ const Portfolio: NextPage = () => {
   const aboutRef = useRef<HTMLDivElement>(null);
   const teamRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    setAnimation(false)
-    setTimeout(() => {
-      setAnimation(true)
-    }, 100)
-  }, [openNav])
+  // useEffect(() => {
+  //   setAnimation(false)
+  //   setTimeout(() => {
+  //     setAnimation(true)
+  //   }, 100)
+  // }, [openNav])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -100,7 +100,7 @@ const Portfolio: NextPage = () => {
         ></link>
       </Head>
 
-      <div className="relative w-full px-[1.5vh] flex flex-col gap-[2vh] overflow-hidden">
+      <div className="relative w-full px-[1.5vh] flex flex-col gap-[2vh] overflow-hidden lg:hidden">
         <div
           className={`${
             openNav ? "animate-fadeLeft fixed" : "animate-fadeOut fixed"
