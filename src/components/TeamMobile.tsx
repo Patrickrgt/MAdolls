@@ -91,6 +91,7 @@ const TeamMobile: NextPage = () => {
         <div className="flex gap-[4vh]  overflow-hidden h-full ">
           {Team.map((doll, id) => (
             <button
+            key={id}
               style={{
                 animation: `fadeUp 0.5s ease-out ${id * 0.1}s forwards`,
               }}

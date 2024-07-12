@@ -81,6 +81,7 @@ const Team: NextPage = () => {
         <div className="flex w-[80%] gap-[4vh]  overflow-hidden h-full ">
           {Team.map((doll, id) => (
             <button
+            key={id}
               onClick={() => handleCurDoll(id)}
               style={{
                 animation: `fadeUp 0.5s ease-out ${id * 0.1}s forwards`,

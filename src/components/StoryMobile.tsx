@@ -22,7 +22,7 @@ const Story: NextPage = () => {
     <div className="h-fit overflow-hidden">
         <h1 className="leading-tight overflow-hidden font-semibold text-[1.75vh]">
           This is a generative collection in which MAcci, as an individual
-          creator, challenges NFT's and continues to search for possibilities.
+          creator, challenges {`NFT's`} and continues to search for possibilities.
         </h1>
         <p className="text-[1.25vh]">
         I cannot promise any specific benefits or airdrops for this collection as we move forward into an uncertain future with changing rules and circumstances. What I promise is my hard work and my thoughts for all of you. 
@@ -31,7 +31,7 @@ const Story: NextPage = () => {
         I want to continue to share with you the various joys, headwinds and challenges.  MAdoll is a “cyber doll” inspired by the dolls we all played with in our childhood.  
         <br />
         <br />
-        As a former color designer, I have a strong passion for color. As part of my expression, no two MAdolls have the same skin color. "All colors can shine” is a policy I have consistently held as a NFT creator.  Let's play around with novelty, unbound by anything. Just like back then.
+        As a former color designer, I have a strong passion for color. As part of my expression, no two MAdolls have the same skin color. {`"All colors can shine”`} is a policy I have consistently held as a NFT creator.  {`Let's`} play around with novelty, unbound by anything. Just like back then.
         </p>
 
         <div className="flex flex-col overflow-hidden">
@@ -48,6 +48,7 @@ const Story: NextPage = () => {
           <div className="grid grid-cols-3 grid-rows-2 overflow-hidden">
             {MAdolls.map((doll, id) => (
               <button
+              key={id}
               style={{
                 animation: `fadeIn 0.5s ease-out ${id * 0.25}s forwards`,
               }}

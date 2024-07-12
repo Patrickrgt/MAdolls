@@ -134,7 +134,7 @@ const Portfolio: NextPage = () => {
 
             <div className="flex justify-end items-end px-[1.5vh] flex-col w-full gap-[2vh]">
               {socials.map((social, id) => (
-                <button>
+                <button key={id}>
                   <Image
                     className="grayscale brightness-0 invert h-[4vh] w-[4vh]"
                     src={social.img}
@@ -199,7 +199,7 @@ const Portfolio: NextPage = () => {
 
             <div className="h-[40%] flex flex-col items-center justify-between">
               {links.map((link, id) => (
-                <button onClick={() => handleCurTab(id)}>
+                <button key={id} onClick={() => handleCurTab(id)}>
                   <p
                     className={`${
                       curTab == id ? "underline" : ""
@@ -213,7 +213,7 @@ const Portfolio: NextPage = () => {
 
             <footer className="flex w-full justify-between">
               {socials.map((social, id) => (
-                <a href={social.link}>
+                <a key={id} href={social.link}>
                   <Image src={social.img} alt={`social ${id}`} key={id}></Image>
                 </a>
               ))}

@@ -218,6 +218,7 @@ const About: NextPage = () => {
             <div className="grid grid-cols-5 grid-rows-3 w-[90%] m-auto">
               {skins.map((doll, id) => (
                 <Image
+                key={id}
                   style={{
                     animation: `fadeIn 0.5s ease-out ${id * 0.15}s forwards`,
                   }}
@@ -271,7 +272,7 @@ const About: NextPage = () => {
           <div className="overflow-hidden flex flex-col justify-start items-stretch gap-[2vh] pt-[4vh] w-full">
             <div className="grid grid-cols-4 grid-rows-3 overflow-hidden gap-[1vh] m-auto">
               {colors.map((color, id) => (
-                <div>
+                <div key={id}>
                   <Image
                     onClick={() => handleCurTitle(id)}
                     style={{
@@ -299,7 +300,7 @@ const About: NextPage = () => {
 
       <div className="flex flex-col justify-between relative items-center overflow-hidden">
         {specialBackground.map((background, id) => (
-          <Image className={`${id === curSpecial ? "block" : "hidden"}`} src={specialBackground[curSpecial]} alt={'special background'}></Image>
+          <Image key={id} className={`${id === curSpecial ? "block" : "hidden"}`} src={specialBackground[curSpecial]} alt={'special background'}></Image>
         ))}
         <div className="flex w-full justify-between text-[2.75vh] leading-loose">
           <button className="" onClick={() => handleCurSpecial("-1")}>

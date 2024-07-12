@@ -28,7 +28,7 @@ const Story: NextPage = () => {
             <div className="animate-fadeLeft">
               <h1 className="text-[1.75vh] hover:text-[#FF0083] leading-tight font-semibold transition-all ease-in-out">
                 This is a generative collection in which MAcci, as an individual
-                creator, challenges NFT's and continues to search of
+                creator, challenges {`NFT's`} and continues to search of
                 possibilities.
               </h1>
               <p className="text-[1.5vh] hover:text-[#FF0083] leading-tight mt-[0.5vh] transition-all ease-in-out">
@@ -45,8 +45,8 @@ const Story: NextPage = () => {
               <p className="text-[1.5vh] hover:text-[#FF0083] leading-tight mt-[0.5vh] transition-all ease-in-out">
                 As a former color designer, I have a strong passion for color.
                 As part of my expression, no two MAdolls have the same skin
-                color. "All colors can shine” is a policy I have consistently
-                held as a NFT creator. Let's play around with novelty, unbound
+                color. {`"All colors can shine”`} is a policy I have consistently
+                held as a NFT creator. {`Let's`} play around with novelty, unbound
                 by anything. Just like back then.
               </p>
 
@@ -82,6 +82,7 @@ const Story: NextPage = () => {
           <div className="grid grid-rows-2 grid-cols-3">
             {MAdolls.map((doll, id) => (
               <button
+              key={id}
               style={{
                 animation: `fadeIn 0.5s ease-out ${id * 0.25}s forwards`,
               }}
