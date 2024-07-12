@@ -87,6 +87,18 @@ const Portfolio: NextPage = () => {
     setOpenNav(!openNav);
   };
 
+
+  const handleDirect = (link:string) => {
+    // Toggle the navigation state
+    setOpenNav(!openNav);
+    window.location.hash = `#${link}`
+
+    // Use history.pushState to change the URL without reloading the page
+    if (window.location.hash) {
+      history.pushState("", document.title, window.location.pathname + window.location.search);
+    }
+  }
+
   return (
     <div className="w-screen flex lg:flex-col justify-center items-center lg:h-screen">
       <Head>
@@ -120,7 +132,8 @@ const Portfolio: NextPage = () => {
               {links.map((link, id) => (
                 <button
                   key={id}
-                  onClick={() => (window.location.hash = `#${link}`)}
+                  onClick={() => (
+                    handleDirect(link))}
                 >
                   <h1
                     key={id}
