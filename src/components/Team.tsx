@@ -20,9 +20,9 @@ const Team: NextPage = () => {
       member: MAcci,
       name: "MAcci",
       title: "Artist",
-      desc: `I am an active color designer. \n I enjoy my job very much. \n But the products that leave the nest are always in the same family of colors... \nSo-called "sellable colors," "standout colors," "safe colors," and so on.\nI often put them away with the thought, "This color is really a nice combination, too.\nWith these feelings in mind, I decided to\nI have been engaged in creative activities that "value colors," such as "creating characters from colors.`,
+      desc: `I am an active color designer. \n\n I enjoy my job very much. \n\n But the products that leave the nest are always in the same family of colors... \n\nSo-called "sellable colors," "standout colors," "safe colors," and so on.\nI often put them away with the thought, "This color is really a nice combination, too.\nWith these feelings in mind, I decided to\nI have been engaged in creative activities that "value colors," such as "creating characters from colors.`,
       link: "google",
-      headline: "I make work that values color",
+      headline: "色を大切にする作品作り / I make work that values color",
     },
     {
       member: shvrk,
@@ -64,7 +64,7 @@ const Team: NextPage = () => {
   };
 
   const renderDescriptionWithLineBreaks = (desc: string) => {
-    return desc.split('\n').map((line, index) => (
+    return desc.split("\n").map((line, index) => (
       <React.Fragment key={index}>
         {line}
         <br />
@@ -81,7 +81,7 @@ const Team: NextPage = () => {
         <div className="flex w-[80%] gap-[4vh]  overflow-hidden h-full ">
           {Team.map((doll, id) => (
             <button
-            key={id}
+              key={id}
               onClick={() => handleCurDoll(id)}
               style={{
                 animation: `fadeUp 0.5s ease-out ${id * 0.1}s forwards`,
@@ -102,8 +102,8 @@ const Team: NextPage = () => {
         </div>
       </div>
 
-      <div className="w-[80%] ">
-        <div className="flex gap-[4vh] w-full h-full m-auto justify-start items-center flex-1">
+      <div className="">
+        <div className="flex gap-[4vh]">
           <div className="animate-fadeRight flex">
             <Image
               src={Team[curDoll].member}
@@ -114,24 +114,24 @@ const Team: NextPage = () => {
             />
           </div>
 
-          <div className="animate-fadeLeft flex flex-col gap-[3vh] w-[70%] h-full justify-between items-between">
-            <div className="flex flex-col h-full">
-              <h2 className="font-semibold text-[6vh] hover:text-[#FF0083] transition-all ease-in-out cursor-none">
-                {Team[curDoll].name}
-              </h2>
-              <h3 className="font-semibold underline text-[3.25vh] hover:text-[#FF0083] transition-all ease-in-out cursor-none">
-                {Team[curDoll].title}
-              </h3>
-            </div>
+          <div className="animate-fadeLeft flex flex-col w-[70%] justify-between items-between">
+            <h2 className="font-semibold text-[6vh] hover:text-[#FF0083] transition-all ease-in-out cursor-none">
+              {Team[curDoll].name}
+            </h2>
+            <h3 className="font-semibold underline text-[3.25vh] hover:text-[#FF0083] transition-all ease-in-out cursor-none">
+              {Team[curDoll].title}
+            </h3>
 
-            <div className="flex flex-col justify-between h-full">
-              <h3 className="font-semibold text-[3.25vh] hover:text-[#FF0083] transition-all ease-in-out cursor-none">
-                {Team[curDoll].headline}
-              </h3>
-              <p className="text-[1.5vh] hover:text-[#FF0083] leading-tight mt-[0.5vh] transition-all ease-in-out">
-                {Team[curDoll].desc}
-              </p>
-              <span className="border-b-black border-b-[0.25vh] "></span>
+            <div className="w-[80%] flex gap-[2vh] flex-col justify-between border-b-2 border-b-black">
+              <div className="flex flex-col justify-between">
+                <h3 className="font-semibold text-[3vh] hover:text-[#FF0083] transition-all ease-in-out cursor-none">
+                  {Team[curDoll].headline}
+                </h3>
+                <p className="text-[1.5vh] hover:text-[#FF0083] leading-tight mt-[0.5vh] transition-all ease-in-out whitespace-pre-line">
+                  {Team[curDoll].desc}
+                </p>
+              </div>
+              <span className="border-b-black border-b-[0.25vh]"></span>
             </div>
           </div>
         </div>

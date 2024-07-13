@@ -235,7 +235,7 @@ const About: NextPage = () => {
         </div>
 
         <div className="overflow-hidden flex flex-col justify-start items-stretch gap-[2vh] pt-[4vh] w-[80%]">
-          <div className="grid grid-cols-5 grid-rows-3 w-[60%] overflow-hidden gap-[2vh] m-auto">
+          <div className="grid grid-cols-5 grid-rows-3 overflow-hidden gap-[1vh] m-auto">
             {colors.map((color, id) => (
               <div key={id}>
                 <Image
@@ -314,7 +314,7 @@ const About: NextPage = () => {
             ></Image>
           </div>
 
-          <div className="grid grid-cols-2 grid-rows-4 w-[20%] overflow-hidden gap-[2vh] mr-auto">
+          <div className="grid grid-cols-2 grid-rows-4 overflow-hidden gap-[1vh] mr-auto">
             {thumbnails.map((thumbnail, id) => (
               <Image
               key={id}
