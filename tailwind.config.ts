@@ -165,9 +165,9 @@ const config: Config = {
           "100%": { opacity: "1"},
         },
         fadeOut: {
-          "0%": { opacity: "1",  display: "block", position: 'fixed'},
-          "90%": { opacity: "0", display: "block", position: 'fixed'},
-          "100%": { opacity: "0", display: "hidden", position: 'absolute'},
+          "0%": { opacity: "1",  display: "block", position: 'fixed', zIndex: '1'},
+          "90%": { opacity: "0", display: "block", position: 'fixed', zIndex: '1'},
+          "100%": { opacity: "0", display: "hidden", position: 'absolute', zIndex: '-1'},
         },
         fadeInMobile: {
           "0%": { opacity: "0"},

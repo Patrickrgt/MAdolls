@@ -115,7 +115,7 @@ const Portfolio: NextPage = () => {
       <div className="relative w-full px-[1.5vh] flex flex-col gap-[2vh] overflow-hidden lg:hidden">
         <div
           className={`${
-            openNav ? "animate-fadeLeft fixed" : "animate-fadeOut fixed"
+            openNav ? "animate-fadeLeft fixed" : "animate-fadeOut z-[-1]"
           } right-0 z-10 h-full w-[30%] bg-[#FF0083]`}
         >
           <div
