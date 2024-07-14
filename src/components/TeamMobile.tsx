@@ -13,8 +13,9 @@ import shvrk from "../images/MAdoll Team/shvrk.png";
 import chuck from "../images/MAdoll Team/chuck.png";
 import mado from "../images/MAdoll Team/mado.png";
 import bobby from "../images/MAdoll Team/bobby.png";
-import arrowPlaceholderLeft from '../images/mobileSpecial/arrowPlaceholderLeft.png'
-import arrowPlaceholder from '../images/mobileSpecial/arrowPlaceholder.png'
+
+import arrowLeft from "../images/mobileSpecial/arrowLeft.png"
+import arrowRight from "../images/mobileSpecial/arrowRight.png"
 
 const TeamMobile: NextPage = () => {
   const Team = [
@@ -136,11 +137,11 @@ const TeamMobile: NextPage = () => {
           </div>
         </div>
         <div className="w-full m-auto flex justify-between py-[4vh]">
-          <button onClick={() => handleCurDoll("-1")}>
-            <Image alt={`left arrow`} src={arrowPlaceholderLeft}></Image>
+          <button className="w-[10%]" onClick={() => handleCurDoll("-1")}>
+            <Image alt={`left arrow`} src={arrowLeft}></Image>
           </button>
-          <button onClick={() => handleCurDoll("+1")}>
-            <Image alt={`right arrow`} src={arrowPlaceholder}></Image>
+          <button className="w-[10%]" onClick={() => handleCurDoll("+1")}>
+            <Image alt={`right arrow`} src={arrowRight}></Image>
           </button>
         </div>
       </div>

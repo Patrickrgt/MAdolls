@@ -63,8 +63,8 @@ import thumb6 from "../images/thumbnails/thumbnail-06.png";
 import thumb7 from "../images/thumbnails/thumbnail-07.png";
 import thumb8 from "../images/thumbnails/thumbnail-08.png";
 
-import arrowPlaceholderLeft from "../images/mobileSpecial/arrowPlaceholderLeft.png"
-import arrowPlaceholder from "../images/mobileSpecial/arrowPlaceholder.png"
+import arrowLeft from "../images/mobileSpecial/arrowLeft.png"
+import arrowRight from "../images/mobileSpecial/arrowRight.png"
 
 const About: NextPage = () => {
   const backgrounds = [bg01, bg02, bg03, bg04, bg05, bg06, bg07, bg08];
@@ -303,12 +303,12 @@ const About: NextPage = () => {
           <Image key={id} className={`${id === curSpecial ? "block" : "hidden"}`} src={specialBackground[curSpecial]} alt={'special background'}></Image>
         ))}
         <div className="flex w-full justify-between text-[2.75vh] leading-loose">
-          <button className="" onClick={() => handleCurSpecial("-1")}>
-            <Image alt="arrow left" src={arrowPlaceholderLeft}></Image>
+          <button className="w-[10%]" onClick={() => handleCurSpecial("-1")}>
+            <Image alt="arrow left" src={arrowLeft}></Image>
           </button>
           <span className="text-[#898989] underline">{`${curSpecial + 1}/${specialBackground.length}`}</span> {/* Display current page number */}
-          <button className="" onClick={() => handleCurSpecial("+1")}>
-            <Image alt="arrow right" src={arrowPlaceholder}></Image>
+          <button className="w-[10%]" onClick={() => handleCurSpecial("+1")}>
+            <Image alt="arrow right" src={arrowRight}></Image>
           </button>
         </div>
       </div>
