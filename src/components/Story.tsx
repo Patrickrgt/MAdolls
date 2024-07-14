@@ -38,7 +38,7 @@ const Story: NextPage = () => {
               <p className="text-[1.5vh] hover:text-[#FF0083] leading-tight mt-[0.5vh] transition-all ease-in-out">
                 As a former color designer, I have a strong passion for color.
                 As part of my expression, no two MAdolls have the same skin
-                color. "All colors can shine” is a policy I have consistently
+                color. {`"All colors can shine”`} is a policy I have consistently
                 held as a NFT creator. I want to continue to share with you the various joys, headwinds
                 and challenges.
               </p>
@@ -49,7 +49,7 @@ const Story: NextPage = () => {
                 and my thoughts for all of you.
               </p>
               <p className="text-[1.5vh] hover:text-[#FF0083] leading-tight mt-[0.5vh] transition-all ease-in-out">
-                Let's play around with novelty, unbound by anything. Just like
+                {`Let's`} play around with novelty, unbound by anything. Just like
                 back then.
               </p>
 

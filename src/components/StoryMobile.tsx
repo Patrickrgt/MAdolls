@@ -30,8 +30,8 @@ const Story: NextPage = () => {
         <br />
         <br />
         As a former color designer, I have a strong passion for color. As part
-        of my expression, no two MAdolls have the same skin color. "All colors
-        can shine” is a policy I have consistently held as a NFT creator. I want
+        of my expression, no two MAdolls have the same skin color. {`"All colors
+        can shine”`} is a policy I have consistently held as a NFT creator. I want
         to continue to share with you the various joys, headwinds and
         challenges.
         <br />
@@ -41,7 +41,7 @@ const Story: NextPage = () => {
         circumstances. What I promise is my hard work and my thoughts for all of
         you.
         <br />
-        Let's play around with novelty, unbound by anything. Just like back
+        {`Let's`} play around with novelty, unbound by anything. Just like back
         then.
       </p>
 
