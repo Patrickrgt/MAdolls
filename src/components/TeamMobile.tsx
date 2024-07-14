@@ -23,7 +23,7 @@ const TeamMobile: NextPage = () => {
       member: MAcci,
       name: "MAcci",
       title: "Artist",
-      desc: `I am an active color designer. \n\n I enjoy my job very much. \n\n But the products that leave the nest are always in the same family of colors... \nSo-called "sellable colors," "standout colors," "safe colors," and so on.\nI often put them away with the thought, "This color is really a nice combination, too.\nWith these feelings in mind, I decided to\nI have been engaged in creative activities that "value colors," such as "creating characters from colors.`,
+      desc: `I'm a former color designer. \n In the process, I always had a thought. \n\n I enjoy my job very much. \n\nBut the products that leave the nest are always in the same family of colors...\n\nSo-called "sellable colors," "standout colors," "safe colors," and so on.\nI often put them away with the thought, "This color is really a nice combination, too.\nWith these feelings in mind, I decided to\nI have been engaged in creative activities that "value colors," such as "creating characters from colors.`,
       link: "google",
       headline: "I make work that values color",
     },
