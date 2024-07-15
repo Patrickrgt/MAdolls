@@ -38,6 +38,7 @@ const Portfolio: NextPage = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            entry.target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             switch (entry.target.id) {
               case "story":
                 setNavTitle("MAdoll Story");

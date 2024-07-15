@@ -20,33 +20,40 @@ const Story: NextPage = () => {
 
   return (
     <div className="h-fit overflow-hidden">
-      <h1 className="leading-tight overflow-hidden font-semibold text-[1.75vh]">
+      <div className="flex flex-col gap-[0.5vh] tracking-none pb-[1vh]">
+
+      <h1 className="leading-tight overflow-hidden font-semibold text-[1.75vh] hover:text-[#FF0083] transition-all ease-in-out">
         This is a generative collection in which MAcci, as an individual
         creator, challenges {`NFT's`} and continues to search of possibilities.
       </h1>
-      <p className="text-[1.25vh]">
+      <p className="text-[1.25vh] hover:text-[#FF0083] transition-all ease-in-out">
         MAdoll is a “cyber doll” inspired by the dolls we all played with in our
         childhood.
-        <br />
-        <br />
+      </p>
+
+      <p className="text-[1.25vh] hover:text-[#FF0083] transition-all ease-in-out">
         As a former color designer, I have a strong passion for color. As part
-        of my expression, no two MAdolls have the same skin color. {`"All colors
-        can shine”`} is a policy I have consistently held as a NFT creator. I want
-        to continue to share with you the various joys, headwinds and
-        challenges.
-        <br />
-        <br />
+        of my expression, no two MAdolls have the same skin color.{" "}
+        {`"All colors
+        can shine”`}{" "}
+        is a policy I have consistently held as a NFT creator. I want to
+        continue to share with you the various joys, headwinds and challenges.
+      </p>
+
+      <p className="text-[1.25vh] hover:text-[#FF0083] transition-all ease-in-out">
         I cannot promise any specific benefits or airdrops for this collection
         as we move forward into an uncertain future with changing rules and
         circumstances. What I promise is my hard work and my thoughts for all of
         you.
-        <br />
+      </p>
+      <p className="text-[1.25vh] hover:text-[#FF0083] transition-all ease-in-out">
         {`Let's`} play around with novelty, unbound by anything. Just like back
         then.
       </p>
+      </div>
 
       <div className="flex flex-col overflow-hidden">
-        <div className="w-full h-full">
+        <div className="w-full min-h-[400px] max-h-[400px] h-[400px]">
           <Image
             src={MAdolls[curDoll]}
             alt="MAdoll"
