@@ -33,16 +33,11 @@ const Story: NextPage = () => {
               </h1>
               <p className="text-[1.5vh] hover:text-[#FF0083] leading-tight mt-[0.5vh] transition-all ease-in-out">
                 MAdoll is a “cyber doll” inspired by the dolls we all played
-                with in our childhood.
-              </p>
-              <p className="text-[1.5vh] hover:text-[#FF0083] leading-tight mt-[0.5vh] transition-all ease-in-out">
-                As a former color designer, I have a strong passion for color.
+                with in our childhood. As a former color designer, I have a strong passion for color.
                 As part of my expression, no two MAdolls have the same skin
                 color. {`"All colors can shine”`} is a policy I have consistently
                 held as a NFT creator. I want to continue to share with you the various joys, headwinds
                 and challenges.
-              </p>
-              <p className="text-[1.5vh] hover:text-[#FF0083] leading-tight mt-[0.5vh] transition-all ease-in-out">
                 I cannot promise any specific benefits or airdrops for this
                 collection as we move forward into an uncertain future with
                 changing rules and circumstances. What I promise is my hard work

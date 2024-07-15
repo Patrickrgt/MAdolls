@@ -300,7 +300,7 @@ const About: NextPage = () => {
 
       <div className="flex flex-col justify-between relative items-center overflow-hidden">
         {specialBackground.map((background, id) => (
-          <Image key={id} className={`${id === curSpecial ? "block" : "hidden"}`} src={specialBackground[curSpecial]} alt={'special background'}></Image>
+          <Image key={id} className={`${id === curSpecial ? "animate-fadeIn block" : "hidden"}`} src={specialBackground[curSpecial]} alt={'special background'}></Image>
         ))}
         <div className="flex w-full justify-between text-[2.75vh] leading-loose">
           <button className="w-[10%]" onClick={() => handleCurSpecial("-1")}>
