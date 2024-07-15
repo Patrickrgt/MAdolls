@@ -12,6 +12,7 @@ import About from "./About";
 import AboutMobile from "./AboutMobile";
 import TeamMobile from "./TeamMobile";
 import Team from "./Team";
+import SpecialMobile from "./SpecialMobile";
 import socialX from "../images/socialX.png";
 import socialDiscord from "../images/socialDiscord.png";
 import socialOpensea from "../images/socialOpensea.png";
@@ -25,6 +26,7 @@ const Portfolio: NextPage = () => {
   const storyRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
   const teamRef = useRef<HTMLDivElement>(null);
+  const specialRef = useRef<HTMLDivElement>(null);
 
   // useEffect(() => {
   //   setAnimation(false)
@@ -38,13 +40,16 @@ const Portfolio: NextPage = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            entry.target.scrollIntoView({ behavior: "smooth", block: "start" });
             switch (entry.target.id) {
               case "story":
                 setNavTitle("MAdoll Story");
                 break;
               case "about":
                 setNavTitle("MAdoll About");
+                break;
+              case "special":
+                setNavTitle("MAdoll Special");
                 break;
               case "team":
                 setNavTitle("MAdoll Team");
@@ -55,7 +60,7 @@ const Portfolio: NextPage = () => {
           }
         });
       },
-      { threshold: 0.30 } // Adjust the threshold to when you want the title to change
+      { threshold: 0.3 } // Adjust the threshold to when you want the title to change
     );
 
     if (storyRef.current) {
@@ -66,6 +71,9 @@ const Portfolio: NextPage = () => {
     }
     if (teamRef.current) {
       observer.observe(teamRef.current);
+    }
+    if (specialRef.current) {
+      observer.observe(specialRef.current);
     }
 
     return () => {
@@ -88,17 +96,20 @@ const Portfolio: NextPage = () => {
     setOpenNav(!openNav);
   };
 
-
-  const handleDirect = (link:string) => {
+  const handleDirect = (link: string) => {
     // Toggle the navigation state
     setOpenNav(!openNav);
-    window.location.hash = `#${link}`
+    window.location.hash = `#${link}`;
 
     // Use history.pushState to change the URL without reloading the page
     if (window.location.hash) {
-      history.pushState("", document.title, window.location.pathname + window.location.search);
+      history.pushState(
+        "",
+        document.title,
+        window.location.pathname + window.location.search
+      );
     }
-  }
+  };
 
   return (
     <div className="w-screen flex lg:flex-col justify-center items-center lg:h-screen">
@@ -131,11 +142,7 @@ const Portfolio: NextPage = () => {
 
             <div className="flex justify-end items-end px-[1.5vh] flex-col w-full gap-[2vh] text-[2vh]">
               {links.map((link, id) => (
-                <button
-                  key={id}
-                  onClick={() => (
-                    handleDirect(link))}
-                >
+                <button key={id} onClick={() => handleDirect(link)}>
                   <h1
                     key={id}
                     className="uppercase focus:underline hover:text-[#fff] text-[#000]"
@@ -193,6 +200,12 @@ const Portfolio: NextPage = () => {
         <span ref={aboutRef} id="about" className="lg:hidden pt-[6vh]">
           <div>
             <AboutMobile></AboutMobile>
+          </div>
+        </span>
+
+        <span ref={specialRef} id="special" className="lg:hidden pt-[6vh]">
+          <div>
+            <SpecialMobile></SpecialMobile>
           </div>
         </span>
 

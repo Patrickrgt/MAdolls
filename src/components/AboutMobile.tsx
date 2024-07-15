@@ -298,20 +298,7 @@ const About: NextPage = () => {
         </div>
       </div>
 
-      <div className="flex flex-col justify-between relative items-center overflow-hidden">
-        {specialBackground.map((background, id) => (
-          <Image key={id} className={`${id === curSpecial ? "animate-fadeIn block" : "hidden"}`} src={specialBackground[curSpecial]} alt={'special background'}></Image>
-        ))}
-        <div className="flex w-full justify-between text-[2.75vh] leading-loose">
-          <button className="w-[10%]" onClick={() => handleCurSpecial("-1")}>
-            <Image alt="arrow left" src={arrowLeft}></Image>
-          </button>
-          <span className="text-[#898989] underline">{`${curSpecial + 1}/${specialBackground.length}`}</span> {/* Display current page number */}
-          <button className="w-[10%]" onClick={() => handleCurSpecial("+1")}>
-            <Image alt="arrow right" src={arrowRight}></Image>
-          </button>
-        </div>
-      </div>
+      
 
       {/* <div>
         <div className="overflow-hidden flex justify-start items-stretch gap-[2vh] pt-[4vh] w-[90%]">

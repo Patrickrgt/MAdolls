@@ -137,10 +137,10 @@ const TeamMobile: NextPage = () => {
           </div>
         </div>
         <div className="w-full m-auto flex justify-between py-[4vh]">
-          <button className="w-[10%]" onClick={() => handleCurDoll("-1")}>
+          <button className="w-[5%]" onClick={() => handleCurDoll("-1")}>
             <Image alt={`left arrow`} src={arrowLeft}></Image>
           </button>
-          <button className="w-[10%]" onClick={() => handleCurDoll("+1")}>
+          <button className="w-[5%]" onClick={() => handleCurDoll("+1")}>
             <Image alt={`right arrow`} src={arrowRight}></Image>
           </button>
         </div>
