@@ -4,6 +4,7 @@ import Head from "next/head";
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import MAcci from "../images/MAdollLogo.png";
+import macciCursor from "../images/macciCursor.png";
 import Discord from "../images/MAdoll1.png";
 
 import Story from "./Story";
@@ -269,7 +270,7 @@ const Portfolio: NextPage = () => {
       </div>
       {/* Custom Cursor */}
       <Image
-        src={MAcci}
+        src={macciCursor}
         alt="custom cursor"
         className=" hidden lg:block"
         style={{
@@ -278,8 +279,8 @@ const Portfolio: NextPage = () => {
           left: cursorPosition.x - 16,
           pointerEvents: "none",
         }}
-        width={32}
-        height={32}
+        width={48}
+        height={48}
       />
     </div>
     
