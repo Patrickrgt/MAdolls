@@ -28,9 +28,9 @@ const Team: NextPage = () => {
       member: shvrk,
       name: "shvrkboy",
       title: "Developer",
-      desc: "hoyyy",
+      desc: "Growing developer \n when I'm not procrastinating I'm coding \n\n I help build brand identities with artists, traders, and devs. \nI usually start with the wireframes and communicate with the client all changes before coding. \nI'm proud of actually coding some super sick projects but also I sometimes fall through if the idea can get really crazy. Always trying to improve.  \n\nI think I have an eye for design as well, and I love collaboration because I'll always learn something new about design.",
       link: "google",
-      headline: "I make work that values color",
+      headline: "アーティストとの共同開発 / developing with artists",
     },
     {
       member: chuck,
@@ -44,9 +44,9 @@ const Team: NextPage = () => {
       member: mado,
       name: "madotsuki",
       title: "Moderator",
-      desc: "hoyyy",
+      desc: "Witch tripping through web3, \nmaking friends and finding great artists along the way.",
       link: "google",
-      headline: "I make work that values color",
+      headline: "キノコ大好き / I love mushrooms~",
     },
     {
       member: bobby,
