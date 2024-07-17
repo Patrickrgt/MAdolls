@@ -37,6 +37,7 @@
 }
 
 * {
+  cursor: none;
   overflow-x: hidden;
   scrollbar-width: thin; /* 'auto' or 'thin' */
   scrollbar-color: #000000 #f0f0f0; /* thumb and track color */

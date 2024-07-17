@@ -17,7 +17,11 @@ import socialX from "../images/socialX.png";
 import socialDiscord from "../images/socialDiscord.png";
 import socialOpensea from "../images/socialOpensea.png";
 
+// import MAcci from "./images/MAcci.png";
+
 const Portfolio: NextPage = () => {
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+
   const [isLoading, setIsLoading] = useState(true);
   const [navTitle, setNavTitle] = useState("MAdoll Story");
   const [openNav, setOpenNav] = useState(false);
@@ -34,6 +38,19 @@ const Portfolio: NextPage = () => {
   //     setAnimation(true)
   //   }, 100)
   // }, [openNav])
+
+    // Update cursor position
+    const updateCursorPosition = (event: MouseEvent) => {
+      setCursorPosition({ x: event.clientX, y: event.clientY });
+    };
+
+      // Add event listener to track cursor movement
+  useEffect(() => {
+    window.addEventListener("mousemove", updateCursorPosition);
+    return () => {
+      window.removeEventListener("mousemove", updateCursorPosition);
+    };
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -250,7 +267,22 @@ const Portfolio: NextPage = () => {
 
         {curTab == 0 ? <Story /> : curTab == 1 ? <About /> : <Team />}
       </div>
+      {/* Custom Cursor */}
+      <Image
+        src={MAcci}
+        alt="custom cursor"
+        className=" hidden lg:block"
+        style={{
+          position: "absolute",
+          top: cursorPosition.y - 16,
+          left: cursorPosition.x - 16,
+          pointerEvents: "none",
+        }}
+        width={32}
+        height={32}
+      />
     </div>
+    
   );
 };
 
