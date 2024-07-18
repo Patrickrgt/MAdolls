@@ -302,7 +302,7 @@ const Portfolio: NextPage = () => {
       </div>
       {/* Custom Cursor */}
       
-      <div className="absolute bottom-0 right-0 overflow-hidden">
+      <div className="hidden lg:block fixed lg:absolute bottom-0 right-0 overflow-hidden">
         <div className="flex m-[2vh] justify-center items-center gap-[2vh]">
           <h1
             className={`${
