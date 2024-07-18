@@ -1,3 +1,4 @@
+import { transform } from "next/dist/build/swc";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -173,6 +174,12 @@ const config: Config = {
           "0%": { opacity: "0"},
           "100%": { opacity: "1"},
         },
+        spinOff: {
+          "0%": { opacity: ".50", transform: "rotate(720deg)"},
+          "20%": { opacity: "1", transform: ""},
+          "60%": { opacity: ".50", transform: ""},
+          "100%": { opacity: "1", transform: "rotate(360deg)"},
+        },
       },
       animation: {
         width: "width 2.4s forwards cubic-bezier(.17,.67,.41,.91)",
@@ -196,6 +203,7 @@ const config: Config = {
         fadeIn: "fadeIn 1s forwards cubic-bezier(.8,0,.4,1.27)",
         fadeOut: "fadeOut 1s forwards cubic-bezier(.8,0,.4,1.27)",
         fadeInMobile: "fadeInMobile 0.5s forwards cubic-bezier(.8,0,.4,1.27)",
+        spinOff: "spinOff 0.5s forwards cubic-bezier(.8,0,.4,1.27)",
       },
     },
   },

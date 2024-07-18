@@ -37,6 +37,7 @@
 }
 
 * {
+  overflow-y: hidden;
   cursor: none;
   overflow-x: hidden;
   scrollbar-width: thin; /* 'auto' or 'thin' */
