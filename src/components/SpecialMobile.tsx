@@ -23,23 +23,23 @@ const SpecialMobile: NextPage = () => {
   const [animationClass, setAnimationClass] = useState("");
   const [prevAnimationClass, setPrevAnimationClass] = useState("");
   const [curSpecial, setCurSpecial] = useState(0);
-  const [prevSpecial, setPrevSpecial] = useState<number | null>(null); 
+  const [prevSpecial, setPrevSpecial] = useState<number | null>(null);
   const [touchPosition, setTouchPosition] = useState(null);
 
   const handleCurSpecial = (action: string) => {
     if (action === "+1" && curSpecial < specialBackground.length - 1) {
-      setPrevSpecial(curSpecial)
+      setPrevSpecial(curSpecial);
       setCurSpecial((prev) =>
         prev < specialBackground.length - 1 ? prev + 1 : prev
       );
-      setAnimationClass('animate-fadeLeftMob');
-      setPrevAnimationClass('animate-fadeDownRightMob');
+      setAnimationClass("animate-fadeLeftMob");
+      setPrevAnimationClass("animate-fadeDownRightMob");
     } else if (action === "-1" && curSpecial > 0) {
-       // Swipe right
-       setPrevSpecial(curSpecial)
-       setCurSpecial((prev) => (prev > 0 ? prev - 1 : prev));
-       setAnimationClass('animate-fadeRightMob');
-       setPrevAnimationClass('animate-fadeDownLeftMob');
+      // Swipe right
+      setPrevSpecial(curSpecial);
+      setCurSpecial((prev) => (prev > 0 ? prev - 1 : prev));
+      setAnimationClass("animate-fadeRightMob");
+      setPrevAnimationClass("animate-fadeDownLeftMob");
     }
   };
 
@@ -56,16 +56,20 @@ const SpecialMobile: NextPage = () => {
     const diff = touchPosition - currentTouch;
     if (diff > 5) {
       // Swipe left
-      setPrevSpecial(curSpecial)
+      setPrevSpecial(curSpecial);
       setCurSpecial((prev) =>
         prev < specialBackground.length - 1 ? prev + 1 : prev
       );
-      setAnimationClass('animate-fadeLeftMob');
+      setAnimationClass("animate-fadeLeftMob");
+      setPrevAnimationClass("animate-fadeDownRightMob");
+
     } else if (diff < -5) {
       // Swipe right
-      setPrevSpecial(curSpecial)
+      setPrevSpecial(curSpecial);
       setCurSpecial((prev) => (prev > 0 ? prev - 1 : prev));
-      setAnimationClass('animate-fadeRightMob');
+      setAnimationClass("animate-fadeRightMob");
+      setPrevAnimationClass("animate-fadeDownLeftMob");
+
     }
     setTouchPosition(null); // Reset touch position after handling the swipe
   };
@@ -77,7 +81,14 @@ const SpecialMobile: NextPage = () => {
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
       >
-        <div className="flex overflow-hidden">
+        <div className="flex relative">
+          <Image
+            alt="test"
+            src={sp01}
+            width={700}
+            height={700}
+            className={`opacity-0`}
+          />
           {specialBackground.map((src, index) => (
             <Image
               key={index}
@@ -85,7 +96,7 @@ const SpecialMobile: NextPage = () => {
               alt={`special background ${index + 1}`}
               width={700}
               height={700}
-              className={`z-[1] ${
+              className={`absolute z-[1] ${
                 index === curSpecial ? animationClass : "hidden"
               }`}
             />
@@ -115,7 +126,7 @@ const SpecialMobile: NextPage = () => {
         </button>
       </div>
       <div className="w-full flex justify-center">
-      <span className="text-[#898989] underline">{`${curSpecial + 1}/${
+        <span className="text-[#898989] underline">{`${curSpecial + 1}/${
           specialBackground.length
         }`}</span>{" "}
       </div>

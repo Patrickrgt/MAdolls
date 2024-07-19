@@ -146,11 +146,11 @@ const config: Config = {
           "100%": { width: "100%", opacity: "1"},
         },
         fadeRightMob: {
-          "0%": { transform: "translateX(-41vh)",},
+          "0%": { transform: "translateX(-40vh)",},
           "100%": { transform: "translateX(0vh)", opacity: "1"},
         },
         fadeLeftMob: {
-          "0%": { transform: "translateX(41vh)",},
+          "0%": { transform: "translateX(40vh)",},
           "100%": { transform: "translateX(0vh)", opacity: "1"},
         },
         fadeLeft: {
@@ -166,12 +166,12 @@ const config: Config = {
           "100%": { transform: "translateY(0vh)", opacity: "1"},
         },
         fadeDownRightMob: {
-          "0%": { transform: "translateY(0vh) scale(1)", opacity: "1"},
-          "100%": { transform: "translateY(-4vh) rotate(16deg) scale(.8)", opacity: "0"},
+          "0%": { transform: "translateY(0vh) rotate(0deg) scale(1)", opacity: "1"},
+          "100%": { transform: "translateY(-4vh) rotate(16deg) scale(0.8)", opacity: "0"},
         },
         fadeDownLeftMob: {
           "0%": { transform: "translateY(0vh) rotate(0deg) scale(1)", opacity: "1"},
-          "100%": { transform: "translateY(-4vh) rotate(-16deg) scale(.8)", opacity: "0"},
+          "100%": { transform: "translateY(-4vh) rotate(-16deg) scale(0.8)", opacity: "0"},
         },
         fadeDown: {
           "0%": { transform: "translateY(-4vh)", opacity: "0"},
