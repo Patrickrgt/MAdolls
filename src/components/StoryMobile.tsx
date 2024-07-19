@@ -20,40 +20,39 @@ const Story: NextPage = () => {
 
   return (
     <div className="h-fit overflow-hidden">
-      <div className="flex flex-col gap-[0.5vh] tracking-none pb-[1vh]">
-
-      <h1 className="leading-tight overflow-hidden font-semibold text-[1.75vh] hover:text-[#FF0083] transition-all ease-in-out">
-        This is a generative collection in which MAcci, as an individual
-        creator, challenges {`NFT's`} and continues to search of possibilities.
-      </h1>
-      <p className="text-[1.25vh] hover:text-[#FF0083] transition-all ease-in-out">
-        MAdoll is a “cyber doll” inspired by the dolls we all played with in our
-        childhood.
-      </p>
-
-      <p className="text-[1.25vh] hover:text-[#FF0083] transition-all ease-in-out">
-        As a former color designer, I have a strong passion for color. As part
-        of my expression, no two MAdolls have the same skin color.{" "}
-        {`"All colors
+      <div className="flex flex-col tracking-none py-[1vh] border-b-[0.25vh] border-[#d1d1d1] w-[94%] m-auto">
+        <h1 className="overflow-hidden leading-normal font-semibold text-[1.95vh] hover:text-[#FF0083] transition-all ease-in-out">
+          This is a generative collection in which MAcci, as an individual
+          creator, challenges {`NFT's`} and continues to search of
+          possibilities.
+        </h1>
+        <p className="text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
+          MAdoll is a “cyber doll” inspired by the dolls we all played with in
+          our childhood.
+        </p>
+        <p className="text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
+          As a former color designer, I have a strong passion for color. As part
+          of my expression, no two MAdolls have the same skin color.{" "}
+          {`"All colors
         can shine”`}{" "}
-        is a policy I have consistently held as a NFT creator. I want to
-        continue to share with you the various joys, headwinds and challenges.
-      </p>
+          is a policy I have consistently held as a NFT creator. I want to
+          continue to share with you the various joys, headwinds and challenges.
+        </p>
 
-      <p className="text-[1.25vh] hover:text-[#FF0083] transition-all ease-in-out">
-        I cannot promise any specific benefits or airdrops for this collection
-        as we move forward into an uncertain future with changing rules and
-        circumstances. What I promise is my hard work and my thoughts for all of
-        you.
-      </p>
-      <p className="text-[1.25vh] hover:text-[#FF0083] transition-all ease-in-out">
-        {`Let's`} play around with novelty, unbound by anything. Just like back
-        then.
-      </p>
+        <p className="text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
+          I cannot promise any specific benefits or airdrops for this collection
+          as we move forward into an uncertain future with changing rules and
+          circumstances. What I promise is my hard work and my thoughts for all
+          of you.
+        </p>
+        <p className="text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out italic">
+          {`Let's`} play around with novelty, unbound by anything. Just like
+          back then.
+        </p>
       </div>
 
       <div className="flex flex-col overflow-hidden">
-        <div className="w-full min-h-[400px] max-h-[400px] h-[400px]">
+        <div className="w-full flex min-h-[400px] max-h-[400px] h-[400px]">
           <Image
             src={MAdolls[curDoll]}
             alt="MAdoll"

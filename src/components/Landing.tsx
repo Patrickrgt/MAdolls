@@ -103,7 +103,7 @@ const Portfolio: NextPage = () => {
           }
         });
       },
-      { threshold: 0.3 } // Adjust the threshold to when you want the title to change
+      { threshold: 0.5 } // Adjust the threshold to when you want the title to change
     );
 
     if (storyRef.current) {
@@ -307,7 +307,7 @@ const Portfolio: NextPage = () => {
           <h1
             className={`${
               music ? "opacity-1" : "opacity-0"
-            } transition-all duration-500 ease-in-out text-[2vh] border-l-[0.75vh] border-l-[#FF1999] pl-[1vh]`}
+            }  italic transition-all duration-500 ease-in-out text-[2vh] font-light border-l-[0.75vh] border-l-[#FF1999] pl-[1vh]`}
           >
             {musicTracks[currentTrackIndex].title}
           </h1>

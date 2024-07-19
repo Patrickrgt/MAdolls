@@ -21,7 +21,7 @@ const Team: NextPage = () => {
       name: "MAcci",
       title: "Artist",
       desc: `I'm a former color designer. \n In the process, I always had a thought. \n\n I enjoy my job very much. \n\nBut the products that leave the nest are always in the same family of colors...\n\nSo-called "sellable colors," "standout colors," "safe colors," and so on. I often put them away with the thought, "This color is really a nice combination, too. With these feelings in mind, I decided to I have been engaged in creative activities that "value colors," such as "creating characters from colors.`,
-      link: "google",
+      link: "https://x.com/MAcciNFT",
       headline: "色を大切にする作品作り / I make work that values color",
     },
     {
@@ -29,23 +29,23 @@ const Team: NextPage = () => {
       name: "shvrkboy",
       title: "Developer",
       desc: "Growing developer \n when I'm not procrastinating I'm coding \n\n I help build brand identities with artists, traders, and devs. \nI usually start with the wireframes and communicate with the client all changes before coding. \nI'm proud of actually coding some super sick projects but also I sometimes fall through if the idea can get really crazy. Always trying to improve.  \n\nI think I have an eye for design as well, and I love collaboration because I'll always learn something new about design.",
-      link: "google",
+      link: "https://x.com/0xignorance",
       headline: "アーティストとの共同開発 / developing with artists",
     },
     {
       member: chuck,
       name: "chuck",
       title: "Moderator",
-      desc: "hoyyy",
-      link: "google",
-      headline: "I make work that values color",
+      desc: "Passionate about trying new things and helping friends.",
+      link: "https://x.com/ChuckCharger",
+      headline: "昼は怠惰な開発者、夜はWeb3の貢献者。/ Lazy dev by day, Web3 contributor by night.",
     },
     {
       member: mado,
       name: "madotsuki",
       title: "Moderator",
       desc: "Witch tripping through web3, \nmaking friends and finding great artists along the way.",
-      link: "google",
+      link: "https://x.com/MagusDevon",
       headline: "キノコ大好き / I love mushrooms~",
     },
     {
@@ -53,7 +53,7 @@ const Team: NextPage = () => {
       name: "bobbystick",
       title: "Moderator",
       desc: "hoyyy",
-      link: "google",
+      link: "https://x.com/Bobbystick4",
       headline: "I make work that values color",
     },
   ];
@@ -105,6 +105,7 @@ const Team: NextPage = () => {
       <div className="">
         <div className="flex gap-[4vh]">
           <div className="animate-fadeRight flex">
+            <a href={Team[curDoll].link}>
             <Image
               src={Team[curDoll].member}
               alt="MAdoll"
@@ -112,6 +113,7 @@ const Team: NextPage = () => {
               placeholder="blur"
               blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCACJAIkDASIAAhEBAxEB/8QAGQAAAwEBAQAAAAAAAAAAAAAAAQIDAAQF/8QAGxABAQEBAQEBAQAAAAAAAAAAAAECERIDITH/xAAZAQADAQEBAAAAAAAAAAAAAAABAgMABAX/xAAYEQEBAQEBAAAAAAAAAAAAAAAAARECEv/aAAwDAQACEQMRAD8A86HyWQ+YlzHrSK5VyllXK0V5VyeEyeKxQwlEwMWmLQBPSWldJaLU6jtz7dG0Nkqdjm+jl1/XX9I5dT9Q6gwrCBWx6/DyNw0i0ivk2Vcp5UypIeRTJ4nDxSGMwMYBCsFACaS0rpLRaWxHaO19I7LYTHNuOfU/XVuOfU/U7zrSJcbh7A4j5rY9jgyMMdWOnyaHhIaGkDFIaJw0pox2L0emAehW6W1mwKno9JouBiWktK6S0WwMQ2jqfq+0tQMDEuNw/A4TAx6ok6MquOvDw0JKPRLYeUZSdHokp+j0nW6IH6Fpet0Ra0lG0loDhdJaU0loMDE9JVXSdLYFhGECld/TSp9GVV12KSj0ko9BPo/R6TrdFKn6PSdHogbrdL1uieNaW1rS2sYuqnqm1U9UGLolNSUlJQBqxSOvrdL0On11apKbqUppWS6qnR6nKaVkbT9HpJR6ISm63QYVJWtJaakrHlLqp2m0naFrWhaS0bSWp2p2taHQtDpNT11dDpPQej6v6UlPKh08ran10tKaVKU8ralaeU0JDQ2tKZgYdPK1JTUtbT6npLVU0lqha2ltTtHVT1pDvrE+q103pO1uo+qn6dHpvSfpvR52f0rKfNQlVzVPReulpTypZqkGVPVIaEhobRlMzMOqShS01JptNqekd1XSG6W0NT1UrTaqdrm6u1PqtaHS2h1sQvS7MxFxlWyhP6tlXktWyplLKkUhFIeEh4c0EQEVIWl0ak0Ap6c/0dGnP9CdMhpPR9J6QiPZLQ61A7ltf//Z"
             />
+            </a>
           </div>
 
           <div className="animate-fadeLeft flex flex-col w-[70%] justify-between items-between">

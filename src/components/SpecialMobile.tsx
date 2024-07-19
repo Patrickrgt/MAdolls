@@ -62,75 +62,94 @@ const SpecialMobile: NextPage = () => {
       );
       setAnimationClass("animate-fadeLeftMob");
       setPrevAnimationClass("animate-fadeDownRightMob");
-
     } else if (diff < -5) {
       // Swipe right
       setPrevSpecial(curSpecial);
       setCurSpecial((prev) => (prev > 0 ? prev - 1 : prev));
       setAnimationClass("animate-fadeRightMob");
       setPrevAnimationClass("animate-fadeDownLeftMob");
-
     }
     setTouchPosition(null); // Reset touch position after handling the swipe
   };
 
   return (
-    <div className="relative">
-      <div
-        className="swiper-container"
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-      >
-        <div className="flex relative">
-          <Image
-            alt="test"
-            src={sp01}
-            width={700}
-            height={700}
-            className={`opacity-0`}
-          />
-          {specialBackground.map((src, index) => (
+    <>
+      <div className="relative pt-[1.6vh]">
+        <div
+          className="swiper-container"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+        >
+          <div className="flex relative">
             <Image
-              key={index}
-              src={src}
-              alt={`special background ${index + 1}`}
+              alt="test"
+              src={sp01}
               width={700}
               height={700}
-              className={`absolute z-[1] ${
-                index === curSpecial ? animationClass : "hidden"
-              }`}
+              className={`opacity-0`}
             />
-          ))}
-          {specialBackground.map((src, index) => (
-            <Image
-              key={index}
-              src={src}
-              alt={`special background ${index + 1}`}
-              width={700}
-              height={700}
-              className={`z-[0] absolute ${
-                index === prevSpecial ? prevAnimationClass : "hidden"
-              }`}
-            />
-          ))}
+            {specialBackground.map((src, index) => (
+              <Image
+                key={index}
+                src={src}
+                alt={`special background ${index + 1}`}
+                width={700}
+                height={700}
+                className={`absolute z-[1] ${
+                  index === curSpecial ? animationClass : "hidden"
+                }`}
+              />
+            ))}
+            {specialBackground.map((src, index) => (
+              <Image
+                key={index}
+                src={src}
+                alt={`special background ${index + 1}`}
+                width={700}
+                height={700}
+                className={`z-[0] absolute ${
+                  index === prevSpecial ? prevAnimationClass : "hidden"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className="flex w-full justify-between text-[2.75vh] leading-loose absolute bottom-[0]">
+          <button className="w-[5%]" onClick={() => handleCurSpecial("-1")}>
+            <Image alt="arrow left" src={arrowLeft}></Image>
+          </button>
+          {/* Display current page number */}
+          <button className="w-[5%]" onClick={() => handleCurSpecial("+1")}>
+            <Image alt="arrow right" src={arrowRight}></Image>
+          </button>
+        </div>
+        <div className="w-full flex justify-center">
+          <span className="text-[#898989] underline">{`${curSpecial + 1}/${
+            specialBackground.length
+          }`}</span>{" "}
         </div>
       </div>
-
-      <div className="flex w-full justify-between text-[2.75vh] leading-loose absolute bottom-[0]">
-        <button className="w-[5%]" onClick={() => handleCurSpecial("-1")}>
-          <Image alt="arrow left" src={arrowLeft}></Image>
-        </button>
-        {/* Display current page number */}
-        <button className="w-[5%]" onClick={() => handleCurSpecial("+1")}>
-          <Image alt="arrow right" src={arrowRight}></Image>
-        </button>
+      <div className="flex flex-col justify-between relative items-center overflow-hidden m-auto w-[94%]">
+        <div className="flex flex-col">
+          <div className="py-[1vh]">
+            <h1 className="overflow-hidden font-semibold text-[1.95vh]">
+              Some of Madoll’s backgrounds are special too!
+            </h1>
+            <p className="text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
+              These images represent memories from MAcci’s experiences and are
+              incorporated in a small percentage of MAdolls in the collection.
+            </p>
+            <p className="text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
+              マドールの背景にも特別なものがある！
+            </p>
+            <p className="text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
+              これらのイメージはMAcciの経験からの思い出を表しており、コレクションの中のごく一部のMAdollに取り入れられています。{" "}
+            </p>
+          </div>
+        </div>
       </div>
-      <div className="w-full flex justify-center">
-        <span className="text-[#898989] underline">{`${curSpecial + 1}/${
-          specialBackground.length
-        }`}</span>{" "}
-      </div>
-    </div>
+    </>
   );
 };
 

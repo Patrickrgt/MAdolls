@@ -63,8 +63,8 @@ import thumb6 from "../images/thumbnails/thumbnail-06.png";
 import thumb7 from "../images/thumbnails/thumbnail-07.png";
 import thumb8 from "../images/thumbnails/thumbnail-08.png";
 
-import arrowLeft from "../images/mobileSpecial/arrowLeft.png"
-import arrowRight from "../images/mobileSpecial/arrowRight.png"
+import arrowLeft from "../images/mobileSpecial/arrowLeft.png";
+import arrowRight from "../images/mobileSpecial/arrowRight.png";
 
 const About: NextPage = () => {
   const backgrounds = [bg01, bg02, bg03, bg04, bg05, bg06, bg07, bg08];
@@ -114,52 +114,45 @@ const About: NextPage = () => {
     { title: "Doesn't seem to exist", img: color14, hex: "#E0DFE4" },
   ];
 
-  const specialBackground = [
-    sp01,
-    sp02,
-    sp03,
-    sp04,
-    sp05,
-    sp06,
-    sp07,
-    sp08,
-  ]
+  const specialBackground = [sp01, sp02, sp03, sp04, sp05, sp06, sp07, sp08];
 
   const specialBackground2 = [
     {
       id: 0,
-      img: sp01
+      img: sp01,
     },
     {
       id: 1,
-      img: sp02
+      img: sp02,
     },
     {
       id: 2,
-      img: sp03
+      img: sp03,
     },
     {
       id: 3,
-      img: sp04
+      img: sp04,
     },
     {
       id: 4,
-      img: sp05
+      img: sp05,
     },
     {
       id: 5,
-      img: sp06
+      img: sp06,
     },
     {
       id: 6,
-      img: sp07
+      img: sp07,
     },
-  ]
+  ];
+
+  
 
   const [curBg, setCurBg] = useState(0);
   const [curTitle, setCurTitle] = useState(0);
   const [curTab, setCurTab] = useState(0);
-  const [curSpecial, setCurSpecial] = useState(0)
+  const [curSpecial, setCurSpecial] = useState(0);
 
   const handleCurTab = (id: number) => {
     setCurTab(id);
@@ -175,18 +168,19 @@ const About: NextPage = () => {
 
   const handleCurSpecial = (action: string) => {
     if (action === "+1" && curSpecial < specialBackground.length - 1) {
-      setCurSpecial(prevState => prevState + 1); // Use functional form of setState
-    } else if (action === "-1" && curSpecial > 0) { // Ensure curSpecial does not go below 1
-      setCurSpecial(prevState => prevState - 1); // Use functional form of setState
+      setCurSpecial((prevState) => prevState + 1); // Use functional form of setState
+    } else if (action === "-1" && curSpecial > 0) {
+      // Ensure curSpecial does not go below 1
+      setCurSpecial((prevState) => prevState - 1); // Use functional form of setState
     }
-  }
+  };
 
   return (
     <>
-      <div className="flex flex-col justify-between relative items-center overflow-hidden pb-[5vh]">
+      <div className={`flex flex-col justify-between relative items-center overflow-hidden m-auto w-[94%]`}>
         <div className="flex flex-col gap-[1vh]">
-          <div>
-            <h1 className="leading-tight overflow-hidden font-semibold text-[1.75vh]">
+          <div className="py-[1vh] border-b-[0.25vh] border-[#d1d1d1]">
+            <h1 className="overflow-hidden font-semibold text-[1.95vh]">
               No two MAdoll skins are alike.
               <br />
               This is because two layers are superimposed to create a variety of
@@ -194,15 +188,13 @@ const About: NextPage = () => {
               <br />
               Enjoy your own colors, only for that Madoll.
             </h1>
-          </div>
-          <div>
-            <p className="text-[1.25vh] hover:text-[#FF0083] leading-tight transition-all ease-in-out">
+            <p className="text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
               MAdollのスキンは2つとして同じものはありません。
             </p>
-            <p className="text-[1.25vh] hover:text-[#FF0083] leading-tight transition-all ease-in-out">
+            <p className="text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
               これは、2つのレイヤーを重ね合わせることで、さまざまな色が生まれるからだ。
             </p>
-            <p className="text-[1.25vh] hover:text-[#FF0083] leading-tight transition-all ease-in-out">
+            <p className="text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
               そのMAdollのためだけに、自分だけの色を楽しむ。
             </p>
           </div>
@@ -218,7 +210,7 @@ const About: NextPage = () => {
             <div className="grid grid-cols-5 grid-rows-3 w-[90%] m-auto">
               {skins.map((doll, id) => (
                 <Image
-                key={id}
+                  key={id}
                   style={{
                     animation: `fadeIn 0.5s ease-out ${id * 0.15}s forwards`,
                   }}
@@ -232,42 +224,22 @@ const About: NextPage = () => {
             </div>
           </div>
         </div>
-
-        <div className={`${curTab != 2 ? "hidden" : "block"} flex flex-col`}>
-          <div className="flex">
-            <div className="animate-fadeIn font-semibold text-[6vh] hover:text-[#FF0083] transition-all ease-in-out cursor-none overflow-hidden">
-              MAdoll Specials
-            </div>
-            <button
-              onClick={() => handleCurTab(0)}
-              className="pl-[2vh] animate-fadeIn font-semibold text-[3vh] text-[#FF0083] hover:text-[#000] transition-all ease-in-out cursor-pointer overflow-hidden"
-            >
-              🎨 MAdoll Skins
-            </button>
-            <button
-              onClick={() => handleCurTab(1)}
-              className="pl-[2vh] animate-fadeIn font-semibold text-[3vh] text-[#FF0083] hover:text-[#000] transition-all ease-in-out cursor-pointer overflow-hidden"
-            >
-              🖼️ MAdoll Backgrounds
-            </button>
-          </div>
-        </div>
       </div>
 
-      <div className="flex flex-col justify-between relative items-center overflow-hidden pb-[5vh]">
-        <div className="flex flex-col gap-[1vh]">
-          <h1 className="leading-tight overflow-hidden font-semibold text-[1.75vh]">
-            All MAdoll color backgrounds are titled. This is something I do
-            all the time.
-            I put my color impressions into words.
-          </h1>
-          <p className="text-[1.25vh] hover:text-[#FF0083] leading-tight transition-all ease-in-out">
-            MAdollのカラー背景にはすべてタイトルが付いています。これは私がいつもやっていることです。
-          </p>
-          <p className="text-[1.25vh] hover:text-[#FF0083] leading-tight transition-all ease-in-out">
-            私は自分の色の印象を言葉にした。
-          </p>
-
+      <div className="flex flex-col justify-between relative items-center overflow-hidden m-auto w-[95%]">
+        <div className="flex flex-col">
+          <div className=" py-[1vh]">
+            <h1 className="overflow-hidden font-semibold text-[1.95vh]">
+              All MAdoll color backgrounds are titled. This is something I do
+              all the time. I put my color impressions into words.
+            </h1>
+            <p className="text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
+              MAdollのカラー背景にはすべてタイトルが付いています。これは私がいつもやっていることです。
+            </p>
+            <p className="text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
+              私は自分の色の印象を言葉にした。
+            </p>
+          </div>
 
           <div className="overflow-hidden flex flex-col justify-start items-stretch gap-[2vh] pt-[4vh] w-full">
             <div className="grid grid-cols-4 grid-rows-3 overflow-hidden gap-[1vh] m-auto">
@@ -278,8 +250,9 @@ const About: NextPage = () => {
                     style={{
                       animation: `fadeIn 0.5s ease-out ${id * 0.15}s forwards`,
                     }}
-                    className={`${curTitle == id ? "border-[#FF0083]" : "border-transparent"
-                      } animate-fadeIn h-fit w-[12vh] opacity-0 aspect-square hover:border-[#FF0083] hover:border-[0.5vh] border-[0.5vh] transition-all ease-in-out`}
+                    className={`${
+                      curTitle == id ? "border-[#FF0083]" : "border-transparent"
+                    } animate-fadeIn h-fit w-[12vh] opacity-0 aspect-square hover:border-[#FF0083] hover:border-[0.5vh] border-[0.5vh] transition-all ease-in-out`}
                     src={color.img}
                     alt="doll"
                     placeholder="blur"
@@ -297,113 +270,7 @@ const About: NextPage = () => {
           </div>
         </div>
       </div>
-
-      
-
-      {/* <div>
-        <div className="overflow-hidden flex justify-start items-stretch gap-[2vh] pt-[4vh] w-[90%]">
-          <div className="">
-            <Image
-              src={backgrounds[curBg]}
-              className="animate-fadeIn h-full"
-              alt="aboutSkin"
-              placeholder="blur"
-              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCACJAIkDASIAAhEBAxEB/8QAGQAAAwEBAQAAAAAAAAAAAAAAAQIDAAQF/8QAGxABAQEBAQEBAQAAAAAAAAAAAAECERIDITH/xAAZAQADAQEBAAAAAAAAAAAAAAABAgMABAX/xAAYEQEBAQEBAAAAAAAAAAAAAAAAARECEv/aAAwDAQACEQMRAD8A86HyWQ+YlzHrSK5VyllXK0V5VyeEyeKxQwlEwMWmLQBPSWldJaLU6jtz7dG0Nkqdjm+jl1/XX9I5dT9Q6gwrCBWx6/DyNw0i0ivk2Vcp5UypIeRTJ4nDxSGMwMYBCsFACaS0rpLRaWxHaO19I7LYTHNuOfU/XVuOfU/U7zrSJcbh7A4j5rY9jgyMMdWOnyaHhIaGkDFIaJw0pox2L0emAehW6W1mwKno9JouBiWktK6S0WwMQ2jqfq+0tQMDEuNw/A4TAx6ok6MquOvDw0JKPRLYeUZSdHokp+j0nW6IH6Fpet0Ra0lG0loDhdJaU0loMDE9JVXSdLYFhGECld/TSp9GVV12KSj0ko9BPo/R6TrdFKn6PSdHogbrdL1uieNaW1rS2sYuqnqm1U9UGLolNSUlJQBqxSOvrdL0On11apKbqUppWS6qnR6nKaVkbT9HpJR6ISm63QYVJWtJaakrHlLqp2m0naFrWhaS0bSWp2p2taHQtDpNT11dDpPQej6v6UlPKh08ran10tKaVKU8ralaeU0JDQ2tKZgYdPK1JTUtbT6npLVU0lqha2ltTtHVT1pDvrE+q103pO1uo+qn6dHpvSfpvR52f0rKfNQlVzVPReulpTypZqkGVPVIaEhobRlMzMOqShS01JptNqekd1XSG6W0NT1UrTaqdrm6u1PqtaHS2h1sQvS7MxFxlWyhP6tlXktWyplLKkUhFIeEh4c0EQEVIWl0ak0Ap6c/0dGnP9CdMhpPR9J6QiPZLQ61A7ltf//Z"
-            ></Image>
-          </div>
-
-          <div className="grid grid-cols-2 grid-rows-4 w-[20%] overflow-hidden gap-[2vh] mr-auto">
-            {thumbnails.map((thumbnail, id) => (
-              <Image
-                onClick={() => handleCurBg(id)}
-                style={{
-                  animation: `fadeIn 0.5s ease-out ${id * 0.15}s forwards`,
-                }}
-                className={`${curBg == id ? "border-[#FF0083]" : "border-transparent"
-                  } animate-fadeIn h-[12vh] w-[12vh] opacity-0 aspect-square hover:border-[#FF0083] hover:border-[0.5vh] border-[0.5vh] transition-all ease-in-out`}
-                src={thumbnail}
-                alt="doll"
-                placeholder="blur"
-                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCACJAIkDASIAAhEBAxEB/8QAGQAAAwEBAQAAAAAAAAAAAAAAAQIDAAQF/8QAGxABAQEBAQEBAQAAAAAAAAAAAAECERIDITH/xAAZAQADAQEBAAAAAAAAAAAAAAABAgMABAX/xAAYEQEBAQEBAAAAAAAAAAAAAAAAARECEv/aAAwDAQACEQMRAD8A86HyWQ+YlzHrSK5VyllXK0V5VyeEyeKxQwlEwMWmLQBPSWldJaLU6jtz7dG0Nkqdjm+jl1/XX9I5dT9Q6gwrCBWx6/DyNw0i0ivk2Vcp5UypIeRTJ4nDxSGMwMYBCsFACaS0rpLRaWxHaO19I7LYTHNuOfU/XVuOfU/U7zrSJcbh7A4j5rY9jgyMMdWOnyaHhIaGkDFIaJw0pox2L0emAehW6W1mwKno9JouBiWktK6S0WwMQ2jqfq+0tQMDEuNw/A4TAx6ok6MquOvDw0JKPRLYeUZSdHokp+j0nW6IH6Fpet0Ra0lG0loDhdJaU0loMDE9JVXSdLYFhGECld/TSp9GVV12KSj0ko9BPo/R6TrdFKn6PSdHogbrdL1uieNaW1rS2sYuqnqm1U9UGLolNSUlJQBqxSOvrdL0On11apKbqUppWS6qnR6nKaVkbT9HpJR6ISm63QYVJWtJaakrHlLqp2m0naFrWhaS0bSWp2p2taHQtDpNT11dDpPQej6v6UlPKh08ran10tKaVKU8ralaeU0JDQ2tKZgYdPK1JTUtbT6npLVU0lqha2ltTtHVT1pDvrE+q103pO1uo+qn6dHpvSfpvR52f0rKfNQlVzVPReulpTypZqkGVPVIaEhobRlMzMOqShS01JptNqekd1XSG6W0NT1UrTaqdrm6u1PqtaHS2h1sQvS7MxFxlWyhP6tlXktWyplLKkUhFIeEh4c0EQEVIWl0ak0Ap6c/0dGnP9CdMhpPR9J6QiPZLQ61A7ltf//Z"
-              />
-            ))}
-          </div>
-        </div>
-      </div> */}
-
-
-
-      {/* <div className={`${curTab != 1 ? "hidden" : "block"} flex flex-col`}>
-        <div className="flex">
-          <div className="animate-fadeIn font-semibold text-[6vh] hover:text-[#FF0083] transition-all ease-in-out cursor-none overflow-hidden">
-            MAdoll Backgrounds
-          </div>
-          <button
-            onClick={() => handleCurTab(0)}
-            className="pl-[2vh] animate-fadeIn font-semibold text-[3vh] text-[#FF0083] hover:text-[#000] transition-all ease-in-out cursor-pointer overflow-hidden"
-          >
-            🎨 MAdoll Skins
-          </button>
-          <button
-            onClick={() => handleCurTab(2)}
-            className="pl-[2vh] animate-fadeIn font-semibold text-[3vh] text-[#FF0083] hover:text-[#000] transition-all ease-in-out cursor-pointer overflow-hidden"
-          >
-            🌄 MAdoll Specials
-          </button>
-        </div>
-
-        <div className="w-[80%] group overflow-hidden">
-          <div className="animate-fadeRight group-hover:border-[#FF0083] border-l-[1vh] pl-[2vh] transition-all ease-in-out cursor-none">
-            <div className="animate-fadeLeft">
-              <h1 className="text-[1.75vh] hover:text-[#FF0083] leading-tight font-semibold transition-all ease-in-out">
-                All MAdoll color backgrounds are titled. This is something I do
-                all the time.
-              </h1>
-              <h1 className="text-[1.75vh] hover:text-[#FF0083] leading-tight transition-all ease-in-out">
-                I put my color impressions into words.
-              </h1>
-              <br />
-              <h1 className="text-[1.75vh] hover:text-[#FF0083] leading-tight font-semibold transition-all ease-in-out">
-                MAdollのカラー背景にはすべてタイトルが付いています。これは私がいつもやっていることです。
-              </h1>
-              <h1 className="text-[1.75vh] hover:text-[#FF0083] leading-tight transition-all ease-in-out">
-                私は自分の色の印象を言葉にした。
-              </h1>
-            </div>
-          </div>
-        </div>
-
-        <div className="overflow-hidden flex flex-col justify-start items-stretch gap-[2vh] pt-[4vh] w-full">
-          <div className="grid grid-cols-5 grid-rows-3 w-[60%] overflow-hidden gap-[2vh] m-auto">
-            {colors.map((color, id) => (
-              <div>
-                <Image
-                  onClick={() => handleCurTitle(id)}
-                  style={{
-                    animation: `fadeIn 0.5s ease-out ${id * 0.15}s forwards`,
-                  }}
-                  className={`${curTitle == id ? "border-[#FF0083]" : "border-transparent"
-                    } animate-fadeIn h-[10vh] w-[12vh] opacity-0 aspect-square hover:border-[#FF0083] hover:border-[0.5vh] border-[0.5vh] transition-all ease-in-out`}
-                  src={color.img}
-                  alt="doll"
-                  placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCACJAIkDASIAAhEBAxEB/8QAGQAAAwEBAQAAAAAAAAAAAAAAAQIDAAQF/8QAGxABAQEBAQEBAQAAAAAAAAAAAAECERIDITH/xAAZAQADAQEBAAAAAAAAAAAAAAABAgMABAX/xAAYEQEBAQEBAAAAAAAAAAAAAAAAARECEv/aAAwDAQACEQMRAD8A86HyWQ+YlzHrSK5VyllXK0V5VyeEyeKxQwlEwMWmLQBPSWldJaLU6jtz7dG0Nkqdjm+jl1/XX9I5dT9Q6gwrCBWx6/DyNw0i0ivk2Vcp5UypIeRTJ4nDxSGMwMYBCsFACaS0rpLRaWxHaO19I7LYTHNuOfU/XVuOfU/U7zrSJcbh7A4j5rY9jgyMMdWOnyaHhIaGkDFIaJw0pox2L0emAehW6W1mwKno9JouBiWktK6S0WwMQ2jqfq+0tQMDEuNw/A4TAx6ok6MquOvDw0JKPRLYeUZSdHokp+j0nW6IH6Fpet0Ra0lG0loDhdJaU0loMDE9JVXSdLYFhGECld/TSp9GVV12KSj0ko9BPo/R6TrdFKn6PSdHogbrdL1uieNaW1rS2sYuqnqm1U9UGLolNSUlJQBqxSOvrdL0On11apKbqUppWS6qnR6nKaVkbT9HpJR6ISm63QYVJWtJaakrHlLqp2m0naFrWhaS0bSWp2p2taHQtDpNT11dDpPQej6v6UlPKh08ran10tKaVKU8ralaeU0JDQ2tKZgYdPK1JTUtbT6npLVU0lqha2ltTtHVT1pDvrE+q103pO1uo+qn6dHpvSfpvR52f0rKfNQlVzVPReulpTypZqkGVPVIaEhobRlMzMOqShS01JptNqekd1XSG6W0NT1UrTaqdrm6u1PqtaHS2h1sQvS7MxFxlWyhP6tlXktWyplLKkUhFIeEh4c0EQEVIWl0ak0Ap6c/0dGnP9CdMhpPR9J6QiPZLQ61A7ltf//Z"
-                />
-              </div>
-            ))}
-          </div>
-          <div
-            style={{ color: colors[curTitle].hex }}
-            className="text-[1.75vh] m-auto text-center animate-fadeIn font-semibold text-[6vh] transition-all ease-in-out cursor-none overflow-hidden"
-          >
-            {`${colors[curTitle].title}`}
-          </div>
-        </div>
-      </div> */}
     </>
-
-
-
   );
 };
 

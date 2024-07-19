@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import Portfolio from "../components/Landing";
+import Landing from "../components/Landing";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -9,7 +9,7 @@ export default function Home() {
     <main
       className={` ${inter.className}`}
     >
-      <Portfolio />
+      <Landing />
     </main>
   );
 }
