@@ -146,11 +146,11 @@ const config: Config = {
           "100%": { width: "100%", opacity: "1"},
         },
         fadeRightMob: {
-          "0%": { transform: "translateX(-40vh)",},
+          "0%": { transform: "translateX(-40vh)", opacity: "0"},
           "100%": { transform: "translateX(0vh)", opacity: "1"},
         },
         fadeLeftMob: {
-          "0%": { transform: "translateX(40vh)",},
+          "0%": { transform: "translateX(40vh)", opacity: "0"},
           "100%": { transform: "translateX(0vh)", opacity: "1"},
         },
         fadeLeft: {
