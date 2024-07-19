@@ -21,15 +21,25 @@ import arrowRight from "../images/mobileSpecial/arrowRight.png";
 const SpecialMobile: NextPage = () => {
   const specialBackground = [sp01, sp02, sp03, sp04, sp05, sp06, sp07, sp08];
   const [animationClass, setAnimationClass] = useState("");
+  const [prevAnimationClass, setPrevAnimationClass] = useState("");
   const [curSpecial, setCurSpecial] = useState(0);
+  const [prevSpecial, setPrevSpecial] = useState<number | null>(null); 
   const [touchPosition, setTouchPosition] = useState(null);
 
   const handleCurSpecial = (action: string) => {
     if (action === "+1" && curSpecial < specialBackground.length - 1) {
-      setCurSpecial((prevState) => prevState + 1); // Use functional form of setState
+      setPrevSpecial(curSpecial)
+      setCurSpecial((prev) =>
+        prev < specialBackground.length - 1 ? prev + 1 : prev
+      );
+      setAnimationClass('animate-fadeLeftMob');
+      setPrevAnimationClass('animate-fadeDownRightMob');
     } else if (action === "-1" && curSpecial > 0) {
-      // Ensure curSpecial does not go below 1
-      setCurSpecial((prevState) => prevState - 1); // Use functional form of setState
+       // Swipe right
+       setPrevSpecial(curSpecial)
+       setCurSpecial((prev) => (prev > 0 ? prev - 1 : prev));
+       setAnimationClass('animate-fadeRightMob');
+       setPrevAnimationClass('animate-fadeDownLeftMob');
     }
   };
 
@@ -46,14 +56,16 @@ const SpecialMobile: NextPage = () => {
     const diff = touchPosition - currentTouch;
     if (diff > 5) {
       // Swipe left
+      setPrevSpecial(curSpecial)
       setCurSpecial((prev) =>
         prev < specialBackground.length - 1 ? prev + 1 : prev
       );
-      setAnimationClass('animate-fadeLeft');
+      setAnimationClass('animate-fadeLeftMob');
     } else if (diff < -5) {
       // Swipe right
+      setPrevSpecial(curSpecial)
       setCurSpecial((prev) => (prev > 0 ? prev - 1 : prev));
-      setAnimationClass('animate-fadeRight');
+      setAnimationClass('animate-fadeRightMob');
     }
     setTouchPosition(null); // Reset touch position after handling the swipe
   };
@@ -73,8 +85,20 @@ const SpecialMobile: NextPage = () => {
               alt={`special background ${index + 1}`}
               width={700}
               height={700}
-              className={`${
+              className={`z-[1] ${
                 index === curSpecial ? animationClass : "hidden"
+              }`}
+            />
+          ))}
+          {specialBackground.map((src, index) => (
+            <Image
+              key={index}
+              src={src}
+              alt={`special background ${index + 1}`}
+              width={700}
+              height={700}
+              className={`z-[0] absolute ${
+                index === prevSpecial ? prevAnimationClass : "hidden"
               }`}
             />
           ))}

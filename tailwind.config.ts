@@ -145,6 +145,14 @@ const config: Config = {
           "35%": { width: "10%", opacity: "1"},
           "100%": { width: "100%", opacity: "1"},
         },
+        fadeRightMob: {
+          "0%": { transform: "translateX(-41vh)",},
+          "100%": { transform: "translateX(0vh)", opacity: "1"},
+        },
+        fadeLeftMob: {
+          "0%": { transform: "translateX(41vh)",},
+          "100%": { transform: "translateX(0vh)", opacity: "1"},
+        },
         fadeLeft: {
           "0%": { transform: "translateX(4vh)", opacity: "0"},
           "100%": { transform: "translateX(0vh)", opacity: "1"},
@@ -157,6 +165,14 @@ const config: Config = {
           "0%": { transform: "translateY(-4vh)", opacity: "0"},
           "100%": { transform: "translateY(0vh)", opacity: "1"},
         },
+        fadeDownRightMob: {
+          "0%": { transform: "translateY(0vh) scale(1)", opacity: "1"},
+          "100%": { transform: "translateY(-4vh) rotate(16deg) scale(.8)", opacity: "0"},
+        },
+        fadeDownLeftMob: {
+          "0%": { transform: "translateY(0vh) rotate(0deg) scale(1)", opacity: "1"},
+          "100%": { transform: "translateY(-4vh) rotate(-16deg) scale(.8)", opacity: "0"},
+        },
         fadeDown: {
           "0%": { transform: "translateY(-4vh)", opacity: "0"},
           "100%": { transform: "translateY(0vh)", opacity: "1"},
@@ -164,6 +180,11 @@ const config: Config = {
         fadeIn: {
           "0%": { opacity: "0"},
           "100%": { opacity: "1"},
+        },
+        fadeOutMob: {
+          "0%": { opacity: "1"},
+          "90%": { opacity: "0"},
+          "100%": { opacity: "0"},
         },
         fadeOut: {
           "0%": { opacity: "1",  display: "block", position: 'fixed', zIndex: '1'},
@@ -195,6 +216,8 @@ const config: Config = {
         leftBracketMobile: "leftBracketMobile 3s forwards cubic-bezier(.17,.67,.4,1.18)",
         rightBracketMobile: "rightBracketMobile 3s forwards cubic-bezier(.17,.67,.4,1.18)",
         comeInMobile: "comeInMobile 2.9s forwards cubic-bezier(.17,.67,.4,1.18)",
+        fadeRightMob: "fadeRightMob 1s forwards cubic-bezier(.8,0,.4,1.27)",
+        fadeLeftMob: "fadeLeftMob 1s forwards cubic-bezier(.8,0,.4,1.27)",
         fadeRight: "fadeRight 1s forwards cubic-bezier(.8,0,.4,1.27)",
         fadeLeft: "fadeLeft 1s forwards cubic-bezier(.8,0,.4,1.27)",
         fadeUp: "fadeUp 1s forwards cubic-bezier(.8,0,.4,1.27)",
@@ -202,6 +225,9 @@ const config: Config = {
         fadeDown: "fadeDown 1s forwards cubic-bezier(.8,0,.4,1.27)",
         fadeIn: "fadeIn 1s forwards cubic-bezier(.8,0,.4,1.27)",
         fadeOut: "fadeOut 1s forwards cubic-bezier(.8,0,.4,1.27)",
+        fadeDownRightMob: "fadeDownRightMob 1s forwards cubic-bezier(.8,0,.4,1.27)",
+        fadeDownLeftMob: "fadeDownLeftMob 1s forwards cubic-bezier(.8,0,.4,1.27)",
+        fadeOutMob: "fadeOutMob 1s forwards cubic-bezier(.8,0,.4,1.27)",
         fadeInMobile: "fadeInMobile 0.5s forwards cubic-bezier(.8,0,.4,1.27)",
         spinOff: "spinOff 0.5s forwards cubic-bezier(.8,0,.4,1.27)",
       },
