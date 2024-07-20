@@ -176,13 +176,13 @@ const About: NextPage = () => {
   useEffect(() => {
     // Ensure this code block runs only in the browser
     if (typeof window !== "undefined") {
-      const texts = document.querySelectorAll(".MAdoll-text");
+      const texts = document.querySelectorAll(".MAdoll");
 
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             entry.target.classList.toggle(
-              "animate-fadeIn",
+              "animate-fadeRight",
               entry.isIntersecting
             );
             if (entry.isIntersecting) observer.unobserve(entry.target);
@@ -207,7 +207,7 @@ const About: NextPage = () => {
       >
         <div className="flex flex-col gap-[1vh]">
           <div className="py-[1vh] border-b-[0.25vh] border-[#d1d1d1]">
-            <h1 className="MAdoll-text overflow-hidden font-semibold text-[1.95vh]">
+            <h1 className="MAdoll overflow-hidden font-semibold text-[1.95vh]">
               No two MAdoll skins are alike.
               <br />
               This is because two layers are superimposed to create a variety of
@@ -215,13 +215,13 @@ const About: NextPage = () => {
               <br />
               Enjoy your own colors, only for that Madoll.
             </h1>
-            <p className="MAdoll-text text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
+            <p className="MAdoll text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
               MAdollのスキンは2つとして同じものはありません。
             </p>
-            <p className="MAdoll-text text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
+            <p className="MAdoll text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
               これは、2つのレイヤーを重ね合わせることで、さまざまな色が生まれるからだ。
             </p>
-            <p className="MAdoll-text text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
+            <p className="MAdoll text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
               そのMAdollのためだけに、自分だけの色を楽しむ。
             </p>
           </div>

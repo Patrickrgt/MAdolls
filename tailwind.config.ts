@@ -131,6 +131,10 @@ const config: Config = {
           "95%": { opacity: "1" },
           "100%": { opacity: "1" },
         },
+        greyscaleIn: {
+          "0%": { filter: "greyscale(0) invert(0) brightness(1)"},
+          "100%": { filter: "greyscale(1) invert(1) brightness(0)"},
+        },
         fadeRight: {
           "0%": { transform: "translateX(-4vh)", opacity: "0"},
           "100%": { transform: "translateX(0vh)", opacity: "1"},
@@ -149,9 +153,13 @@ const config: Config = {
           "0%": { transform: "translateX(-40vh)", opacity: "0"},
           "100%": { transform: "translateX(0vh)", opacity: "1"},
         },
+        fadeRightOutMob: {
+          "0%": { transform: "translateX(0vh)"},
+          "100%": { transform: "translateX(40vh)"},
+        },
         fadeLeftMob: {
-          "0%": { transform: "translateX(40vh)", opacity: "0"},
-          "100%": { transform: "translateX(0vh)", opacity: "1"},
+          "0%": { transform: "translateX(40vh)"},
+          "100%": { transform: "translateX(0vh)"},
         },
         fadeLeft: {
           "0%": { transform: "translateX(4vh)", opacity: "0"},
@@ -203,6 +211,7 @@ const config: Config = {
         },
       },
       animation: {
+        greyscaleIn: "greyscaleIn 1s forwards cubic-bezier(.8,0,.4,1.27)",
         width: "width 2.4s forwards cubic-bezier(.17,.67,.41,.91)",
         widthMobile: "widthMobile 2.4s forwards cubic-bezier(.17,.67,.41,.91)",
         gcStart: "gcStart 3s forwards cubic-bezier(.17,.67,.4,1.18)",
@@ -217,7 +226,8 @@ const config: Config = {
         rightBracketMobile: "rightBracketMobile 3s forwards cubic-bezier(.17,.67,.4,1.18)",
         comeInMobile: "comeInMobile 2.9s forwards cubic-bezier(.17,.67,.4,1.18)",
         fadeRightMob: "fadeRightMob 1s forwards cubic-bezier(.8,0,.4,1.27)",
-        fadeLeftMob: "fadeLeftMob 1s forwards cubic-bezier(.8,0,.4,1.27)",
+        fadeRightOutMob: "fadeRightOutMob 1s forwards cubic-bezier(.8,0,.4,1.27)",
+        fadeLeftMob: "fadeLeftMob 0.5s forwards cubic-bezier(.35,.17,.2,.69)",
         fadeRight: "fadeRight 1s forwards cubic-bezier(.8,0,.4,1.27)",
         fadeLeft: "fadeLeft 1s forwards cubic-bezier(.8,0,.4,1.27)",
         fadeUp: "fadeUp 1s forwards cubic-bezier(.8,0,.4,1.27)",

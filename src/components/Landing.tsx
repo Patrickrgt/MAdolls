@@ -4,6 +4,7 @@ import Head from "next/head";
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import MAcci from "../images/MAdollLogo.png";
+import MAdollWhite from "../images/MAdollLogoWhite.png";
 import macciCursor from "../images/macciCursor.png";
 import Discord from "../images/MAdoll1.png";
 
@@ -28,6 +29,8 @@ const Portfolio: NextPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [navTitle, setNavTitle] = useState("MAdoll Story");
   const [openNav, setOpenNav] = useState(false);
+  const [scrolling, setScrolling] = useState(false);
+  
   const [animation, setAnimation] = useState(true);
 
   const [music, setMusic] = useState(false);
@@ -78,51 +81,54 @@ const Portfolio: NextPage = () => {
       setCursorPosition({ x: event.clientX, y: event.clientY });
     };
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.scrollIntoView({ behavior: "smooth", block: "start" });
-            switch (entry.target.id) {
-              case "story":
-                setNavTitle("MAdoll Story");
-                break;
-              case "about":
-                setNavTitle("MAdoll About");
-                break;
-              case "special":
-                setNavTitle("MAdoll Special");
-                break;
-              case "team":
-                setNavTitle("MAdoll Team");
-                break;
-              default:
-                break;
-            }
-          }
-        });
-      },
-      { threshold: 0.5 } // Adjust the threshold to when you want the title to change
-    );
+    useEffect(() => {
+      if (!scrolling) { 
 
-    if (storyRef.current) {
-      observer.observe(storyRef.current);
-    }
-    if (aboutRef.current) {
-      observer.observe(aboutRef.current);
-    }
-    if (teamRef.current) {
-      observer.observe(teamRef.current);
-    }
-    if (specialRef.current) {
-      observer.observe(specialRef.current);
-    }
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // Ensure title changes only if not currently programmatically scrolling
+                entry.target.scrollIntoView({ behavior: "smooth", block: "start" });
+                switch (entry.target.id) {
+                  case "story":
+                    setNavTitle("MAdoll Story");
+                    break;
+                  case "about":
+                    setNavTitle("MAdoll About");
+                    break;
+                  case "special":
+                    setNavTitle("MAdoll Special");
+                    break;
+                  case "team":
+                    setNavTitle("MAdoll Team");
+                    break;
+                  default:
+                    break;
+                }
+              }
+          });
+        },
+        { threshold: 0.5 }
+      );
+  
+      if (storyRef.current) {
+        observer.observe(storyRef.current);
+      }
+      if (aboutRef.current) {
+        observer.observe(aboutRef.current);
+      }
+      if (teamRef.current) {
+        observer.observe(teamRef.current);
+      }
+      if (specialRef.current) {
+        observer.observe(specialRef.current);
+      }
+  
+      return () => {
+        observer.disconnect();
+       } };
+  }, [scrolling]); // Re-instantiate observer if 'scrolling' changes
 
   const links = ["story", "about", "team"];
   const socials = [
@@ -142,17 +148,21 @@ const Portfolio: NextPage = () => {
   const handleDirect = (link: string) => {
     // Toggle the navigation state
     setOpenNav(!openNav);
-    window.location.hash = `#${link}`;
 
-    // Use history.pushState to change the URL without reloading the page
-    if (window.location.hash) {
-      history.pushState(
-        "",
-        document.title,
-        window.location.pathname + window.location.search
-      );
+    // Update the URL without reloading the page
+    const newHash = `#${link}`;
+    history.pushState("", document.title, window.location.pathname + window.location.search + newHash);
+
+    // Only scroll if 'scrolling' is false
+    if (!scrolling) {
+      setScrolling(true);
+      document.getElementById(link)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      // Set a timeout to reset 'scrolling' after the scroll is likely to have completed
+      setTimeout(() => {
+        setScrolling(false);
+      }, 500); // Adjust the timeout duration according to your average scroll duration
     }
-  };
+};
 
   return (
     <div className="w-screen flex lg:flex-col justify-center items-center lg:h-screen">
@@ -177,8 +187,8 @@ const Portfolio: NextPage = () => {
       <div className="relative w-full px-[1.5vh] flex flex-col gap-[2vh] overflow-hidden lg:hidden">
         <div
           className={`${
-            openNav ? "animate-fadeLeft fixed" : "animate-fadeOut z-[-1]"
-          } right-0 z-10 h-full w-[30%] bg-[#FF0083]`}
+            openNav ? "animate-fadeLeftMob fixed opacity-1" : "animate-fadeRightOutMob fixed opacity-0"
+          } right-0 z-10 h-full w-[30%] bg-[#FF0083] transition-all ease-in-out`}
         >
           <div
             className={`flex flex-col justify-between py-[1.5vh] h-full w-full m-auto items-center text-[#fff]`}
@@ -226,10 +236,20 @@ const Portfolio: NextPage = () => {
             onClick={() => handleNav()}
             src={MAcci}
             alt="MAcci"
+            className={`absolute mr-[3vh] right-0 ${
+              openNav
+                ? "opacity-0 transition-all ease-in-out"
+                : ""
+            } w-[15%]`}
+          ></Image>
+          <Image
+            onClick={() => handleNav()}
+            src={MAdollWhite}
+            alt="MAcci"
             className={`${
               openNav
-                ? "grayscale brightness-0 invert animate-fadeIn"
-                : "animate-fadeIn"
+                ? ""
+                : "opacity-0 transition-all ease-in-out"
             } w-[15%]`}
           ></Image>
         </nav>

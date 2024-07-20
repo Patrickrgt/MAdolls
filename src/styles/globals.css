@@ -48,7 +48,7 @@ html {
 }
 
 @layer utilities {
-  .MAdoll-text {
+  .MAdoll {
     transition: ease-in-out;
   }
   .text-balance {
