@@ -66,9 +66,6 @@ const Story: NextPage = () => {
           {MAdolls.map((doll, id) => (
             <button
               key={id}
-              style={{
-                animation: `fadeIn 0.5s ease-out ${id * 0.25}s forwards`,
-              }}
               onClick={() => handleCurDoll(id)}
               className="animate-fadeIn opacity-0 h-fit aspect-square p-0 border-0 m-auto"
             >
