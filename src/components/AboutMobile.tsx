@@ -147,8 +147,6 @@ const About: NextPage = () => {
     },
   ];
 
-  
-
   const [curBg, setCurBg] = useState(0);
   const [curTitle, setCurTitle] = useState(0);
   const [curTab, setCurTab] = useState(0);
@@ -175,12 +173,41 @@ const About: NextPage = () => {
     }
   };
 
+  useEffect(() => {
+    // Ensure this code block runs only in the browser
+    if (typeof window !== "undefined") {
+      const texts = document.querySelectorAll(".MAdoll-text");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            entry.target.classList.toggle(
+              "animate-fadeIn",
+              entry.isIntersecting
+            );
+            if (entry.isIntersecting) observer.unobserve(entry.target);
+          });
+        },
+        {
+          threshold: 1,
+        }
+      );
+
+      texts.forEach((text) => observer.observe(text));
+
+      // Clean up the observer when the component unmounts
+      return () => texts.forEach((text) => observer.unobserve(text));
+    }
+  }, []);
+
   return (
     <>
-      <div className={`flex flex-col justify-between relative items-center overflow-hidden m-auto w-[94%]`}>
+      <div
+        className={`flex flex-col justify-between relative items-center overflow-hidden m-auto w-[94%]`}
+      >
         <div className="flex flex-col gap-[1vh]">
           <div className="py-[1vh] border-b-[0.25vh] border-[#d1d1d1]">
-            <h1 className="overflow-hidden font-semibold text-[1.95vh]">
+            <h1 className="MAdoll-text overflow-hidden font-semibold text-[1.95vh]">
               No two MAdoll skins are alike.
               <br />
               This is because two layers are superimposed to create a variety of
@@ -188,13 +215,13 @@ const About: NextPage = () => {
               <br />
               Enjoy your own colors, only for that Madoll.
             </h1>
-            <p className="text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
+            <p className="MAdoll-text text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
               MAdollのスキンは2つとして同じものはありません。
             </p>
-            <p className="text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
+            <p className="MAdoll-text text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
               これは、2つのレイヤーを重ね合わせることで、さまざまな色が生まれるからだ。
             </p>
-            <p className="text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
+            <p className="MAdoll-text text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
               そのMAdollのためだけに、自分だけの色を楽しむ。
             </p>
           </div>
@@ -202,12 +229,12 @@ const About: NextPage = () => {
           <div className="m-auto overflow-hidden">
             <Image
               src={aboutSkin}
-              className="animate-fadeIn m-auto h-fit"
+              className="MAdoll-text lg:animate-fadeIn m-auto h-fit"
               alt="aboutSkin"
               placeholder="blur"
               blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCACJAIkDASIAAhEBAxEB/8QAGQAAAwEBAQAAAAAAAAAAAAAAAQIDAAQF/8QAGxABAQEBAQEBAQAAAAAAAAAAAAECERIDITH/xAAZAQADAQEBAAAAAAAAAAAAAAABAgMABAX/xAAYEQEBAQEBAAAAAAAAAAAAAAAAARECEv/aAAwDAQACEQMRAD8A86HyWQ+YlzHrSK5VyllXK0V5VyeEyeKxQwlEwMWmLQBPSWldJaLU6jtz7dG0Nkqdjm+jl1/XX9I5dT9Q6gwrCBWx6/DyNw0i0ivk2Vcp5UypIeRTJ4nDxSGMwMYBCsFACaS0rpLRaWxHaO19I7LYTHNuOfU/XVuOfU/U7zrSJcbh7A4j5rY9jgyMMdWOnyaHhIaGkDFIaJw0pox2L0emAehW6W1mwKno9JouBiWktK6S0WwMQ2jqfq+0tQMDEuNw/A4TAx6ok6MquOvDw0JKPRLYeUZSdHokp+j0nW6IH6Fpet0Ra0lG0loDhdJaU0loMDE9JVXSdLYFhGECld/TSp9GVV12KSj0ko9BPo/R6TrdFKn6PSdHogbrdL1uieNaW1rS2sYuqnqm1U9UGLolNSUlJQBqxSOvrdL0On11apKbqUppWS6qnR6nKaVkbT9HpJR6ISm63QYVJWtJaakrHlLqp2m0naFrWhaS0bSWp2p2taHQtDpNT11dDpPQej6v6UlPKh08ran10tKaVKU8ralaeU0JDQ2tKZgYdPK1JTUtbT6npLVU0lqha2ltTtHVT1pDvrE+q103pO1uo+qn6dHpvSfpvR52f0rKfNQlVzVPReulpTypZqkGVPVIaEhobRlMzMOqShS01JptNqekd1XSG6W0NT1UrTaqdrm6u1PqtaHS2h1sQvS7MxFxlWyhP6tlXktWyplLKkUhFIeEh4c0EQEVIWl0ak0Ap6c/0dGnP9CdMhpPR9J6QiPZLQ61A7ltf//Z"
             ></Image>
-            <div className="grid grid-cols-5 grid-rows-3 w-[90%] m-auto">
+            <div className="MAdoll-text grid grid-cols-5 grid-rows-3 w-[90%] m-auto">
               {skins.map((doll, id) => (
                 <Image
                   key={id}
@@ -226,33 +253,27 @@ const About: NextPage = () => {
         </div>
       </div>
 
-      <div className="flex flex-col justify-between relative items-center overflow-hidden m-auto w-[95%]">
+      <div className="flex flex-col justify-between relative items-start lg:overflow-hidden m-auto w-[95%]">
+        <h1 className="MAdoll-text overflow-hidden font-semibold text-[1.95vh]">
+          All MAdoll color backgrounds are titled. This is something I do all
+          the time. I put my color impressions into words.
+        </h1>
+        <p className="MAdoll-text text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
+          MAdollのカラー背景にはすべてタイトルが付いています。これは私がいつもやっていることです。
+        </p>
+        <p className="MAdoll-text text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
+          私は自分の色の印象を言葉にした。
+        </p>
         <div className="flex flex-col">
-          <div className=" py-[1vh]">
-            <h1 className="overflow-hidden font-semibold text-[1.95vh]">
-              All MAdoll color backgrounds are titled. This is something I do
-              all the time. I put my color impressions into words.
-            </h1>
-            <p className="text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
-              MAdollのカラー背景にはすべてタイトルが付いています。これは私がいつもやっていることです。
-            </p>
-            <p className="text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
-              私は自分の色の印象を言葉にした。
-            </p>
-          </div>
-
           <div className="overflow-hidden flex flex-col justify-start items-stretch gap-[2vh] pt-[4vh] w-full">
             <div className="grid grid-cols-4 grid-rows-3 overflow-hidden gap-[1vh] m-auto">
               {colors.map((color, id) => (
                 <div key={id}>
                   <Image
                     onClick={() => handleCurTitle(id)}
-                    style={{
-                      animation: `fadeIn 0.5s ease-out ${id * 0.15}s forwards`,
-                    }}
                     className={`${
                       curTitle == id ? "border-[#FF0083]" : "border-transparent"
-                    } animate-fadeIn h-fit w-[12vh] opacity-0 aspect-square hover:border-[#FF0083] hover:border-[0.5vh] border-[0.5vh] transition-all ease-in-out`}
+                    } MAdoll-text lg:animate-fadeIn h-fit w-[12vh] opacity-0 aspect-square hover:border-[#FF0083] hover:border-[0.5vh] border-[0.5vh] transition-all ease-in-out`}
                     src={color.img}
                     alt="doll"
                     placeholder="blur"
@@ -263,7 +284,7 @@ const About: NextPage = () => {
             </div>
             <div
               style={{ color: colors[curTitle].hex }}
-              className="m-auto text-center animate-fadeIn font-semibold text-[1.75vh] transition-all ease-in-out cursor-none overflow-hidden"
+              className="m-auto text-center MAdoll-text lg:animate-fadeIn font-semibold text-[1.75vh] transition-all ease-in-out cursor-none overflow-hidden"
             >
               {`${colors[curTitle].title}`}
             </div>
