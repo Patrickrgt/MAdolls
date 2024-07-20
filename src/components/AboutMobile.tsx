@@ -238,9 +238,6 @@ const About: NextPage = () => {
               {skins.map((doll, id) => (
                 <Image
                   key={id}
-                  style={{
-                    animation: `fadeIn 0.5s ease-out ${id * 0.15}s forwards`,
-                  }}
                   className="animate-fadeIn opacity-0 h-fit w-full aspect-square hover:border-[#FF0083] hover:border-[0.25vh] border-transparent border-[0.25vh] transition-all ease-in-out"
                   src={doll}
                   alt="doll"
