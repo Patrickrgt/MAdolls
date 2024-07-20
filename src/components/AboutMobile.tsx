@@ -239,7 +239,7 @@ const About: NextPage = () => {
               {skins.map((doll, id) => (
                 <Image
                   key={id}
-                  className="animate-fadeIn opacity-0 h-fit w-full aspect-square hover:border-[#FF0083] hover:border-[0.25vh] border-transparent border-[0.25vh] transition-all ease-in-out"
+                  className="animate-fadeIn h-fit w-full aspect-square hover:border-[#FF0083] hover:border-[0.25vh] border-transparent border-[0.25vh] transition-all ease-in-out"
                   src={doll}
                   alt="doll"
                   placeholder="blur"
@@ -272,7 +272,7 @@ const About: NextPage = () => {
                     onClick={() => handleCurTitle(id)}
                     className={`${
                       curTitle == id ? "border-[#FF0083]" : "border-transparent"
-                    } animate-fadeIn h-fit w-[12vh] opacity-0 aspect-square hover:border-[#FF0083] hover:border-[0.5vh] border-[0.5vh] transition-all ease-in-out`}
+                    } animate-fadeIn h-fit w-[12vh] aspect-square hover:border-[#FF0083] hover:border-[0.5vh] border-[0.5vh] transition-all ease-in-out`}
                     src={color.img}
                     alt="doll"
                     placeholder="blur"

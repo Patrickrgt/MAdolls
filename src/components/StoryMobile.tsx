@@ -67,7 +67,7 @@ const Story: NextPage = () => {
             <button
               key={id}
               onClick={() => handleCurDoll(id)}
-              className="animate-fadeIn opacity-0 h-fit aspect-square p-0 border-0 m-auto"
+              className="animate-fadeIn h-fit aspect-square p-0 border-0 m-auto"
             >
               <Image
                 className="h-fit m-auto aspect-square hover:border-[#FF0083] hover:border-[0.5vh] border-transparent border-[0.5vh] transition-all ease-in-out"
