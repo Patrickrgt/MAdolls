@@ -273,7 +273,7 @@ const About: NextPage = () => {
                     onClick={() => handleCurTitle(id)}
                     className={`${
                       curTitle == id ? "border-[#FF0083]" : "border-transparent"
-                    } MAdoll-text lg:animate-fadeIn h-fit w-[12vh] opacity-0 aspect-square hover:border-[#FF0083] hover:border-[0.5vh] border-[0.5vh] transition-all ease-in-out`}
+                    } animate-fadeIn h-fit w-[12vh] opacity-0 aspect-square hover:border-[#FF0083] hover:border-[0.5vh] border-[0.5vh] transition-all ease-in-out`}
                     src={color.img}
                     alt="doll"
                     placeholder="blur"
