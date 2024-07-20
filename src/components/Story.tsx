@@ -87,7 +87,7 @@ const Story: NextPage = () => {
                   animation: `fadeIn 0.5s ease-out ${id * 0.25}s forwards`,
                 }}
                 onClick={() => handleCurDoll(id)}
-                className="animate-fadeIn opacity-0 h-fit w-full aspect-square p-0 border-0 m-auto"
+                className="animate-fadeIn lg:opacity-0 h-fit w-full aspect-square p-0 border-0 m-auto"
               >
                 <Image
                   className="h-fit w-full aspect-square hover:border-[#FF0083] hover:border-[0.5vh] border-transparent border-[0.5vh] transition-all ease-in-out"

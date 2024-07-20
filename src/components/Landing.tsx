@@ -306,7 +306,7 @@ const Portfolio: NextPage = () => {
         <div className="flex m-[2vh] justify-center items-center gap-[2vh]">
           <h1
             className={`${
-              music ? "opacity-1" : "opacity-0"
+              music ? "lg:opacity-1" : "lg:opacity-0"
             }  italic transition-all duration-500 ease-in-out text-[2vh] font-light border-l-[0.75vh] border-l-[#FF1999] pl-[1vh]`}
           >
             {musicTracks[currentTrackIndex].title}

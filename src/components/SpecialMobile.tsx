@@ -86,7 +86,7 @@ const SpecialMobile: NextPage = () => {
               src={sp01}
               width={700}
               height={700}
-              className={`opacity-0`}
+              className={`invisible`}
             />
             {specialBackground.map((src, index) => (
               <Image
