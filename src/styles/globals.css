@@ -49,7 +49,6 @@ html {
 
 @layer utilities {
   .MAdoll-text {
-    opacity: 0;
     transition: ease-in-out;
   }
   .text-balance {
