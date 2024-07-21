@@ -1,7 +1,7 @@
 // pages/portfolio.tsx
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useEffect, useState, useRef } from "react";
+import { Suspense, useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import MAcci from "../images/MAdollLogo.png";
 import MAdollWhite from "../images/MAdollLogoWhite.png";
@@ -30,6 +30,8 @@ const Portfolio: NextPage = () => {
   const [navTitle, setNavTitle] = useState("MAdoll Story");
   const [openNav, setOpenNav] = useState(false);
   const [scrolling, setScrolling] = useState(false);
+  const [isSplashVisible, setIsSplashVisible] = useState(true);
+  const [windowWidth, setWindowWidth] = useState<number|null>(null);
 
   const [animation, setAnimation] = useState(true);
 
@@ -51,6 +53,29 @@ const Portfolio: NextPage = () => {
     },
     // Add more tracks as needed
   ];
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // Set the initial window dimensions
+      setWindowWidth(window.innerWidth);
+      // Then, continue handling resize events
+      const handleResize = () => {
+        setWindowWidth(window.innerWidth);
+      };
+  
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Simulating a loading process, replace this with your actual loading logic
+    const timer = setTimeout(() => {
+      setIsSplashVisible(false); // Hide splash after resources are loaded
+    }, 3000); // Adjust time based on your load time
+  
+    return () => clearTimeout(timer);
+  }, []);
 
   // Effect to toggle music play/pause
   useEffect(() => {
@@ -188,6 +213,7 @@ const Portfolio: NextPage = () => {
   };
 
   return (
+    <Suspense>
     <div className="w-screen flex lg:flex-col justify-center items-center lg:h-screen">
       <Head>
         <title>{`MAdoll ${navTitle} by MAcci`}</title>
@@ -274,13 +300,6 @@ const Portfolio: NextPage = () => {
             } w-[15%]`}
           ></Image>
         </nav>
-
-        {/* <nav className="lg:hidden flex w-full items-center">
-          <div className="mr-auto font-semibold text-[#FF0083] text-[2.75vh]">
-            MAdoll Story
-          </div>
-          <Image src={MAcci} alt="MAcci" className={`${openNav ? "grayscale brightness-0 invert" : ""} w-[15%]`}></Image>
-        </nav> */}
 
         <span ref={storyRef} id="story" className="lg:hidden pt-[6vh]">
           <div>
@@ -396,6 +415,7 @@ const Portfolio: NextPage = () => {
         height={48}
       />
     </div>
+    </Suspense>
   );
 };
 
