@@ -195,6 +195,33 @@ const About: NextPage = () => {
     }
   }, []);
 
+  useEffect(() => {
+    // Ensure this code block runs only in the browser
+    if (typeof window !== "undefined") {
+      const texts = document.querySelectorAll(".MAdoll-big");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            entry.target.classList.toggle(
+              "animate-fadeRightObserver",
+              entry.isIntersecting
+            );
+            if (entry.isIntersecting) observer.unobserve(entry.target);
+          });
+        },
+        {
+          threshold: 0.3,
+        }
+      );
+
+      texts.forEach((text) => observer.observe(text));
+
+      // Clean up the observer when the component unmounts
+      return () => texts.forEach((text) => observer.unobserve(text));
+    }
+  }, []);
+
   return (
     <>
       <div
@@ -224,7 +251,7 @@ const About: NextPage = () => {
           <div className="m-auto overflow-hidden">
             <Image
               src={aboutSkin}
-              className="MAdoll opacity-0 m-auto h-fit"
+              className="MAdoll-big opacity-0 m-auto h-fit"
               alt="aboutSkin"
               placeholder="blur"
               priority 
@@ -234,7 +261,7 @@ const About: NextPage = () => {
               {skins.map((doll, id) => (
                 <Image
                   key={id}
-                  className="h-fit w-full transition-all ease-in-out"
+                  className="MAdoll-big opacity-0 h-fit w-full transition-all ease-in-out"
                   src={doll}
                   alt="doll"
                 />
@@ -257,14 +284,14 @@ const About: NextPage = () => {
         </p>
         <div className="flex flex-col">
           <div className="overflow-hidden flex flex-col justify-start items-stretch gap-[2vh] pt-[4vh] w-full">
-            <div className="grid grid-cols-4 grid-rows-3 overflow-hidden gap-[1vh] m-auto">
+            <div className="MAdoll opacity-0 grid grid-cols-4 grid-rows-3 overflow-hidden gap-[1vh] m-auto">
               {colors.map((color, id) => (
                 <div key={id}>
                   <Image
                     onClick={() => handleCurTitle(id)}
                     className={`${
                       curTitle == id ? "border-[#FF0083]" : "border-transparent"
-                    } animate-fadeIn h-fit w-[12vh] aspect-square hover:border-[#FF0083] hover:border-[0.5vh] border-[0.5vh] transition-all ease-in-out`}
+                    } MAdoll-big opacity-0 animate-fadeIn h-fit w-[12vh] aspect-square hover:border-[#FF0083] hover:border-[0.5vh] border-[0.5vh] transition-all ease-in-out`}
                     src={color.img}
                     alt="doll"
                     placeholder="blur"
@@ -276,7 +303,7 @@ const About: NextPage = () => {
             </div>
             <div
               style={{ color: colors[curTitle].hex }}
-              className="m-auto text-center MAdoll-text lg:animate-fadeIn font-semibold text-[1.75vh] transition-all ease-in-out cursor-none overflow-hidden"
+              className="MAdoll-big opacity-0 m-auto text-center MAdoll-text lg:animate-fadeIn font-semibold text-[1.75vh] transition-all ease-in-out cursor-none overflow-hidden"
             >
               {`${colors[curTitle].title}`}
             </div>

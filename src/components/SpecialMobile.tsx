@@ -72,6 +72,60 @@ const SpecialMobile: NextPage = () => {
     setTouchPosition(null); // Reset touch position after handling the swipe
   };
 
+  useEffect(() => {
+    // Ensure this code block runs only in the browser
+    if (typeof window !== "undefined") {
+      const texts = document.querySelectorAll(".MAdoll");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            entry.target.classList.toggle(
+              "animate-fadeRightObserver",
+              entry.isIntersecting
+            );
+            if (entry.isIntersecting) observer.unobserve(entry.target);
+          });
+        },
+        {
+          threshold: 1,
+        }
+      );
+
+      texts.forEach((text) => observer.observe(text));
+
+      // Clean up the observer when the component unmounts
+      return () => texts.forEach((text) => observer.unobserve(text));
+    }
+  }, []);
+
+  useEffect(() => {
+    // Ensure this code block runs only in the browser
+    if (typeof window !== "undefined") {
+      const texts = document.querySelectorAll(".MAdoll-big");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            entry.target.classList.toggle(
+              "animate-fadeRightObserver",
+              entry.isIntersecting
+            );
+            if (entry.isIntersecting) observer.unobserve(entry.target);
+          });
+        },
+        {
+          threshold: 0.3,
+        }
+      );
+
+      texts.forEach((text) => observer.observe(text));
+
+      // Clean up the observer when the component unmounts
+      return () => texts.forEach((text) => observer.unobserve(text));
+    }
+  }, []);
+
   return (
     <>
       <div className="relative pt-[1.6vh]">
@@ -133,17 +187,17 @@ const SpecialMobile: NextPage = () => {
       <div className="flex flex-col justify-between relative items-center overflow-hidden m-auto w-[94%]">
         <div className="flex flex-col">
           <div className="py-[1vh]">
-            <h1 className="overflow-hidden font-semibold text-[1.95vh]">
+            <h1 className="MAdoll opacity-0 overflow-hidden font-semibold text-[1.95vh]">
               Some of Madoll’s backgrounds are special too!
             </h1>
-            <p className="text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
+            <p className="MAdoll opacity-0 text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
               These images represent memories from MAcci’s experiences and are
               incorporated in a small percentage of MAdolls in the collection.
             </p>
-            <p className="text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
+            <p className="MAdoll opacity-0 text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
               マドールの背景にも特別なものがある！
             </p>
-            <p className="text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
+            <p className="MAdoll opacity-0 text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
               これらのイメージはMAcciの経験からの思い出を表しており、コレクションの中のごく一部のMAdollに取り入れられています。{" "}
             </p>
           </div>

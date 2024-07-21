@@ -146,6 +146,33 @@ const TeamMobile: NextPage = () => {
     return () => clearTimeout(timer); // Clean up the timeout
   }, [curDoll]);
 
+  useEffect(() => {
+    // Ensure this code block runs only in the browser
+    if (typeof window !== "undefined") {
+      const texts = document.querySelectorAll(".MAdoll-big");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            entry.target.classList.toggle(
+              "animate-fadeRightObserver",
+              entry.isIntersecting
+            );
+            if (entry.isIntersecting) observer.unobserve(entry.target);
+          });
+        },
+        {
+          threshold: 0.3,
+        }
+      );
+
+      texts.forEach((text) => observer.observe(text));
+
+      // Clean up the observer when the component unmounts
+      return () => texts.forEach((text) => observer.unobserve(text));
+    }
+  }, []);
+
   return (
     <div className="overflow-hidden flex flex-col gap-[1vh] h-screen justify-between pt-[1.8vh]">
       <div className="flex flex-col flex-0 ">
@@ -196,7 +223,7 @@ const TeamMobile: NextPage = () => {
       </div>
 
       <div
-        className={`flex gap-[4vh] w-fullm-auto justify-start items-center flex-1`}
+        className={`flex gap-[4vh] w-fullm-auto justify-start items-start flex-1`}
       >
         <div className="flex flex-col gap-[3vh] justify-between items-between">
           <div className="flex flex-col">
