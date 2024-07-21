@@ -2,24 +2,36 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { Suspense, useEffect, useState, useRef } from "react";
+import dynamic from 'next/dynamic'
 import Image from "next/image";
-import MAcci from "../images/MAdollLogo.png";
-import MAdollWhite from "../images/MAdollLogoWhite.png";
-import macciCursor from "../images/macciCursor.png";
-import Discord from "../images/MAdoll1.png";
 
-import Story from "./Story";
-import StoryMobile from "./StoryMobile";
-import About from "./About";
-import AboutMobile from "./AboutMobile";
-import TeamMobile from "./TeamMobile";
-import Team from "./Team";
-import SpecialMobile from "./SpecialMobile";
+// Mobile SSR
+const StoryMobile = dynamic(() => import('./StoryMobile'))
+const AboutMobile = dynamic(() => import('./AboutMobile'))
+const TeamMobile = dynamic(() => import('./TeamMobile'))
+const SpecialMobile = dynamic(() => import('./SpecialMobile'))
+// import StoryMobile from "./StoryMobile";
+// import AboutMobile from "./AboutMobile";
+// import TeamMobile from "./TeamMobile";
+// import SpecialMobile from "./SpecialMobile";
+
+// Desktop SSR
+const Story = dynamic(() => import('./Story'))
+const About = dynamic(() => import('./About'))
+const Team = dynamic(() => import('./Team'))
+// import Story from "./Story";
+// import About from "./About";
+// import Team from "./Team";
+
 import socialX from "../images/socialX.png";
 import socialDiscord from "../images/socialDiscord.png";
 import socialOpensea from "../images/socialOpensea.png";
 import pauseButton from "../images/pauseButton.png";
 import playButton from "../images/playButton.png";
+import MAcci from "../images/MAdollLogo.png";
+import MAdollWhite from "../images/MAdollLogoWhite.png";
+import macciCursor from "../images/macciCursor.png";
+import Discord from "../images/MAdoll1.png";
 
 // import MAcci from "./images/MAcci.png";
 

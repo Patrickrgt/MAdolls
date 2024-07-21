@@ -43,6 +43,10 @@ const SpecialMobile: NextPage = () => {
     }
   };
 
+  const handleLoad = () => {
+    console.log("Image loaded:");
+  };
+
   const handleTouchStart = (e: any) => {
     const touchDown = e.touches[0].clientX;
     setTouchPosition(touchDown);
@@ -161,6 +165,7 @@ const SpecialMobile: NextPage = () => {
                 alt={`special background ${index + 1}`}
                 width={700}
                 height={700}
+                onLoad={() => handleLoad()}
                 className={`z-[0] absolute ${
                   index === prevSpecial ? prevAnimationClass : "hidden"
                 }`}
