@@ -86,7 +86,7 @@ const Team: NextPage = () => {
               style={{
                 animation: `fadeUp 0.5s ease-out ${id * 0.1}s forwards`,
               }}
-              className="animate-fadeUp lg:opacity-0 overflow-hidden h-full w-full aspect-square p-0 border-0 m-auto"
+              className="animate-fadeUp sm:opacity-0 overflow-hidden h-full w-full aspect-square p-0 border-0 m-auto"
             >
               <Image
                 className={`${

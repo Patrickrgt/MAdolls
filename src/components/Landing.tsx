@@ -149,7 +149,7 @@ const Portfolio: NextPage = () => {
   };
 
   return (
-    <div className="w-screen flex lg:flex-col justify-center items-center lg:h-screen">
+    <div className="w-screen flex sm:flex-col justify-center items-center sm:h-screen">
       <Head>
         <title>{`MAdoll ${navTitle} by MAcci`}</title>
         <link rel="icon" href="/favicon.ico" />
@@ -161,7 +161,7 @@ const Portfolio: NextPage = () => {
         ></link>
       </Head>
 
-      <div className="relative w-full px-[1.5vh] flex flex-col gap-[2vh] overflow-hidden lg:hidden">
+      <div className="relative w-full px-[1.5vh] flex flex-col gap-[2vh] overflow-hidden sm:hidden">
         {/* Navigation */}
         <div
           className={`${
@@ -208,7 +208,7 @@ const Portfolio: NextPage = () => {
           </div>
         </div>
 
-        <nav className="lg:hidden fixed flex w-full items-center  pr-[3vh] z-10">
+        <nav className="sm:hidden fixed flex w-full items-center  pr-[3vh] z-10">
           <div className="animate-fadeIn mr-auto font-semibold text-[#FF0083] text-[2.75vh] transition-all ease-in-out">
             {navTitle}
           </div>
@@ -231,32 +231,32 @@ const Portfolio: NextPage = () => {
         </nav>
 
         {/* Mobile Components */}
-        <span ref={storyRef} id="story" className="lg:hidden pt-[6vh]">
+        <span ref={storyRef} id="story" className="sm:hidden pt-[6vh]">
           <div>
             <StoryMobile></StoryMobile>
           </div>
         </span>
 
-        <span ref={aboutRef} id="about" className="lg:hidden pt-[6vh]">
+        <span ref={aboutRef} id="about" className="sm:hidden pt-[6vh]">
           <div>
             <AboutMobile></AboutMobile>
           </div>
         </span>
 
-        <span ref={specialRef} id="special" className="lg:hidden pt-[6vh]">
+        <span ref={specialRef} id="special" className="sm:hidden pt-[6vh]">
           <div>
             <SpecialMobile></SpecialMobile>
           </div>
         </span>
 
-        <span ref={teamRef} id="team" className="lg:hidden pt-[6vh]">
+        <span ref={teamRef} id="team" className="sm:hidden pt-[6vh]">
           <div>
             <TeamMobile></TeamMobile>
           </div>
         </span>
       </div>
 
-      <div className="hidden lg:flex w-[90%] m-auto gap-[16vh]">
+      <div className="hidden sm:flex w-[90%] m-auto gap-[16vh]">
         
         <div className="flex flex-1 flex-col h-[80vh]">
           <div className="w-[100%] m-auto h-full flex flex-col justify-between">
