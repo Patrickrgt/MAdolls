@@ -139,6 +139,14 @@ const config: Config = {
           "0%": { transform: "translateX(-4vh)", opacity: "0"},
           "100%": { transform: "translateX(0vh)", opacity: "1"},
         },
+        fadeLeftObserver: {
+          "0%": { transform: "translateX(4vh)", opacity: "0"},
+          "100%": { transform: "translateX(0vh)", opacity: "1"},
+        },
+        fadeRightObserver: {
+          "0%": { transform: "translateX(-4vh)", opacity: "0"},
+          "100%": { transform: "translateX(0vh)", opacity: "1"},
+        },
         width: {
           "0%": { width: "0%"},
           "100%": { width: "55%"},
@@ -238,6 +246,8 @@ const config: Config = {
         fadeRightNav: "fadeRightNav 1s forwards cubic-bezier(.8,0,.4,1.27)",
         fadeLeftNav: "fadeLeftNav 0.5s forwards cubic-bezier(.35,.17,.2,.69)",
         fadeLeftMob: "fadeLeftMob 0.5s forwards cubic-bezier(.35,.17,.2,.69)",
+        fadeRightObserver: "fadeRightObserver 1s forwards cubic-bezier(.8,0,.4,1.27)",
+        fadeLeftObserver: "fadeLeftObserver 1s forwards cubic-bezier(.8,0,.4,1.27)",
         fadeRight: "fadeRight 1s forwards cubic-bezier(.8,0,.4,1.27)",
         fadeLeft: "fadeLeft 1s forwards cubic-bezier(.8,0,.4,1.27)",
         fadeUp: "fadeUp 1s forwards cubic-bezier(.8,0,.4,1.27)",

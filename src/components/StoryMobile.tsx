@@ -18,19 +18,46 @@ const Story: NextPage = () => {
     setCurDoll(id);
   };
 
+  useEffect(() => {
+    // Ensure this code block runs only in the browser
+    if (typeof window !== "undefined") {
+      const texts = document.querySelectorAll(".MAdoll");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            entry.target.classList.toggle(
+              "animate-fadeRightObserver",
+              entry.isIntersecting
+            );
+            if (entry.isIntersecting) observer.unobserve(entry.target);
+          });
+        },
+        {
+          threshold: 0.5,
+        }
+      );
+
+      texts.forEach((text) => observer.observe(text));
+
+      // Clean up the observer when the component unmounts
+      return () => texts.forEach((text) => observer.unobserve(text));
+    }
+  }, []);
+
   return (
     <div className="h-fit overflow-hidden">
       <div className="flex flex-col tracking-none py-[1vh] border-b-[0.25vh] border-[#d1d1d1] w-[94%] m-auto">
-        <h1 className="overflow-hidden leading-normal font-semibold text-[1.95vh] hover:text-[#FF0083] transition-all ease-in-out">
+        <h1 className="MAdoll opacity-0 overflow-hidden leading-normal font-semibold text-[1.95vh] hover:text-[#FF0083] transition-all ease-in-out">
           This is a generative collection in which MAcci, as an individual
           creator, challenges {`NFT's`} and continues to search of
           possibilities.
         </h1>
-        <p className="text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
+        <p className="MAdoll opacity-0 text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
           MAdoll is a “cyber doll” inspired by the dolls we all played with in
           our childhood.
         </p>
-        <p className="text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
+        <p className="MAdoll opacity-0 text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
           As a former color designer, I have a strong passion for color. As part
           of my expression, no two MAdolls have the same skin color.{" "}
           {`"All colors
@@ -39,13 +66,13 @@ const Story: NextPage = () => {
           continue to share with you the various joys, headwinds and challenges.
         </p>
 
-        <p className="text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
+        <p className="MAdoll opacity-0 text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out">
           I cannot promise any specific benefits or airdrops for this collection
           as we move forward into an uncertain future with changing rules and
           circumstances. What I promise is my hard work and my thoughts for all
           of you.
         </p>
-        <p className="text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out italic">
+        <p className="MAdoll opacity-0 text-[1.5vh] hover:text-[#FF0083] transition-all ease-in-out italic">
           {`Let's`} play around with novelty, unbound by anything. Just like
           back then.
         </p>
@@ -67,7 +94,7 @@ const Story: NextPage = () => {
             <button
               key={id}
               onClick={() => handleCurDoll(id)}
-              className="animate-fadeIn h-fit aspect-square p-0 border-0 m-auto"
+              className="h-fit aspect-square p-0 border-0 m-auto"
             >
               <Image
                 className="h-fit m-auto aspect-square hover:border-[#FF0083] hover:border-[0.5vh] border-transparent border-[0.5vh] transition-all ease-in-out"

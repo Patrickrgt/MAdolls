@@ -30,7 +30,7 @@ const Portfolio: NextPage = () => {
   const [navTitle, setNavTitle] = useState("MAdoll Story");
   const [openNav, setOpenNav] = useState(false);
   const [scrolling, setScrolling] = useState(false);
-  
+
   const [animation, setAnimation] = useState(true);
 
   const [music, setMusic] = useState(false);
@@ -44,12 +44,16 @@ const Portfolio: NextPage = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const musicTracks = [
-    { id: 1, src:"/CrispSummerBreeze.mp3", title: "Crisp Summer Breeze by Jexto" },
+    {
+      id: 1,
+      src: "/CrispSummerBreeze.mp3",
+      title: "Crisp Summer Breeze by Jexto",
+    },
     // Add more tracks as needed
   ];
 
-   // Effect to toggle music play/pause
-   useEffect(() => {
+  // Effect to toggle music play/pause
+  useEffect(() => {
     if (music && audioRef.current) {
       audioRef.current.play();
     } else if (audioRef.current) {
@@ -76,42 +80,54 @@ const Portfolio: NextPage = () => {
     );
   };
 
-    // Update cursor position
-    const updateCursorPosition = (event: MouseEvent) => {
-      setCursorPosition({ x: event.clientX, y: event.clientY });
-    };
+  // Update cursor position
+  const updateCursorPosition = (event: MouseEvent) => {
+    setCursorPosition({ x: event.clientX, y: event.clientY });
+  };
 
-    useEffect(() => {
-      if (!scrolling) { 
+  useEffect(() => {
+    // Check if the window width indicates a mobile device
+    const isMobile = window.innerWidth <= 320; // Adjust 768px according to your design's mobile breakpoint
 
+    if (isMobile) {
+      // Scroll to the top of the page
+      window.scrollTo(0, 0);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!scrolling) {
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               // Ensure title changes only if not currently programmatically scrolling
-                entry.target.scrollIntoView({ behavior: "smooth", block: "start" });
-                switch (entry.target.id) {
-                  case "story":
-                    setNavTitle("MAdoll Story");
-                    break;
-                  case "about":
-                    setNavTitle("MAdoll About");
-                    break;
-                  case "special":
-                    setNavTitle("MAdoll Special");
-                    break;
-                  case "team":
-                    setNavTitle("MAdoll Team");
-                    break;
-                  default:
-                    break;
-                }
+              entry.target.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+              switch (entry.target.id) {
+                case "story":
+                  setNavTitle("MAdoll Story");
+                  break;
+                case "about":
+                  setNavTitle("MAdoll About");
+                  break;
+                case "special":
+                  setNavTitle("MAdoll Special");
+                  break;
+                case "team":
+                  setNavTitle("MAdoll Team");
+                  break;
+                default:
+                  break;
               }
+            }
           });
         },
         { threshold: 0.5 }
       );
-  
+
       if (storyRef.current) {
         observer.observe(storyRef.current);
       }
@@ -124,10 +140,11 @@ const Portfolio: NextPage = () => {
       if (specialRef.current) {
         observer.observe(specialRef.current);
       }
-  
+
       return () => {
         observer.disconnect();
-       } };
+      };
+    }
   }, [scrolling]); // Re-instantiate observer if 'scrolling' changes
 
   const links = ["story", "about", "team"];
@@ -151,18 +168,24 @@ const Portfolio: NextPage = () => {
 
     // Update the URL without reloading the page
     const newHash = `#${link}`;
-    history.pushState("", document.title, window.location.pathname + window.location.search + newHash);
+    history.pushState(
+      "",
+      document.title,
+      window.location.pathname + window.location.search + newHash
+    );
 
     // Only scroll if 'scrolling' is false
     if (!scrolling) {
       setScrolling(true);
-      document.getElementById(link)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      document
+        .getElementById(link)
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
       // Set a timeout to reset 'scrolling' after the scroll is likely to have completed
       setTimeout(() => {
         setScrolling(false);
       }, 500); // Adjust the timeout duration according to your average scroll duration
     }
-};
+  };
 
   return (
     <div className="w-screen flex lg:flex-col justify-center items-center lg:h-screen">
@@ -187,7 +210,9 @@ const Portfolio: NextPage = () => {
       <div className="relative w-full px-[1.5vh] flex flex-col gap-[2vh] overflow-hidden lg:hidden">
         <div
           className={`${
-            openNav ? "animate-fadeLeftNav fixed opacity-1" : "animate-fadeRightNav fixed opacity-0"
+            openNav
+              ? "animate-fadeLeftNav fixed opacity-1"
+              : "animate-fadeRightNav fixed opacity-0"
           } right-0 z-10 h-full w-[30%] bg-[#FF0083] transition-all ease-in-out`}
         >
           <div
@@ -237,9 +262,7 @@ const Portfolio: NextPage = () => {
             src={MAcci}
             alt="MAcci"
             className={`absolute mr-[3vh] right-0 ${
-              openNav
-                ? "opacity-0 transition-all ease-in-out"
-                : ""
+              openNav ? "opacity-0 transition-all ease-in-out" : ""
             } w-[15%]`}
           ></Image>
           <Image
@@ -247,9 +270,7 @@ const Portfolio: NextPage = () => {
             src={MAdollWhite}
             alt="MAcci"
             className={`${
-              openNav
-                ? ""
-                : "opacity-0 transition-all ease-in-out"
+              openNav ? "" : "opacity-0 transition-all ease-in-out"
             } w-[15%]`}
           ></Image>
         </nav>
@@ -321,7 +342,7 @@ const Portfolio: NextPage = () => {
         {curTab == 0 ? <Story /> : curTab == 1 ? <About /> : <Team />}
       </div>
       {/* Custom Cursor */}
-      
+
       <div className="hidden lg:block fixed lg:absolute bottom-0 right-0 overflow-hidden">
         <div className="flex m-[2vh] justify-center items-center gap-[2vh]">
           <h1

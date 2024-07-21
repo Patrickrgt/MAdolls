@@ -111,6 +111,33 @@ const TeamMobile: NextPage = () => {
   };
 
   useEffect(() => {
+    // Ensure this code block runs only in the browser
+    if (typeof window !== "undefined") {
+      const texts = document.querySelectorAll(".MAdoll");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            entry.target.classList.toggle(
+              "animate-fadeRightObserver",
+              entry.isIntersecting
+            );
+            if (entry.isIntersecting) observer.unobserve(entry.target);
+          });
+        },
+        {
+          threshold: 0.5,
+        }
+      );
+
+      texts.forEach((text) => observer.observe(text));
+
+      // Clean up the observer when the component unmounts
+      return () => texts.forEach((text) => observer.unobserve(text));
+    }
+  }, []);
+
+  useEffect(() => {
     setInfoAnimationClass("animate-fadeIn"); // Apply fade-in when the index changes
     const timer = setTimeout(() => {
       setInfoAnimationClass(""); // Reset animation class to stop repeating the animation
@@ -120,19 +147,19 @@ const TeamMobile: NextPage = () => {
   }, [curDoll]);
 
   return (
-    <div className="overflow-hidden flex flex-col gap-[2vh] h-full justify-between pt-[1.8vh]">
+    <div className="overflow-hidden flex flex-col gap-[1vh] h-screen justify-between pt-[1.8vh]">
       <div className="flex flex-col flex-0 ">
         <div
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
-          className="flex gap-[4vh] overflow-hidden h-full relative"
+          className="flex gap-[4vh] overflow-hidden relative"
         >
           {Team.map((doll, id) => (
             <button
               key={id}
               className={`${
                 curDoll === id ? animationClass : "hidden"
-              } z-[1] overflow-hidden h-full w-full aspect-square p-0 border-0 m-auto`}
+              } z-[1] overflow-hidden w-full aspect-square p-0 border-0 m-auto`}
             >
               <a target="_blank" href={doll.link}>
                 <Image
@@ -148,12 +175,11 @@ const TeamMobile: NextPage = () => {
             </button>
           ))}
           {Team.map((doll, id) => (
-            <>
               <button
                 key={id}
                 className={`${
                   prevDoll === id ? prevAnimationClass : "hidden"
-                } z-[0] absolute overflow-hidden h-full w-full  p-0 border-0 m-auto`}
+                } z-[0] absolute overflow-hidden w-full  p-0 border-0 m-auto`}
               >
                 <Image
                   className={`${
@@ -165,39 +191,38 @@ const TeamMobile: NextPage = () => {
                   blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCACJAIkDASIAAhEBAxEB/8QAGQAAAwEBAQAAAAAAAAAAAAAAAQIDAAQF/8QAGxABAQEBAQEBAQAAAAAAAAAAAAECERIDITH/xAAZAQADAQEBAAAAAAAAAAAAAAABAgMABAX/xAAYEQEBAQEBAAAAAAAAAAAAAAAAARECEv/aAAwDAQACEQMRAD8A86HyWQ+YlzHrSK5VyllXK0V5VyeEyeKxQwlEwMWmLQBPSWldJaLU6jtz7dG0Nkqdjm+jl1/XX9I5dT9Q6gwrCBWx6/DyNw0i0ivk2Vcp5UypIeRTJ4nDxSGMwMYBCsFACaS0rpLRaWxHaO19I7LYTHNuOfU/XVuOfU/U7zrSJcbh7A4j5rY9jgyMMdWOnyaHhIaGkDFIaJw0pox2L0emAehW6W1mwKno9JouBiWktK6S0WwMQ2jqfq+0tQMDEuNw/A4TAx6ok6MquOvDw0JKPRLYeUZSdHokp+j0nW6IH6Fpet0Ra0lG0loDhdJaU0loMDE9JVXSdLYFhGECld/TSp9GVV12KSj0ko9BPo/R6TrdFKn6PSdHogbrdL1uieNaW1rS2sYuqnqm1U9UGLolNSUlJQBqxSOvrdL0On11apKbqUppWS6qnR6nKaVkbT9HpJR6ISm63QYVJWtJaakrHlLqp2m0naFrWhaS0bSWp2p2taHQtDpNT11dDpPQej6v6UlPKh08ran10tKaVKU8ralaeU0JDQ2tKZgYdPK1JTUtbT6npLVU0lqha2ltTtHVT1pDvrE+q103pO1uo+qn6dHpvSfpvR52f0rKfNQlVzVPReulpTypZqkGVPVIaEhobRlMzMOqShS01JptNqekd1XSG6W0NT1UrTaqdrm6u1PqtaHS2h1sQvS7MxFxlWyhP6tlXktWyplLKkUhFIeEh4c0EQEVIWl0ak0Ap6c/0dGnP9CdMhpPR9J6QiPZLQ61A7ltf//Z"
                 />
               </button>
-            </>
           ))}
         </div>
       </div>
 
       <div
-        className={`${infoAnimationClass} flex gap-[4vh] w-full h-full m-auto justify-start items-center flex-1`}
+        className={`flex gap-[4vh] w-fullm-auto justify-start items-center flex-1`}
       >
-        <div className=" flex flex-col gap-[3vh] h-full justify-between items-between">
-          <div className="flex flex-col h-full">
+        <div className="flex flex-col gap-[3vh] justify-between items-between">
+          <div className="flex flex-col">
             <a target="_blank" href={Team[curDoll].link}>
-              <h2 className="font-semibold text-[2.75vh] hover:text-[#FF0083] transition-all ease-in-out cursor-none">
+              <h2 className="MAdoll opacity-0 font-semibold text-[2.75vh] hover:text-[#FF0083] transition-all ease-in-out cursor-none">
                 {Team[curDoll].name}
               </h2>
             </a>
 
-            <h3 className="font-semibold underline text-[2.25vh] hover:text-[#FF0083] transition-all ease-in-out cursor-none">
+            <h3 className="MAdoll opacity-0 font-semibold underline text-[2.25vh] hover:text-[#FF0083] transition-all ease-in-out cursor-none">
               {Team[curDoll].title}
             </h3>
           </div>
 
-          <div className="flex flex-col justify-between h-full">
-            <h3 className="font-semibold text-[1.95vh] hover:text-[#FF0083] transition-all ease-in-out cursor-none">
+          <div className="flex flex-col justify-between">
+            <h3 className="MAdoll opacity-0 font-semibold text-[1.95vh] hover:text-[#FF0083] transition-all ease-in-out cursor-none">
               {Team[curDoll].headline}
             </h3>
-            <p className="whitespace-pre-line	text-[1.5vh] hover:text-[#FF0083] leading-tight mt-[0.5vh] transition-all ease-in-out">
+            <p className="MAdoll opacity-0 whitespace-pre-line	text-[1.5vh] hover:text-[#FF0083] leading-tight mt-[0.5vh] transition-all ease-in-out">
               {Team[curDoll].desc}
             </p>
             <span className="border-b-black border-b-[0.25vh] pt-[2vh]"></span>
           </div>
         </div>
       </div>
-      <div className="w-full m-auto flex justify-between py-[4vh]">
+      <div className="w-full m-auto flex justify-between py-[1vh]">
         <button className="w-[5%]" onClick={() => handleCurDoll("-1")}>
           <Image alt={`left arrow`} src={arrowLeft}></Image>
         </button>
