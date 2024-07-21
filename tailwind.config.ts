@@ -149,17 +149,25 @@ const config: Config = {
           "35%": { width: "10%", opacity: "1"},
           "100%": { width: "100%", opacity: "1"},
         },
+        fadeRightNav: {
+          "0%": { transform: "translateX(0vh)"},
+          "100%": { transform: "translateX(40vh)"},
+        },
         fadeRightMob: {
           "0%": { transform: "translateX(-40vh)", opacity: "0"},
           "100%": { transform: "translateX(0vh)", opacity: "1"},
         },
         fadeRightOutMob: {
-          "0%": { transform: "translateX(0vh)"},
-          "100%": { transform: "translateX(40vh)"},
+          "0%": { transform: "translateX(0vh)", opacity: "1"},
+          "100%": { transform: "translateX(40vh)", opacity: "0"},
         },
-        fadeLeftMob: {
+        fadeLeftNav: {
           "0%": { transform: "translateX(40vh)"},
           "100%": { transform: "translateX(0vh)"},
+        },
+        fadeLeftMob: {
+          "0%": { transform: "translateX(40vh)", opacity: "0"},
+          "100%": { transform: "translateX(0vh)", opacity: "1"},
         },
         fadeLeft: {
           "0%": { transform: "translateX(4vh)", opacity: "0"},
@@ -225,8 +233,10 @@ const config: Config = {
         leftBracketMobile: "leftBracketMobile 3s forwards cubic-bezier(.17,.67,.4,1.18)",
         rightBracketMobile: "rightBracketMobile 3s forwards cubic-bezier(.17,.67,.4,1.18)",
         comeInMobile: "comeInMobile 2.9s forwards cubic-bezier(.17,.67,.4,1.18)",
-        fadeRightMob: "fadeRightMob 1s forwards cubic-bezier(.8,0,.4,1.27)",
+        fadeRightMob: "fadeRightMob 1s forwards cubic-bezier(.35,.17,.2,.69)",
         fadeRightOutMob: "fadeRightOutMob 1s forwards cubic-bezier(.8,0,.4,1.27)",
+        fadeRightNav: "fadeRightNav 1s forwards cubic-bezier(.8,0,.4,1.27)",
+        fadeLeftNav: "fadeLeftNav 0.5s forwards cubic-bezier(.35,.17,.2,.69)",
         fadeLeftMob: "fadeLeftMob 0.5s forwards cubic-bezier(.35,.17,.2,.69)",
         fadeRight: "fadeRight 1s forwards cubic-bezier(.8,0,.4,1.27)",
         fadeLeft: "fadeLeft 1s forwards cubic-bezier(.8,0,.4,1.27)",
