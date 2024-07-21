@@ -104,7 +104,7 @@ const Team: NextPage = () => {
 
       <div className="">
         <div className="flex gap-[4vh]">
-          <div className="animate-fadeRight flex">
+          <div className="animate-fadeRight flex justify-center items-end">
             <a href={Team[curDoll].link}>
             <Image
               src={Team[curDoll].member}
@@ -116,7 +116,7 @@ const Team: NextPage = () => {
             </a>
           </div>
 
-          <div className="animate-fadeLeft flex flex-col w-[70%] justify-between items-between">
+          <div className="animate-fadeLeft flex-1 flex flex-col justify-between items-between m-auto">
             <h2 className="font-semibold text-[6vh] hover:text-[#FF0083] transition-all ease-in-out cursor-none">
               {Team[curDoll].name}
             </h2>

@@ -256,8 +256,9 @@ const Portfolio: NextPage = () => {
         </span>
       </div>
 
-      <div className="hidden lg:flex w-[90%] h-[80%] m-auto gap-[16vh]">
-        <div className="flex flex-1 flex-col">
+      <div className="hidden lg:flex w-[90%] m-auto gap-[16vh]">
+        
+        <div className="flex flex-1 flex-col h-[80vh]">
           <div className="w-[100%] m-auto h-full flex flex-col justify-between">
             <div className="flex flex-col">
               <Image src={MAcci} alt="MAcci" className=""></Image>
