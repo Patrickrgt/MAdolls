@@ -1,126 +1,57 @@
 // pages/portfolio.tsx
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Suspense, useEffect, useState, useRef } from "react";
-import dynamic from 'next/dynamic'
+import { useEffect, useState, useRef } from "react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
+import Audio from "./Audio";
+import Cursor from "./Cursor";
+import Nav from "./Nav";
 
 // Mobile SSR
-const StoryMobile = dynamic(() => import('./StoryMobile'))
-const AboutMobile = dynamic(() => import('./AboutMobile'))
-const TeamMobile = dynamic(() => import('./TeamMobile'))
-const SpecialMobile = dynamic(() => import('./SpecialMobile'))
+const StoryMobile = dynamic(() => import("./StoryMobile"));
+const AboutMobile = dynamic(() => import("./AboutMobile"));
+const TeamMobile = dynamic(() => import("./TeamMobile"));
+const SpecialMobile = dynamic(() => import("./SpecialMobile"));
 // import StoryMobile from "./StoryMobile";
 // import AboutMobile from "./AboutMobile";
 // import TeamMobile from "./TeamMobile";
 // import SpecialMobile from "./SpecialMobile";
 
 // Desktop SSR
-const Story = dynamic(() => import('./Story'))
-const About = dynamic(() => import('./About'))
-const Team = dynamic(() => import('./Team'))
-// import Story from "./Story";
-// import About from "./About";
-// import Team from "./Team";
+// const Story = dynamic(() => import('./Story'))
+// const About = dynamic(() => import('./About'))
+// const Team = dynamic(() => import('./Team'))
+import Story from "./Story";
+import About from "./About";
+import Team from "./Team";
 
 import socialX from "../images/socialX.png";
 import socialDiscord from "../images/socialDiscord.png";
 import socialOpensea from "../images/socialOpensea.png";
-import pauseButton from "../images/pauseButton.png";
-import playButton from "../images/playButton.png";
 import MAcci from "../images/MAdollLogo.png";
 import MAdollWhite from "../images/MAdollLogoWhite.png";
-import macciCursor from "../images/macciCursor.png";
 import Discord from "../images/MAdoll1.png";
 
 // import MAcci from "./images/MAcci.png";
 
 const Portfolio: NextPage = () => {
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-
-  const [isLoading, setIsLoading] = useState(true);
   const [navTitle, setNavTitle] = useState("MAdoll Story");
   const [openNav, setOpenNav] = useState(false);
   const [scrolling, setScrolling] = useState(false);
-  const [isSplashVisible, setIsSplashVisible] = useState(true);
-  const [windowWidth, setWindowWidth] = useState<number|null>(null);
-
-  const [animation, setAnimation] = useState(true);
-
-  const [music, setMusic] = useState(false);
-  const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
 
   const [curTab, setCurTab] = useState(0);
   const storyRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
   const teamRef = useRef<HTMLDivElement>(null);
   const specialRef = useRef<HTMLDivElement>(null);
-  const audioRef = useRef<HTMLAudioElement>(null);
 
-  const musicTracks = [
-    {
-      id: 1,
-      src: "/CrispSummerBreeze.mp3",
-      title: "Crisp Summer Breeze by Jexto",
-    },
-    // Add more tracks as needed
+  const links = ["story", "about", "team"];
+  const socials = [
+    { img: socialX, link: "https://x.com/MAcciNFT" },
+    { img: socialDiscord, link: "https://opensea.io/" },
+    { img: socialOpensea, link: "https://opensea.io/" },
   ];
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      // Set the initial window dimensions
-      setWindowWidth(window.innerWidth);
-      // Then, continue handling resize events
-      const handleResize = () => {
-        setWindowWidth(window.innerWidth);
-      };
-  
-      window.addEventListener('resize', handleResize);
-      return () => window.removeEventListener('resize', handleResize);
-    }
-  }, []);
-
-  useEffect(() => {
-    // Simulating a loading process, replace this with your actual loading logic
-    const timer = setTimeout(() => {
-      setIsSplashVisible(false); // Hide splash after resources are loaded
-    }, 3000); // Adjust time based on your load time
-  
-    return () => clearTimeout(timer);
-  }, []);
-
-  // Effect to toggle music play/pause
-  useEffect(() => {
-    if (music && audioRef.current) {
-      audioRef.current.play();
-    } else if (audioRef.current) {
-      audioRef.current.pause();
-    }
-  }, [music, currentTrackIndex]);
-
-  // Add event listener to track cursor movement
-  useEffect(() => {
-    window.addEventListener("mousemove", updateCursorPosition);
-    return () => {
-      window.removeEventListener("mousemove", updateCursorPosition);
-    };
-  }, []);
-
-  const handleMusic = () => {
-    setMusic(!music);
-  };
-
-  // Optionally, handle track change
-  const handleNextTrack = () => {
-    setCurrentTrackIndex((prevIndex) =>
-      prevIndex + 1 < musicTracks.length ? prevIndex + 1 : 0
-    );
-  };
-
-  // Update cursor position
-  const updateCursorPosition = (event: MouseEvent) => {
-    setCursorPosition({ x: event.clientX, y: event.clientY });
-  };
 
   useEffect(() => {
     // Check if the window width indicates a mobile device
@@ -184,13 +115,6 @@ const Portfolio: NextPage = () => {
     }
   }, [scrolling]); // Re-instantiate observer if 'scrolling' changes
 
-  const links = ["story", "about", "team"];
-  const socials = [
-    { img: socialX, link: "https://x.com/MAcciNFT" },
-    { img: socialDiscord, link: "https://opensea.io/" },
-    { img: socialOpensea, link: "https://opensea.io/" },
-  ];
-
   const handleCurTab = (id: number) => {
     setCurTab(id);
   };
@@ -237,14 +161,8 @@ const Portfolio: NextPage = () => {
         ></link>
       </Head>
 
-      {/* Audio element */}
-      {musicTracks.length > 0 && (
-        <audio ref={audioRef} src={musicTracks[currentTrackIndex].src} loop>
-          Your browser does not support the audio element.
-        </audio>
-      )}
-
       <div className="relative w-full px-[1.5vh] flex flex-col gap-[2vh] overflow-hidden lg:hidden">
+        {/* Navigation */}
         <div
           className={`${
             openNav
@@ -312,6 +230,7 @@ const Portfolio: NextPage = () => {
           ></Image>
         </nav>
 
+        {/* Mobile Components */}
         <span ref={storyRef} id="story" className="lg:hidden pt-[6vh]">
           <div>
             <StoryMobile></StoryMobile>
@@ -371,60 +290,10 @@ const Portfolio: NextPage = () => {
 
         {curTab == 0 ? <Story /> : curTab == 1 ? <About /> : <Team />}
       </div>
+      {/* Custom Audio */}
+      <Audio></Audio>
       {/* Custom Cursor */}
-
-      <div className="hidden lg:block fixed lg:absolute bottom-0 right-0 overflow-hidden">
-        <div className="flex m-[2vh] justify-center items-center gap-[2vh]">
-          <h1
-            className={`${
-              music ? "lg:opacity-1" : "lg:opacity-0"
-            }  italic transition-all duration-500 ease-in-out text-[2vh] font-light border-l-[0.75vh] border-l-[#FF1999] pl-[1vh]`}
-          >
-            {musicTracks[currentTrackIndex].title}
-          </h1>
-
-          <div className="flex bg-[#FF1999] rounded-full p-[1vh]">
-            <div className="bg-[#D9D9D9] rounded-full p-[1vh]">
-              <Image
-                className={`${
-                  music ? "animate-spin" : "animate-spinOff"
-                } transition-all ease-in-out h-[3vh] w-[3vh]`}
-                alt="MAdoll Logo"
-                src={MAcci}
-              ></Image>
-            </div>
-            <div className="p-[1vh]">
-              {music ? (
-                <Image
-                  className="h-[3vh] w-[3vh]"
-                  alt="playButton"
-                  src={pauseButton}
-                  onClick={() => handleMusic()}
-                ></Image>
-              ) : (
-                <Image
-                  className="h-[3vh] w-[3vh]"
-                  alt="pauseButton"
-                  src={playButton}
-                  onClick={() => handleMusic()}
-                ></Image>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-      <Image
-        src={macciCursor}
-        alt="custom cursor"
-        className="hidden lg:block absolute"
-        style={{
-          top: cursorPosition.y - 16,
-          left: cursorPosition.x - 16,
-          pointerEvents: "none",
-        }}
-        width={48}
-        height={48}
-      />
+      <Cursor></Cursor>
     </div>
   );
 };
