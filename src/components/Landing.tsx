@@ -213,7 +213,6 @@ const Portfolio: NextPage = () => {
   };
 
   return (
-    <Suspense>
     <div className="w-screen flex lg:flex-col justify-center items-center lg:h-screen">
       <Head>
         <title>{`MAdoll ${navTitle} by MAcci`}</title>
@@ -415,7 +414,6 @@ const Portfolio: NextPage = () => {
         height={48}
       />
     </div>
-    </Suspense>
   );
 };
 
