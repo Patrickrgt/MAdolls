@@ -183,7 +183,7 @@ const About: NextPage = () => {
                 style={{
                   animation: `fadeIn 0.5s ease-out ${id * 0.15}s forwards`,
                 }}
-                className="animate-fadeIn sm:opacity-0 h-fit w-full aspect-square hover:border-[#FF0083] hover:border-[0.25vh] border-transparent border-[0.25vh] transition-all ease-in-out"
+                className="animate-fadeIn md:opacity-0 h-fit w-full aspect-square hover:border-[#FF0083] hover:border-[0.25vh] border-transparent border-[0.25vh] transition-all ease-in-out"
                 src={doll}
                 alt="doll"
                 placeholder="blur"
@@ -245,7 +245,7 @@ const About: NextPage = () => {
                   }}
                   className={`${
                     curTitle == id ? "border-[#FF0083]" : "border-transparent"
-                  } animate-fadeIn h-[12vh] w-[12vh] sm:opacity-0 aspect-square hover:border-[#FF0083] hover:border-[0.5vh] border-[0.5vh] transition-all ease-in-out`}
+                  } animate-fadeIn h-[12vh] w-[12vh] md:opacity-0 aspect-square hover:border-[#FF0083] hover:border-[0.5vh] border-[0.5vh] transition-all ease-in-out`}
                   src={color.img}
                   alt="doll"
                   placeholder="blur"
@@ -324,7 +324,7 @@ const About: NextPage = () => {
                 }}
                 className={`${
                   curBg == id ? "border-[#FF0083]" : "border-transparent"
-                } animate-fadeIn h-[12vh] w-[12vh] sm:opacity-0 aspect-square hover:border-[#FF0083] hover:border-[0.5vh] border-[0.5vh] transition-all ease-in-out`}
+                } animate-fadeIn h-[12vh] w-[12vh] md:opacity-0 aspect-square hover:border-[#FF0083] hover:border-[0.5vh] border-[0.5vh] transition-all ease-in-out`}
                 src={thumbnail}
                 alt="doll"
                 placeholder="blur"

@@ -39,6 +39,10 @@ const Portfolio: NextPage = () => {
   const [navTitle, setNavTitle] = useState("MAdoll Story");
   const [openNav, setOpenNav] = useState(false);
   const [scrolling, setScrolling] = useState(false);
+  const [dimensions, setDimensions] = useState({
+    width: typeof window !== 'undefined' ? window.innerWidth : 0,
+    height: typeof window !== 'undefined' ? window.innerHeight : 0,
+  });
 
   const [curTab, setCurTab] = useState(0);
   const storyRef = useRef<HTMLDivElement>(null);
@@ -53,6 +57,8 @@ const Portfolio: NextPage = () => {
     { img: socialOpensea, link: "https://opensea.io/" },
   ];
 
+
+
   useEffect(() => {
     // Check if the window width indicates a mobile device
     const isMobile = window.innerWidth <= 320; // Adjust 768px according to your design's mobile breakpoint
@@ -62,6 +68,38 @@ const Portfolio: NextPage = () => {
       window.scrollTo(0, 0);
     }
   }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Call handleResize initially in case the initial state is not updated
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    const { width, height } = dimensions;
+    console.log(`Width: ${width}, Height: ${height}`);
+
+    if (width <= 768 && height <= 1024) {
+      // Logic for small devices
+      console.log('Small device view');
+    } else {
+      // Logic for larger devices
+      console.log('Larger device view');
+    }
+  }, [dimensions]); // This effect runs when dimensions state updates
+
 
   useEffect(() => {
     if (!scrolling) {
@@ -148,8 +186,14 @@ const Portfolio: NextPage = () => {
     }
   };
 
+  if ((dimensions.height >= 764 && dimensions.height <= 1370) && (dimensions.width >= 764 && dimensions.width <= 1370)) {
+    return (
+      <div>This webpage is not optimized on the current format. Please switch to desktop or mobile phone for best viewing.</div>
+    );
+  }
+  
   return (
-    <div className="w-screen flex sm:flex-col justify-center items-center sm:h-screen">
+    <div className="w-screen flex md:flex-col justify-center items-center md:h-screen">
       <Head>
         <title>{`MAdoll ${navTitle} by MAcci`}</title>
         <link rel="icon" href="/favicon.ico" />
@@ -161,7 +205,9 @@ const Portfolio: NextPage = () => {
         ></link>
       </Head>
 
-      <div className="relative w-full px-[1.5vh] flex flex-col gap-[2vh] overflow-hidden sm:hidden">
+      
+
+      <div className="relative w-full px-[1.5vh] flex flex-col gap-[2vh] overflow-hidden md:hidden">
         {/* Navigation */}
         <div
           className={`${
@@ -208,7 +254,7 @@ const Portfolio: NextPage = () => {
           </div>
         </div>
 
-        <nav className="sm:hidden fixed flex w-full items-center  pr-[3vh] z-10">
+        <nav className="md:hidden fixed flex w-full items-center  pr-[3vh] z-10">
           <div className="animate-fadeIn mr-auto font-semibold text-[#FF0083] text-[2.75vh] transition-all ease-in-out">
             {navTitle}
           </div>
@@ -231,32 +277,32 @@ const Portfolio: NextPage = () => {
         </nav>
 
         {/* Mobile Components */}
-        <span ref={storyRef} id="story" className="sm:hidden pt-[6vh]">
+        <span ref={storyRef} id="story" className="md:hidden pt-[6vh]">
           <div>
             <StoryMobile></StoryMobile>
           </div>
         </span>
 
-        <span ref={aboutRef} id="about" className="sm:hidden pt-[6vh]">
+        <span ref={aboutRef} id="about" className="md:hidden pt-[6vh]">
           <div>
             <AboutMobile></AboutMobile>
           </div>
         </span>
 
-        <span ref={specialRef} id="special" className="sm:hidden pt-[6vh]">
+        <span ref={specialRef} id="special" className="md:hidden pt-[6vh]">
           <div>
             <SpecialMobile></SpecialMobile>
           </div>
         </span>
 
-        <span ref={teamRef} id="team" className="sm:hidden pt-[6vh]">
+        <span ref={teamRef} id="team" className="md:hidden pt-[6vh]">
           <div>
             <TeamMobile></TeamMobile>
           </div>
         </span>
       </div>
 
-      <div className="hidden sm:flex w-[90%] m-auto gap-[16vh]">
+      <div className="hidden md:flex w-[90%] m-auto gap-[16vh]">
         
         <div className="flex flex-1 flex-col h-[80vh]">
           <div className="w-[100%] m-auto h-full flex flex-col justify-between">
