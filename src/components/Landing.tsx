@@ -186,7 +186,7 @@ const Portfolio: NextPage = () => {
     }
   };
 
-  if ((dimensions.height >= 764 && dimensions.height <= 1370) && (dimensions.width >= 764 && dimensions.width <= 1370)) {
+  if ((dimensions.height >= 803 && dimensions.height <= 1279) && (dimensions.width >= 803 && dimensions.width <= 1279)) {
     return (
       <div>This webpage is not optimized on the current format. Please switch to desktop or mobile phone for best viewing.</div>
     );
