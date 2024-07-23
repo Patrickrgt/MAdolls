@@ -22,7 +22,7 @@ const Team: NextPage = () => {
       title: "Artist",
       desc: `I'm a former color designer. \n In the process, I always had a thought. \n\n I enjoy my job very much. \n\nBut the products that leave the nest are always in the same family of colors...\n\nSo-called "sellable colors," "standout colors," "safe colors," and so on. I often put them away with the thought, "This color is really a nice combination, too. With these feelings in mind, I decided to I have been engaged in creative activities that "value colors," such as "creating characters from colors.`,
       link: "https://x.com/MAcciNFT",
-      headline: "色を大切にする作品作り / I make work that values color",
+      headline: "色を大切にする作品作り / I make work that values color.",
     },
     {
       member: shvrk,
@@ -30,7 +30,7 @@ const Team: NextPage = () => {
       title: "Developer",
       desc: "Growing developer \n when I'm not procrastinating I'm coding \n\n I help build brand identities with artists, traders, and devs. \nI usually start with the wireframes and communicate with the client all changes before coding. \nI'm proud of actually coding some super sick projects but also I sometimes fall through if the idea can get really crazy. Always trying to improve.  \n\nI think I have an eye for design as well, and I love collaboration because I'll always learn something new about design.",
       link: "https://x.com/0xignorance",
-      headline: "アーティストとの共同開発 / developing with artists",
+      headline: "アーティストとの共同開発 / developing with artists.",
     },
     {
       member: chuck,
@@ -52,9 +52,9 @@ const Team: NextPage = () => {
       member: bobby,
       name: "bobbystick",
       title: "Moderator",
-      desc: "hoyyy",
+      desc: "A hobbyist dedicated to creative and community gaming projects.",
       link: "https://x.com/Bobbystick4",
-      headline: "I make work that values color",
+      headline: "ITオタク、システム管理者, IT nerd and system administrator.",
     },
   ];
   const [curDoll, setCurDoll] = useState(0);

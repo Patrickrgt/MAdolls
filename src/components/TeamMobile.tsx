@@ -56,9 +56,9 @@ const TeamMobile: NextPage = () => {
       member: bobby,
       name: "bobbystick",
       title: "Moderator",
-      desc: "hoyyy",
+      desc: "A hobbyist dedicated to creative and community gaming projects.",
       link: "https://x.com/Bobbystick4",
-      headline: "I make work that values color",
+      headline: "ITオタク、システム管理者, IT nerd and system administrator.",
     },
   ];
   const [animationClass, setAnimationClass] = useState("");
