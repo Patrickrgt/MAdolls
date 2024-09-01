@@ -44,7 +44,7 @@ const Story: NextPage = () => {
                 I want to continue to share with you our many joys, headwinds,
                 and challenges. We are moving forward into an uncertain future
                 with changing rules and circumstances. My promise is that my
-                efforts and thoughts are with you all. Let's play around with
+                efforts and thoughts are with you all. {`Let's`} play around with
                 novelty, unbound by anything. Just like back then.
                 {/* MAdoll is a “cyber doll” inspired by the dolls we all played
                 with in our childhood. As a former color designer, I have a

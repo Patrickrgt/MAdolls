@@ -95,7 +95,7 @@ const Story: NextPage = () => {
           creator. I want to continue to share with you our many joys,
           headwinds, and challenges. We are moving forward into an uncertain
           future with changing rules and circumstances. My promise is that my
-          efforts and thoughts are with you all. Let's play around with novelty,
+          efforts and thoughts are with you all. {`Let's`} play around with novelty,
           unbound by anything. Just like back then.
         </p>
       </div>
