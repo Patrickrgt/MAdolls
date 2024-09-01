@@ -27,12 +27,26 @@ const Story: NextPage = () => {
           <div className="animate-fadeRight group-hover:border-[#FF0083] border-l-[1vh] pl-[2vh] transition-all ease-in-out cursor-none">
             <div className="animate-fadeLeft">
               <h1 className="text-[1.75vh] hover:text-[#FF0083] leading-tight font-semibold transition-all ease-in-out">
+                {`MAcci's`} first original IP generative collection.
+                {/* 
                 This is a generative collection in which MAcci, as an individual
                 creator, challenges {`NFT's`} and continues to search of
-                possibilities.
+                possibilities. */}
               </h1>
               <p className="text-[1.5vh] hover:text-[#FF0083] leading-tight mt-[0.5vh] transition-all ease-in-out">
-                MAdoll is a “cyber doll” inspired by the dolls we all played
+                I have a next goal. It is to have and grow my own IP. I have
+                named it “MAdoll”. 
+                <br />MAdoll is a “cyber doll” inspired by the
+                dolls we all played with in our childhood. As a former color
+                designer, I have a strong passion for color. As part of my
+                expression, no two MAdolls have the same skin color. Because
+                “any color can shine” is my consistent policy as an NFT creator.
+                I want to continue to share with you our many joys, headwinds,
+                and challenges. We are moving forward into an uncertain future
+                with changing rules and circumstances. My promise is that my
+                efforts and thoughts are with you all. Let's play around with
+                novelty, unbound by anything. Just like back then.
+                {/* MAdoll is a “cyber doll” inspired by the dolls we all played
                 with in our childhood. As a former color designer, I have a
                 strong passion for color. As part of my expression, no two
                 MAdolls have the same skin color. {`"All colors can shine”`} is
@@ -42,11 +56,11 @@ const Story: NextPage = () => {
                 for this collection as we move forward into an uncertain future
                 with changing rules and circumstances. What I promise is my hard
                 work and my thoughts for all of you. {`Let's`} play around with
-                novelty, unbound by anything. Just like back then.
+                novelty, unbound by anything. Just like back then. */}
               </p>
 
               <h1 className="font-semibold text-[1.75vh] leading-tight mt-[0.5vh] hover:text-[#FF0083] transition-all ease-in-out">
-                このコレクションは、マッチが個人クリエーターとしてNFTに挑戦し、可能性を模索し続けるジェネレイティブなコレクションである。MAdollは、私たちが子供の頃に遊んだ人形にインスパイアされた「サイバー人形」です。
+                MAcci 初のオリジナルIPジェネラティブコレクション
               </h1>
               <p className="text-[1.5vh] font-normal mt-[0.5vh] hover:text-[#FF0083] transition-all ease-in-out">
                 元カラーデザイナーとして、私は色に強い情熱を持っています。私の表現の一環として、同じ肌の色をしたMAdollは2体といません。「どんな色も輝ける」というのが、NFTクリエイターとしての一貫したポリシーです。様々な喜び、逆風、そして挑戦をこれからも皆さんと分かち合いたい。
