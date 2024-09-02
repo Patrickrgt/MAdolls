@@ -66,7 +66,7 @@ const Story: NextPage = () => {
               <p className="text-[1.5vh] font-normal mt-[0.5vh] hover:text-[#FF0083] transition-all ease-in-out">
                 私には、次の目標があります。
                 それは独自のIPを持ち、成長させることです。
-                私はこれを"MAdoll"と名付けました。
+                私はこれを{`"MAdoll"`}と名付けました。
                 MAdollは、私たちが子供の頃に遊んだ人形にインスパイアされた「サイバー人形」です。
                 元カラーデザイナーとして、私は色に強い情熱を持っています。私の表現の一環として、同じ肌の色をしたMAdollは2体といません。
                 「どんな色も輝ける」というのが、NFTクリエイターとしての一貫したポリシーだからです。
