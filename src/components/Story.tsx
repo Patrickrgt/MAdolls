@@ -35,17 +35,18 @@ const Story: NextPage = () => {
               </h1>
               <p className="text-[1.5vh] hover:text-[#FF0083] leading-tight mt-[0.5vh] transition-all ease-in-out">
                 I have a next goal. It is to have and grow my own IP. I have
-                named it “MAdoll”. 
-                <br />MAdoll is a “cyber doll” inspired by the
-                dolls we all played with in our childhood. As a former color
-                designer, I have a strong passion for color. As part of my
-                expression, no two MAdolls have the same skin color. Because
-                “any color can shine” is my consistent policy as an NFT creator.
-                I want to continue to share with you our many joys, headwinds,
-                and challenges. We are moving forward into an uncertain future
-                with changing rules and circumstances. My promise is that my
-                efforts and thoughts are with you all. {`Let's`} play around with
-                novelty, unbound by anything. Just like back then.
+                named it “MAdoll”.
+                <br />
+                MAdoll is a “cyber doll” inspired by the dolls we all played
+                with in our childhood. As a former color designer, I have a
+                strong passion for color. As part of my expression, no two
+                MAdolls have the same skin color. Because “any color can shine”
+                is my consistent policy as an NFT creator. I want to continue to
+                share with you our many joys, headwinds, and challenges. We are
+                moving forward into an uncertain future with changing rules and
+                circumstances. My promise is that my efforts and thoughts are
+                with you all. {`Let's`} play around with novelty, unbound by
+                anything. Just like back then.
                 {/* MAdoll is a “cyber doll” inspired by the dolls we all played
                 with in our childhood. As a former color designer, I have a
                 strong passion for color. As part of my expression, no two
@@ -63,9 +64,19 @@ const Story: NextPage = () => {
                 MAcci 初のオリジナルIPジェネラティブコレクション
               </h1>
               <p className="text-[1.5vh] font-normal mt-[0.5vh] hover:text-[#FF0083] transition-all ease-in-out">
+                私には、次の目標があります。
+                それは独自のIPを持ち、成長させることです。
+                私はこれを"MAdoll"と名付けました。
+                MAdollは、私たちが子供の頃に遊んだ人形にインスパイアされた「サイバー人形」です。
+                元カラーデザイナーとして、私は色に強い情熱を持っています。私の表現の一環として、同じ肌の色をしたMAdollは2体といません。
+                「どんな色も輝ける」というのが、NFTクリエイターとしての一貫したポリシーだからです。
+                様々な喜び、逆風、そして挑戦をこれからも皆さんと分かち合いたい。
+                ルールや状況が変化する不確実な未来に向かって前進しています。私が約束するのは、私の努力と皆さんへの思いです。
+                何にも縛られず、斬新な遊びをしよう。あの頃のように。 
+                {/* xxxxxx
                 元カラーデザイナーとして、私は色に強い情熱を持っています。私の表現の一環として、同じ肌の色をしたMAdollは2体といません。「どんな色も輝ける」というのが、NFTクリエイターとしての一貫したポリシーです。様々な喜び、逆風、そして挑戦をこれからも皆さんと分かち合いたい。
                 ルールや状況が変化する不確実な未来に向かって前進している今、私はこのコレクションについて具体的な特典やエアドロップを約束することはできません。私が約束するのは、私の努力と皆さんへの思いです。
-                何にも縛られず、斬新な遊びをしよう。あの頃のように。
+                何にも縛られず、斬新な遊びをしよう。あの頃のように。 */}
               </p>
             </div>
           </div>
